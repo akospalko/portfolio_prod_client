@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+:root {
+  font-family: 'Overpass', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  
+  /* color plaette */
+  --color_1: #001b2e;
+  --color_2: #1d3f58;
+  --color_3: #537692;
+  --color_3_50: #53769280;
+  --color_4:  #b3cde4;
+  --color_5: #eef3f9; 
+
+  --color_disabled: rgb(149, 149, 149);
+  --color_invalid: rgb(135, 9, 9);
+  
+  /* custom values */
+  --header_height: 75px; 
+  --footer_height: 250px;
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}

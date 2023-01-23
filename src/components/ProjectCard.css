@@ -1,0 +1,137 @@
+.project_card-container,
+.project_card-header,
+.project_card-header h3,
+.project_card-content,
+.project_card-github-repo-links,
+.project_card-github-repo-links a,
+.project_card-thumbnail,
+.project_card-thumbnail img,
+.project_card-info,
+.project_card-info span,
+.project_card-button,
+.project_card-buton--disabled,
+.project_card-header-icon {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.project_card-container {
+  height: 100%;
+}
+.project_card-header {
+  flex-direction: row;
+  height: 12.5%;
+  width: 100%;
+  background-color: var(--color_4);
+}
+.project_card-header h3 {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  color: var(--color_1);
+  font-weight: bold;
+}
+.project_card-header-icon {
+  height: 100%;
+  width: 20%;
+}
+.project_card-header-icon img {
+  height: 70%;
+}
+.project_card-header-icon:hover {
+  background-color: var(--color_3);
+  cursor: pointer;
+}
+.project_card-content {
+  height: 75%;
+  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.project_card-github-repo-links,
+.project_card-thumbnail,
+.project_card-info {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color_4);
+  padding: 0.5rem;
+}
+.project_card-github-repo-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; 
+  bottom: 0;
+  background-color: var(--color_4);
+}
+.project_card-github-repo-links a {
+ flex-grow: 1;
+ background-color: var(--color_2);
+ text-decoration: none;
+ font-size: 1.2rem;
+ color: var(--color_5);
+}
+.project_card-github-repo-links a:hover {
+ flex-grow: 1;
+ background-color: var(--color_3);
+}
+.project_card-github-repo-links a:first-child {
+  margin-bottom: 0.5rem;
+ }
+.project_card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project_card-info {
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+.project_card-info span {
+  height:  40px;
+  padding: 0.5rem;
+  font-weight: bold;
+  width: 100%;
+  background-color: var(--color_2);
+  color: var(--color_5);
+}
+.project_card-info p {
+  text-align: center;
+  flex-grow: 1;
+  width: 100%;
+}
+.project_card-button {
+  height: 12.5%;
+  width: 100%;
+}
+.project_card-button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color_3);
+  color: var(--color_5);
+  height: 50px;
+  width: 100%;
+  border: none;
+  text-decoration: none;
+}
+.project_card-button p {
+  margin: 0;
+  font-weight: bold;
+}
+.project_card-button a:hover {
+  background-color: var(--color_3_50);
+}
+.project_card-buton--disabled {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(119, 116, 116);
+  cursor: pointer;
+}

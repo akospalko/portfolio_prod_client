@@ -1,0 +1,166 @@
+/* form */
+.form,
+.form-message,
+.form-loadermodal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+}
+.form {
+  height: 650px;
+  background-color: var(--color_4);
+  position: relative;
+  border: 3px solid var(--color_1);
+}
+.form-message {
+  height: 100%;
+  width: 100%;
+}
+.form input,
+.form textarea,
+.form-button,
+.form-charactercount,
+.form-statusmessage {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  width: 95%;
+  font-family: 'Overpass', sans-serif;
+}
+.form-input-field {
+  background-color: var(--color_4);
+  color: var(--color_1);
+  font-size: 1rem;
+  outline: none;
+  border: 0;
+}
+.valid {
+  border-bottom: 3px solid var(--color_2); 
+} 
+.invalid { 
+  border-bottom: 3px solid var(--color_invalid); 
+}
+.form input:focus,
+.form textarea:focus {
+  border-bottom: 3px solid var(--color_2); 
+}
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color_1);
+}
+.form-charactercount {
+  color: var(--color_1); 
+  font-weight: bold;
+}
+.form-loadermodal {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color_4);
+}
+.form-loader,
+.form-statusmessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form-statusmessage {
+  margin: 0rem;
+  font-size: 1.3rem;
+  color: var(--color_1);
+}
+.form-loader {
+  flex-grow: 1;
+}
+.form-statusmessage {
+  height: 75px;
+}
+.form input {
+  height: 50px;
+}
+.form textarea {
+  height: 250px;
+  resize: none;
+  text-align: justify;
+  flex-grow: 1;
+}
+.form-button {
+  height: 50px;
+  border: 0;
+  padding: 0;
+  margin: 1rem;
+}
+.form-button button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin: 0;
+  background-color: var(--color_2);
+  cursor: pointer;
+}
+.form-button button:disabled {
+  background-color: var(--color_disabled);
+}
+.form-button button > span {
+  font-size: 1.1rem;
+  color: var(--color_5);
+}
+.form-button:hover {
+  background-color: var(--color_1);
+}
+.form-charactercount {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .form {
+    width: 650px;
+    height: 550px;
+    z-index: 3;
+  }
+  .form input,
+  .form textarea,
+  .form-statusmessage {
+    margin-bottom: 0;
+  }
+  .form input:first-child {
+    margin-top: 1rem;
+  }
+  .form-button {
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .form {
+    width: 600px;
+    height: 500px;
+    z-index: 3;
+  }
+  .form input,
+  .form textarea,
+  .form-statusmessage {
+    margin-bottom: 0;
+  }
+  .form textarea {
+    height: 200px;
+  }
+  .form input:first-child {
+    margin-top: 1rem;
+  }
+  .form-button {
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+}

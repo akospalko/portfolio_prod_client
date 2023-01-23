@@ -1,0 +1,118 @@
+.about-content,
+.about-title,
+.about-title h1,
+.about-section,
+.about-section h2,
+.about-section-group-header,
+.about-section-group-header h3,
+.about-section-group-content,
+.about-section-group-content span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.about-content {
+  margin-bottom: 2rem;
+}
+.about-title {
+  height: 150px;
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+.about-title h1 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  height: 150px;
+  margin: 0;
+  text-align: center;
+}
+.about-section {
+  padding: 0.5rem;
+}
+.about-section > h2, .about-section > p {
+  padding: 0.5rem;
+  text-align: justify;
+}
+.about-section h2 {
+  align-items: flex-start;
+  width: 100%;
+}
+.about-section-content,
+.about-section-group {
+  display: grid;
+  gap: 0.5rem;
+  color: black;
+}
+.about-section-content {
+  justify-content: center;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(1, 100%);
+}
+.about-section-group {
+  background-color: var(--color_4);
+  color: black;
+}
+.about-section-group-flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  padding: 0.5rem;
+}
+.about-section-group-header {
+  height: 150px;
+  border-bottom: 2px solid black;
+}
+.about-section-group-header img {
+  height: 50px;
+  width: 50px;
+  margin: 0.5rem;
+  user-select: none;
+}
+.about-section-group-header h3 {
+  flex-grow: 1;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.about-section-group-content span {
+  height: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.about-section-group-content p {
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  flex-grow: 1;
+} 
+
+@media (min-width: 768px) {
+  .background p, .hobbies p {
+    width: 500px;
+  }
+  .about-section-content {
+    grid-template-columns: repeat(2, 350px);
+    grid-template-rows: repeat(2, calc(300px - (0.5rem / 2))); /*fit row height to align to */
+  }
+  #group-1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+  }
+  #group-2 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+}
+
+@media (min-width: 1366px) {
+  .about-section h2 {
+    align-items: center;
+  }
+  .about-section-content {
+    grid-template-columns: repeat(3, 400px);
+  }
+}

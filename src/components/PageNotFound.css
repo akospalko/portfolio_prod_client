@@ -1,0 +1,14 @@
+.error-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(6, 6, 138);
+  flex-grow: 1;
+}
+.error-page-container img { 
+  height: auto;
+  width: 1000px;
+  object-fit: cover; 
+}
