@@ -2,7 +2,7 @@ import React from 'react'
 import Anchor from './Anchor'
 import './Home.css'
 import './Shared.css'
-import IntroductionImage from '../assets/introduction_image.png'
+//import IntroductionImage from '../assets/introduction_image.png'
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
       </div>
       {/* image */}
       <div className='home-image'>
-        <img src={ IntroductionImage } />
+        <img src='' alt='person image' />
       </div>
       {/* text */}
       <div className='home-text'>
