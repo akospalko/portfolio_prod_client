@@ -10,7 +10,6 @@ import Footer from '../layout/Footer'
 export default function FullContent() {
   return (
     <> 
-
       <Home pageLayout={'fullContentPage'}/>
       <About pageLayout={'fullContentPage'}/>
       <Projects pageLayout={'fullContentPage'}/>

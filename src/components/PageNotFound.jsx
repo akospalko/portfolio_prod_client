@@ -1,14 +1,17 @@
-//whenever the user requests an unknown resource -> redirect to this page
-//after a short delay (e.g. 10 seconds) navigate user back to home page
+//redirect to this page when unknown path is entered
+//navigate user back to home page after a short delay
 import React, { useEffect, useState } from 'react'
 import './PageNotFound.css'
+import './Shared.css'
 import { useNavigate } from 'react-router-dom'
-import ErrorPage from '../assets/error-page.jpg'
+import SpaceCat from './SpaceCat'
+import { textBubbleContentPageNotFound } from '../helper/dataControl'
 
 export default function PageNotFound() {
   const navigate = useNavigate();
 
-  const [countdown, setCountDown] = useState(100); 
+  const [countdown, setCountDown] = useState(1000); 
+
   useEffect(() => {
     if(!countdown) {
       navigate('/');
@@ -21,10 +24,17 @@ export default function PageNotFound() {
   }, [countdown])
   
   return (
-    <div className='error-page-container'>
-      <img src={ErrorPage} alt="page not found" />
+    <div className='shared-page-container error-page-container--layout'>
+       <div className='shared-title'> 
+        <h1> Planet is not found! </h1>
+      </div>
+      <div className='error-page-image'> 
+        <SpaceCat 
+          textBubbleContent={ textBubbleContentPageNotFound } 
+          countdownValue={ countdown }
+        />
+      </div>
     </div>
-    // <div>PageNotFound, returning to home page in { countdown }s </div>
   )
 }
 

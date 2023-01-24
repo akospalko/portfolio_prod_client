@@ -1,14 +1,20 @@
-.error-page-container {
+.error-page-container--layout,
+.error-page-image {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  background-color: rgb(6, 6, 138);
-  flex-grow: 1;
+  flex-direction: column;
 }
-.error-page-container img { 
-  height: auto;
-  width: 1000px;
-  object-fit: cover; 
+.error-page-image { 
+  height: 500px;
+  width: 100%;
+  background-color: var(--color_2);
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .error-page-image { 
+    height: 600px;
+    width: 600px;
+  }
 }

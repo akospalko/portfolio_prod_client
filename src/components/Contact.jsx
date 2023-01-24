@@ -3,7 +3,7 @@ import './Contact.css'
 import './Shared.css'
 import Anchor from './Anchor'
 import ContactForm from './ContactForm'
-import { socialLinks } from '../helper/dataControl'
+import { socialLinks, textBubbleContentContactForm } from '../helper/dataControl'
 import SpaceCat from './SpaceCat'
 import Astronaut from './Astronaut'
 
@@ -22,7 +22,7 @@ export default function Contact({ pageLayout }) {
       <div className='contact-group-1'>
         {/* contact header */}
         <div className='contact-header-container'> 
-          <div className='contact-header-title'> 
+          <div className='shared-title'> 
             <h1> Contact </h1>
           </div>
           {/* contact short text */}
@@ -54,7 +54,10 @@ export default function Contact({ pageLayout }) {
         </div>
       </div>
       <div className='contact-group-2'>
-        <SpaceCat/>
+        <SpaceCat 
+          textBubbleContent={ textBubbleContentContactForm }
+          hoverEffect={ true } 
+        />
         <ContactForm/>
       </div>
     </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import Anchor from './Anchor'
 import './Home.css'
 import './Shared.css'
-//import IntroductionImage from '../assets/introduction_image.png'
 
 export default function Home() {
   return (
@@ -22,7 +21,7 @@ export default function Home() {
       </div>
       {/* image */}
       <div className='home-image'>
-        <img src='' alt='person image' />
+        <img src='https://images.unsplash.com/photo-1540331547168-8b63109225b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2038&q=80' alt='person portrait' />
       </div>
       {/* text */}
       <div className='home-text'>

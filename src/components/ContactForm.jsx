@@ -1,27 +1,24 @@
-/*
-TODO: reset form if sending message was successful
-TODO: if server is not running we get -> undefined(500) as status message, fix status message  
-*/
-
 import React from 'react'
 import { useState, useCallback } from 'react'
 import './ContactForm.css'
-import { contactFormData, SENDING_EMAIL } from '../helper/dataControl'
+import { contactFormData, SENDING_EMAIL, RECAPTCHA_NOT_AVAILABLE, RECAPTCHA_VALIDATION_FAIL } from '../helper/dataControl'
 import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
 import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
 import { LoaderIcon } from './SVGComponent'
 import axios from 'axios'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import { validateForm } from '../helper/validateForm'
+
 export default function ContactForm() {
-  //recaptcha 
+  //Hooks 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { validateReCaptcha } = useValidateReCaptcha();
+  //States
   const [contactData, setContactData] = useState(contactFormData);
   const [isFormValid, setIsFormValid] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
-
+  //Handlers
   //input change handler
   const changeHandler = (e) => {
     e.preventDefault();
@@ -50,38 +47,32 @@ export default function ContactForm() {
     setIsFormValid(false); 
     // execute recaptcha if available
     if (!executeRecaptcha) {
-      setStatusMessage('Recaptcha is not yet available');
+      setStatusMessage(RECAPTCHA_NOT_AVAILABLE);
       setIsSubmittingForm(false); 
       return;
     } 
     //execute captcha: generate token
     const token = await executeRecaptcha('contact');
     //validate recaptcha 
-    const isCaptchaValid = await validateReCaptcha(token); // validate token
-    console.log(isCaptchaValid);
-   // const { isCaptchaValid, statusMessage } = await validateReCaptcha(token); // validate token
-    setStatusMessage(statusMessage);
+    const { isCaptchaValid, statusMessage, statusCode } = await validateReCaptcha(token); // validate token
     if(isCaptchaValid) { //if captcha is valid
       try {
+        //transform form data to mail
+        const mailData = getFormValues(contactData);
         const sendMailResponse = await axios.post(`/sendmail`, mailData);
-          setStatusMessage(`${sendMailResponse.data.statusMessage}`);
-          setContactData(contactFormData) // reset form to its initial state  
+        setStatusMessage(sendMailResponse.data.statusMessage);
+        setContactData(contactFormData) // reset form to its initial state  
       } catch (error) {
-        console.log(error);
-        setStatusMessage(`${error.response.data.statusMessage} (${error.response.status})`);
-        setIsSubmittingForm(false); 
-        setIsFormValid(true); // revert back form validity (re-enable)
-        }
+        setStatusMessage(`${ error.response.data.statusMessage } (${ error.response.status })`);
+        setIsFormValid(true); // revert back form validity (re-enable send button)
+      }
     } else {
-      setStatusMessage('Validating captcha has failed');
-      setIsSubmittingForm(false); 
-      setIsFormValid(true); // revert back form validity (re-enable)
-    }
-    //allow user to see loader and status message if request happens too quickly 
+      setStatusMessage(`${ statusMessage } (${ statusCode })`);
+      setIsFormValid(true);
+    } 
+    // allow users to read status messages if request happens too quickly 
     setTimeout(() => {
-      //reset form 
-      //resetForm();  
-        setIsSubmittingForm(false); 
+      setIsSubmittingForm(false); 
     }, [1000])
   }, [executeRecaptcha, setStatusMessage, validateReCaptcha])
 
@@ -98,7 +89,6 @@ export default function ContactForm() {
         </div> 
         <div className='form-statusmessage'> { statusMessage } </div>
       </div> : null }
-      {/* <h2> Send a Message </h2> */}
       { buildForm(contactData).map((elem) => {
         if(elem.config.fieldType === 'input') {
           return <input 

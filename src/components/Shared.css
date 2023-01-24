@@ -1,6 +1,7 @@
 .shared-page-container,
 .shared-anchor,
 .shared-anchor a,
+.shared-title,
 .shared-sociallinks,
 .shared-sociallinks a {
   display: flex;
@@ -47,6 +48,16 @@
 .shared-anchor:hover {
   background-color: var(--color_3);
 }
+.shared-title {
+  height: 100px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.shared-title h1 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  margin: 0;
+}
 .shared-sociallinks {
   flex-wrap: wrap;
   margin: 1rem 0;
@@ -71,5 +82,12 @@
 @media (min-width: 768px) {
   .shared-sociallinks {
     width: auto;
+  }
+  .shared-title {
+    height: 150px;
+  }
+  .shared-title h1 {
+    font-size: 3.2rem;
+    line-height: 3.5rem;
   }
 }

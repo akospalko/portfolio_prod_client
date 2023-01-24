@@ -1,6 +1,4 @@
 .about-content,
-.about-title,
-.about-title h1,
 .about-section,
 .about-section h2,
 .about-section-group-header,
@@ -15,18 +13,6 @@
 }
 .about-content {
   margin-bottom: 2rem;
-}
-.about-title {
-  height: 150px;
-  font-size: 3rem;
-  line-height: 3.5rem;
-}
-.about-title h1 {
-  font-size: 2.5rem;
-  line-height: 3rem;
-  height: 150px;
-  margin: 0;
-  text-align: center;
 }
 .about-section {
   padding: 0.5rem;

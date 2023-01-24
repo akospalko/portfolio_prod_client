@@ -201,5 +201,16 @@ export const projectCards = [
   }
 ] 
 
+//text bubble messages
+export const textBubbleContentContactForm =  "I'm bored, send me a message!";
+export const textBubbleContentPageNotFound = 'Returning home in';
+
 //Status messages:
+//API call
+export const API_REQUEST_UNABLE_TO_REACH_SERVER = 'Unable to reach server';
+//sendming mail
 export const SENDING_EMAIL = 'Sending email...';
+//captcha
+export const RECAPTCHA_NOT_AVAILABLE = 'Recaptcha is not yet available';
+export const RECAPTCHA_NO_TOKEN = 'Could not find recaptcha token';
+export const RECAPTCHA_VALIDATION_FAIL = 'Validating captcha has failed';

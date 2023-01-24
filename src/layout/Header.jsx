@@ -11,7 +11,7 @@ export default function Header() {
   const [toggled, setToggled] = useState(false); // menu bar toggle for responsive view
 
   //toggle menu bar handler for responsive view, disable scroll for body
-  const toggleMenuHandler = (mode) => {
+  const toggleMenuHandler = () => {
     setToggled(prev => {
       if(prev === true) {
         document.body.style.position = 'static';

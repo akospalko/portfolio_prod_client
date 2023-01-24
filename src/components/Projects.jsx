@@ -4,6 +4,7 @@ import './Shared.css'
 import Anchor from './Anchor'
 import ProjectCard from './ProjectCard';
 import { projectCards } from '../helper/dataControl'
+import SpaceCat from './SpaceCat';
 
 export default function Projects({ pageLayout }) {
   const [toggleCard, setToggleCard] = useState({});
@@ -18,7 +19,8 @@ export default function Projects({ pageLayout }) {
       { pageLayout === 'fullContentPage' ? <Anchor componentName='projects' /> : null }
       <div className='projects-content'>
         {/* Page title */}
-        <div className='projects-title'>
+        {/* <div className='projects-title'> */}
+        <div className='shared-title'>
           <h1> Projects </h1>
         </div>
         <div className='projects-text'>

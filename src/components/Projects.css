@@ -1,5 +1,3 @@
-.projects-title,
-.projects-title h1,
 .projects-text,
 .projects-text p, 
 .projects-content,
@@ -9,19 +7,6 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-}
-.projects-title {
-  height: 150px;
-  font-size: 3rem;
-  line-height: 3.5rem;
-  text-transform: uppercase;
-}
-.projects-title h1 {
-  font-size: 2.5rem;
-  line-height: 3rem;
-  height: 150px;
-  margin: 0;
-  text-align: center;
 }
 .projects-text {
   width: 100%;

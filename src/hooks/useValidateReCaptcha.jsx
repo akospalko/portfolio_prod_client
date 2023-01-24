@@ -1,34 +1,32 @@
 import axios from 'axios';
+import { API_REQUEST_UNABLE_TO_REACH_SERVER, RECAPTCHA_NO_TOKEN } from '../helper/dataControl'
 
 const useValidateReCaptcha = () => {
   const validateReCaptcha = async (token) => {
     //store validation result
     let isCaptchaValid = false;
     let statusMessage = '';
+    let statusCode = 500; //default value: unsuccessful api request
+
     //token validation 
     if(token) { 
-      console.log('validating token:', token)
-      //post data to server
-      await axios.post("/captcha", {token: token})
-      //successful response from server
-      .then(res => {
-        console.log(res);
-        isCaptchaValid = res.data.success;
-        statusMessage = res.data.responseMsg
-      })
-        //error response from server
-      .catch((err)=> {
-        // console.log('Couldn\'t send token to server:', err);
+      try {
+        //post data to server
+        const verifiedCaptcha = await axios.post("/captcha", { token: token });  
+        isCaptchaValid = verifiedCaptcha.data.verified;
+        statusMessage = verifiedCaptcha.data.statusMessage;
+        statusCode = verifiedCaptcha.status;
+      } catch(error) { 
         isCaptchaValid = false;
-        statusMessage = err;
-      })
+        statusMessage = API_REQUEST_UNABLE_TO_REACH_SERVER;
+        statusCode = error.response.status;
+      }
     } 
     else {
       isCaptchaValid = false;
-      statusMessage = 'no token';
+      statusMessage = RECAPTCHA_NO_TOKEN;
     } 
-    console.log('validating token:', token, isCaptchaValid, statusMessage);
-    return { isCaptchaValid, statusMessage }; // return validation result (true || false)
+    return { isCaptchaValid, statusMessage, statusCode }; // return validation result (true || false)
   }
   return { validateReCaptcha };
 }

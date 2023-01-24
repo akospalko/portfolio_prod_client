@@ -1,5 +1,6 @@
 import React from 'react'
 import './About.css'
+import './Shared.css'
 import Anchor from './Anchor';
 import { aboutSkills } from '../helper/dataControl'
 
@@ -16,7 +17,7 @@ export default function About({ pageLayout }) {
       { pageLayout === 'fullContentPage' ? <Anchor componentName='about' /> : null }
       <div className='about-content'>
         {/* Page title */}
-        <div className='about-title'>
+        <div className='shared-title'>
           <h1> About </h1>
         </div>
         {/* page section 1 */}
