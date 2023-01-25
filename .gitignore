@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 todo.txt
+vite.configTemp.js
 
 # Editor directories and files
 .vscode/*
