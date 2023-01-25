@@ -10,7 +10,7 @@ import { textBubbleContentPageNotFound } from '../helper/dataControl'
 export default function PageNotFound() {
   const navigate = useNavigate();
 
-  const [countdown, setCountDown] = useState(1000); 
+  const [countdown, setCountDown] = useState(10); 
 
   useEffect(() => {
     if(!countdown) {
