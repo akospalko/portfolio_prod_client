@@ -1,8 +1,7 @@
 // Header for all layouts
 import React from 'react';
 import './Header.css';
-import Logo from '../assets/logo.svg';
-import { MenuOpenIcon, MenuCloseIcon } from '../components/SVGComponent';
+import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import Navigation from './Navigation';
@@ -63,8 +62,7 @@ export default function Header() {
         onClick={ closeMenuHandler}
       >  
         <Link to={'/'}> 
-          <img src={Logo} alt='logo'
-          />
+          <LogoIcon width={ 60 } height={ 60 }/>
         </Link>
       </div>
       <div className='header'> </div>
@@ -81,7 +79,7 @@ export default function Header() {
     <div className={'layout-header-pc'}>
       <div className='header-logo'>  
         <Link to={'/'}> 
-          <img src={Logo} alt='logo'/>
+          <LogoIcon width={ 60 } height={ 60 }/>
         </Link>
       </div>
       <Navigation />     

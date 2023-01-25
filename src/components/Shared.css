@@ -11,16 +11,6 @@
 }
 .shared-page-container {
   position: relative;
-  justify-content: flex-start;
-  min-height: calc(100vh - var(--header_height));
-  background-color: var(--color_1);
-  padding-top: 0;
-}
-.shared-page-container--minheight {
-  min-height: 100vh;  
-}
-.shared-page-container {
-  position: relative;
   min-height: calc(100vh - var(--header_height));
   background-color: var(--color_1);
   padding-top: 0;
@@ -28,7 +18,7 @@
   flex-direction: column;
 }
 .shared-page-container--minheight {
-  min-height: 100vh;
+  min-height: 100vh;  
 }
 .shared-anchor {
   position: absolute;

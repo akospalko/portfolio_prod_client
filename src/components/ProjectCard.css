@@ -113,7 +113,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color_3);
+  background-color: var(--color_2);
   color: var(--color_5);
   height: 50px;
   width: 100%;
@@ -125,7 +125,7 @@
   font-weight: bold;
 }
 .project_card-button a:hover {
-  background-color: var(--color_3_50);
+  background-color: var(--color_3);
 }
 .project_card-buton--disabled {
   width: 100%;

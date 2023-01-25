@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useCallback } from 'react'
 import './ContactForm.css'
-import { contactFormData, SENDING_EMAIL, RECAPTCHA_NOT_AVAILABLE, RECAPTCHA_VALIDATION_FAIL } from '../helper/dataControl'
+import { contactFormData, SENDING_EMAIL, RECAPTCHA_NOT_AVAILABLE } from '../helper/dataControl'
 import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
 import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
-import { LoaderIcon } from './SVGComponent'
+import { LoaderIcon } from './SVGComponents'
 import axios from 'axios'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import { validateForm } from '../helper/validateForm'
@@ -79,7 +79,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={ submitFormHandler } className='form'>
       {/* enable loader modal when msg is being sent */}
-      { isSubmittingForm ? <div className='form-loadermodal'> 
+      { isSubmittingForm ? <div className='form-loadermodal '> 
         <div className='form-loader'> 
           <LoaderIcon 
             width={ 60 } 
@@ -122,7 +122,7 @@ export default function ContactForm() {
         }
       }) }
       <div className='form-button'> 
-        <button disabled={ !isFormValid }> <span> Send </span> </button>
+        <button disabled={ !isFormValid }> <span> { !isFormValid ? ' Fill in form ': ' Send '} </span> </button>
       </div>
     </form>
   )

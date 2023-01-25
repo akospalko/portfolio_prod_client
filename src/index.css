@@ -15,20 +15,26 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   
-  /* color plaette */
+  /* color palette */
   --color_1: #001b2e;
   --color_2: #1d3f58;
   --color_3: #537692;
   --color_3_50: #53769280;
   --color_4:  #b3cde4;
   --color_5: #eef3f9; 
-
   --color_disabled: rgb(149, 149, 149);
   --color_invalid: rgb(135, 9, 9);
-  
-  /* custom values */
+  /* custom values (size) */
   --header_height: 75px; 
   --footer_height: 250px;
+  /* z-index */
+  --z_1: 1;
+  --z_2: 2;
+  --z_3: 3;
+  --z_4: 4;
+  --z_6: 6;
+  --z_8: 8;
+  --z_10: 10;
 }
 
 html, body {
@@ -36,11 +42,14 @@ html, body {
   margin: 0;
   box-sizing: border-box;
 }
-
 body {
   overflow-y: scroll;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+/* reCaptcha badge */
+.grecaptcha-badge {
+  z-index: var(--z_10);
 }

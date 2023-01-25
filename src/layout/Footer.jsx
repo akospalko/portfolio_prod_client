@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.css'
 import '../components/Shared.css'
-import Logo from '../assets/logo.svg'
+import { LogoIcon } from '../components/SVGComponents'
 import { navElements, socialLinks } from '../helper/dataControl'
 
 export default function Footer() {
@@ -35,7 +35,7 @@ export default function Footer() {
     <div className='footer-info'>
       {/* logo */}
       <div className='footer-logo'> 
-        <img src={Logo} alt="logo"/>
+      <LogoIcon width={ 60 } height={ 60 }/>
       </div>
       {/* made-by */}
       <div className='footer-aboutcreator'> 

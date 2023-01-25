@@ -4,7 +4,6 @@ import './Shared.css'
 import Anchor from './Anchor'
 import ProjectCard from './ProjectCard';
 import { projectCards } from '../helper/dataControl'
-import SpaceCat from './SpaceCat';
 
 export default function Projects({ pageLayout }) {
   const [toggleCard, setToggleCard] = useState({});

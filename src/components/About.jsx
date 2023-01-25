@@ -37,12 +37,13 @@ export default function About({ pageLayout }) {
               <div key={ elem.id } id={ elem.id } className='about-section-group'>
                 <div className='about-section-group-flex-wrapper'> 
                   <div className='about-section-group-header'>
-                    <img src={ elem.icon } alt={ elem.iconAlt }/>
+                    {/* <img src={ elem.icon } alt={ elem.iconAlt }/> */}
+                    <div className='about-section-group-header-icon'>   { elem.icon }  </div>
                     <h3> { elem.title } </h3>
                   </div>
                   { elem.content.map((content) => {  
                     return <div key={ content.id } className='about-section-group-content'>
-                      <span> { content.title } </span> 
+                     { content.title && <span> { content.title } </span> } 
                       <p> { content.text } </p> 
                     </div>
                   })}

@@ -51,7 +51,7 @@
   height: 100%;
 }
 .contact-additional-info {
-  z-index: 2;
+  z-index: var(--z_2);
   height: 100%;
   width: 95%;
   margin: 0.5rem;

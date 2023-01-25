@@ -3,7 +3,7 @@ import React from 'react'
 import './Shared.css'
 import { findAnchorLink } from '../helper/utility'
 import { navElements } from '../helper/dataControl'
-import { AnchorIcon } from './SVGComponent'
+import { AnchorIcon } from './SVGComponents'
 
 export default function Anchor({ componentName }) {
   const anchorName = findAnchorLink(navElements, componentName).name;

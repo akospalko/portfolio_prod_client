@@ -1,6 +1,6 @@
 import React from 'react'
 import './ProjectCard.css'
-import { GithubIcon, MenuCloseIcon, InformationIcon } from './SVGComponent'
+import { GithubIcon, MenuCloseIcon, InformationIcon } from './SVGComponents'
 
 export default function ProjectCard({ data, toggle, setToggle }) {
   const {id, githubRepositoryLink, websiteLink, thumbnail, title, info } = data;
@@ -88,7 +88,6 @@ export default function ProjectCard({ data, toggle, setToggle }) {
               height={ 35 } 
               width={ 35 } 
               stroke={ 'var(--color_1)' }
-              fill={ 'var(--color_1)' }
             />
           }
         </div>

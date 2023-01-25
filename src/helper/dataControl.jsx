@@ -1,10 +1,12 @@
-//social link icons:
-import { GithubIcon, LinkedInIcon } from '../components/SVGComponent'
-//about skill card icons:
-import CodeIcon from '../assets/code.svg'
-import GISIcon from '../assets/gis_2.svg'
-import LanguageIcon from '../assets/language.svg'
-import OtherIcon from '../assets/other.svg'
+//icons
+import { 
+  GithubIcon, 
+  LinkedInIcon, 
+  CodeIcon,
+  GISIcon, 
+  LanguageIcon,
+  OthersIcon
+} from '../components/SVGComponents'
 
 //nav elements
 export const navElements = [
@@ -27,7 +29,120 @@ export const navElements = [
   }
 ]
 
-//Forms:
+export const socialLinks = [
+  {
+    id: 1,
+    icon: <GithubIcon width={ 45 } height={ 45 } strokeWidth={ 1 } stroke={ 'var(--color_5)' } />,
+    link: 'https://github.com/akospalko'
+  }, {
+    id: 2,
+    icon: <LinkedInIcon width={ 45 } height={ 45 } fill={ 'var(--color_5)' } />,
+    link: 'https://www.linkedin.com/in/%C3%A1kos-palk%C3%B3-87a5191a2/'
+  }
+]
+
+// Home
+// text
+export const homeText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
+
+//About 
+export const aboutSkills = [
+  {
+    id: 'group-1',
+    icon: <CodeIcon />,
+    iconAlt: 'Web develpoment & Programming',
+    title: 'Web development && programming',
+    content: [
+      {
+        id: 1,
+        title: 'Web',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 2,
+        title: 'Database',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 3,
+        title: 'Others',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+    ]
+  }, {
+    id: 'group-2',
+    icon: <GISIcon />,
+    iconAlt: 'GIS and CAD systems, 3D visualization',
+    title: 'GIS and CAD systems, 3D visualization',
+    content: [
+      {
+        id: 1,
+        title: 'GIS',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 2,
+        title: 'CAD',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+      {
+        id: 3,
+        title: 'Others',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
+      },
+    ]
+  }, {
+    id: 'group-3',
+    icon: <LanguageIcon />,
+    iconAlt: 'Language',
+    title: 'Language',
+    content: [
+      {
+        id: 1,
+        text: 'Arabic (professional), English(professional), German (intermediate), Korean (elementary)'
+      }
+    ]
+  }, {
+    id: 'group-4',
+    icon: <OthersIcon />,
+    iconAlt: 'Others',
+    title: 'Others',
+    content: [
+      {
+        id: 1,
+        text: 'Arabic (professional), English(professional), German (intermediate), Korean (elementary)'
+      }
+    ]
+  }
+]
+
+//Projects
+export const projectCards = [
+  { id: 1,
+    githubRepositoryLink: [ //fronten link, backend link
+      { id: 1, title: 'Frontend', link: 'https://github.com/akospalko/task-manager-client' },
+      { id: 2, title: 'Backend', link: 'https://github.com/akospalko/task-manager-api'},
+    ],
+    websiteLink: 'https://task-manager-client.onrender.com/',
+    thumbnail: '',
+    title: 'Task manager',
+    info: [
+      { id: 1, title: 'Description', text: 'Manage and store your daily tasks in a database' },
+      { id: 2, title: 'Used technologies', text: 'React, NodeJS, CSS, Postman, MongoDB, Mongoose'}
+    ]
+  },  {
+    id: 2,
+    githubRepositoryLink: ['https://github.com/akospalko/nodejs-tutorial/tree/master/03-task-manager/starter'], //fronten link
+    websiteLink: 'dummy link',
+    thumbnail: '',
+    info: [
+      { id: 1, title: 'Description', text: 'test' },
+      { id: 2, title: 'Used technologies', text: 'test test'},
+    ]
+  }
+] 
+
+//Contact
 //contact form data initializer
 export const contactFormData = {
   name: {
@@ -90,116 +205,6 @@ export const contactFormData = {
     valid: false,
   }
 }
-
-export const socialLinks = [
-  {
-    id: 1,
-    icon: <GithubIcon width={ 45 } height={ 45 } strokeWidth={ 1 } stroke={ 'var(--color_5)' } />,
-    link: 'https://github.com/akospalko'
-  }, {
-    id: 2,
-    icon: <LinkedInIcon width={ 45 } height={ 45 } fill={ 'var(--color_5)' } />,
-    link: 'https://www.linkedin.com/in/%C3%A1kos-palk%C3%B3-87a5191a2/'
-  }
-]
-
-export const aboutSkills = [
-  {
-    id: 'group-1',
-    icon: CodeIcon,
-    iconAlt: 'Web develpoment & Programming',
-    title: 'Web development && programming',
-    content: [
-      {
-        id: 1,
-        title: 'Web',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
-      },
-      {
-        id: 2,
-        title: 'Database',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
-      },
-      {
-        id: 3,
-        title: 'Others',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
-      },
-    ]
-  },
-  {
-    id: 'group-2',
-    icon: GISIcon,
-    iconAlt: 'GIS and CAD systems, 3D visualization',
-    title: 'GIS and CAD systems, 3D visualization',
-    content: [
-      {
-        id: 1,
-        title: 'GIS',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
-      },
-      {
-        id: 2,
-        title: 'CAD',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
-      },
-      {
-        id: 3,
-        title: 'Others',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas.'
-      },
-    ]
-  }, {
-    id: 'group-3',
-    icon: LanguageIcon,
-    iconAlt: 'Language',
-    title: 'Language',
-    content: [
-      {
-        id: 1,
-        text: 'Arabic (professional), English(professional), German (intermediate), Korean (elementary)'
-      }
-    ]
-  }, {
-    id: 'group-4',
-    icon: OtherIcon,
-    iconAlt: 'Other',
-    title: 'Other',
-    content: [
-      {
-        id: 1,
-        text: 'Arabic (professional), English(professional), German (intermediate), Korean (elementary)'
-      }
-    ]
-  }
-]
-
-export const projectCards = [
-  {
-    id: 1,
-    githubRepositoryLink: [ //fronten link, backend link
-      { id: 1, title: 'Frontend', link: 'https://github.com/akospalko/task-manager-client' },
-      { id: 2, title: 'Backend', link: 'https://github.com/akospalko/task-manager-api'},
-    ],
-    websiteLink: 'https://task-manager-client.onrender.com/',
-    thumbnail: '',
-    title: 'Task manager',
-    info: [
-      { id: 1, title: 'Description', text: 'Manage and store your daily tasks in a database' },
-      { id: 2, title: 'Used technologies', text: 'React, NodeJS, CSS, Postman, MongoDB, Mongoose'}
-    ]
-  },
-  {
-    id: 2,
-    githubRepositoryLink: ['https://github.com/akospalko/nodejs-tutorial/tree/master/03-task-manager/starter'], //fronten link
-    websiteLink: 'dummy link',
-    thumbnail: '',
-    info: [
-      { id: 1, title: 'Description', text: 'test' },
-      { id: 2, title: 'Used technologies', text: 'test test'},
-    ]
-  }
-] 
 
 //text bubble messages
 export const textBubbleContentContactForm =  "I'm bored, send me a message!";
