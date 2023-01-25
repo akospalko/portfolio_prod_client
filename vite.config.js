@@ -8,11 +8,15 @@ export default defineConfig({
     proxy: {
   "/captcha": {
     target: baseURL, //'http://localhost:3000/'
+    changeOrigin: true,
     secure: false,
+    ws: true
   },
   "/sendmail": {
     target: baseURL,
+    changeOrigin: true,
     secure: false,
+    ws: true
   }
 }},
   plugins: [react()],

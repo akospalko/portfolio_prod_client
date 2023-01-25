@@ -59,7 +59,7 @@ export default function ContactForm() {
       try {
         //transform form data to mail
         const mailData = getFormValues(contactData);
-        const sendMailResponse = await axios.post(`/sendmail`, mailData);
+        const sendMailResponse = await axios.post(`${ import.meta.env.VITE_AXIOS_BASE_URL }/sendmail`, mailData);
         setStatusMessage(sendMailResponse.data.statusMessage);
         setContactData(contactFormData) // reset form to its initial state  
       } catch (error) {

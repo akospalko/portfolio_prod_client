@@ -12,7 +12,7 @@ const useValidateReCaptcha = () => {
     if(token) { 
       try {
         //post data to server
-        const verifiedCaptcha = await axios.post("/captcha", { token: token });  
+        const verifiedCaptcha = await axios.post(`${ import.meta.env.VITE_AXIOS_BASE_URL }/captcha`, { token: token });  
         isCaptchaValid = verifiedCaptcha.data.verified;
         statusMessage = verifiedCaptcha.data.statusMessage;
         statusCode = verifiedCaptcha.status;
