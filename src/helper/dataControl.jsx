@@ -8,6 +8,9 @@ import {
   OthersIcon
 } from '../components/SVGComponents'
 
+//project icons
+import Project_1_Image from '../assets/project_1_task_manager.png';
+
 //nav elements
 export const navElements = [
   {
@@ -43,8 +46,7 @@ export const socialLinks = [
 
 // Home
 // text
-export const homeText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
-
+export const homeText = "Tech enthusiast / Web developer hobbyist / GIS specialist";
 //About 
 export const aboutSkills = [
   {
@@ -115,7 +117,6 @@ export const aboutSkills = [
     ]
   }
 ]
-
 //Projects
 export const projectCards = [
   { id: 1,
@@ -124,7 +125,7 @@ export const projectCards = [
       { id: 2, title: 'Backend', link: 'https://github.com/akospalko/task-manager-api'},
     ],
     websiteLink: 'https://task-manager-client.onrender.com/',
-    thumbnail: '',
+    thumbnail: Project_1_Image,
     title: 'Task manager',
     info: [
       { id: 1, title: 'Description', text: 'Manage and store your daily tasks in a database' },

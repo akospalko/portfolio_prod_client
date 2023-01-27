@@ -40,6 +40,7 @@ export default function Contact({ pageLayout }) {
           <div className='contact-additional-info'>
             <p> My Name </p>
             <p> myemail.@testmail.com </p>
+            <p> tel ... </p>
             <div className='shared-sociallinks contact-sociallinks--fullwidth'>
               { socialLinks.map( link => (
                 <a 

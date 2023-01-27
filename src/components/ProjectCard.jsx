@@ -1,6 +1,7 @@
+//TODO: after storing resources in db, show preview for all images while they are not available 
 import React from 'react'
 import './ProjectCard.css'
-import { GithubIcon, MenuCloseIcon, InformationIcon } from './SVGComponents'
+import { GithubIcon, MenuCloseIcon, InformationIcon, ImageIcon } from './SVGComponents'
 
 export default function ProjectCard({ data, toggle, setToggle }) {
   const {id, githubRepositoryLink, websiteLink, thumbnail, title, info } = data;
@@ -63,14 +64,14 @@ export default function ProjectCard({ data, toggle, setToggle }) {
           rel="noopener noreferrer"
         >
           <GithubIcon 
-            width={ 30 } 
-            height={ 30 } 
+            width={ '30' } 
+            height={ '30' } 
             stroke={ 'var(--color_1)' }
             strokeWidth={ '1.5' }
           />
         </a> }
         {/* header title */}
-        <h3 id='project_card-title'> { title } </h3>
+        <h3 id='project_card-title'> { !title ? <p> No Title </p> : title } </h3>
         {/* header icon: info */}
         <div 
           className='project_card-header-icon' 
@@ -124,7 +125,15 @@ export default function ProjectCard({ data, toggle, setToggle }) {
         //tubmnail image
         <div className='project_card-thumbnail'>
          { !thumbnail ? 
-           <p> No Preview</p>
+          <>
+            <ImageIcon 
+              fill='var(--color_3)' 
+              stroke='var(--color_1)'
+              width='100'
+              height='100'
+            />
+            <p> No Preview </p>
+          </>
            :
            <img src={ thumbnail } alt={ 'project thumbnail' }/>
          }

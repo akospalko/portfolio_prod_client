@@ -19,6 +19,7 @@
 }
 .project_card-container {
   height: 100%;
+  border: 2px solid var(--color_3)
 }
 .project_card-header {
   flex-direction: row;
@@ -87,6 +88,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.project_card-thumbnail p {
+  user-select: none;
 }
 .project_card-info {
   justify-content: flex-start;
