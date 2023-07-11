@@ -1,4 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+html, body {
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-y: scroll;
+}
+/* stop scroll while modal is opened */
+body.modal-open {
+  overflow: hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/* reCaptcha badge */
+.grecaptcha-badge {
+  z-index: var(--z_10);
+}
+
+
+
 :root {
   font-family: 'Overpass', sans-serif;
   font-size: 16px;
@@ -7,7 +30,10 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  
+  
+  background-color: #f24444;
+  height: 100%;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,6 +52,9 @@
   --color_disabled: rgb(149, 149, 149);
   --color_invalid: rgb(135, 9, 9);
 
+  /* modal */
+  --color-backdrop: rgba(0, 0, 0, 0.75); 
+
   /* custom values (size) */
   --header_height: 75px; 
   --footer_height: 250px;
@@ -37,51 +66,52 @@
   --z_6: 6;
   --z_8: 8;
   --z_10: 10;
-/* padding */
---padding_default: 0.5rem;
+  /* padding */
+  --padding_default: 0.5rem;
 
-/* 
-views:display: 
-S (small) - mobile
-M (medium) - tablet
-L (large) - pc/laptop
-*/
-/* container width */
---home_title_width_M: 400px;
---home_title_width_L: 750px;
---home-my-name_width_M: 400px; 
---home-my-name_width_L: 500px; 
---home-text_width_M: 400px;
---home-text_width_L: 500px;
-/* container height */
---home_title_height_S: 150px;
---home_image_height_S: 175px;
---home_image_height_M: 225px;
---home_image_height_L: 250px; 
---home-my-name_height_S: 100px; 
-/* font size  */
---home_font_title_S: 3rem;
---home_font_title_M: 3.5rem;
---home_font_title_L: 4rem;
---home_font_my_name_S: 2.2rem;
---home_font_my_name_M: 2.4rem;
---home_font_my_name_L: 2.6rem;
---home_font-text_S: 1.4rem;
---home_font-text_M: 1.6rem;
---home_font-text_L: 1.8rem;
-}
-html, body {
-  height: 100vh;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  overflow-y: scroll;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-/* reCaptcha badge */
-.grecaptcha-badge {
-  z-index: var(--z_10);
+  /* 
+  views:display: 
+  S (small) - mobile
+  M (medium) - tablet
+  L (large) - pc/laptop
+  */
+
+  /* HEADERS */
+  /* h1 */
+  --header-1--S: 2rem;
+  --header-1--M: 2.5rem;
+  --header-1--L: 3.25rem;
+  /* h2 */
+  --header-2--S: 1.5rem;
+  --header-2--M: 1.875rem;
+  --header-2--L: 2.343rem;
+  /* h3 */
+  --header-3--S: 1.25rem;
+  --header-3--M: 1.562rem;
+  --header-3--L: 1.952rem;
+
+
+  /* container width */
+  --home_title_width_M: 400px;
+  --home_title_width_L: 750px;
+  --home-my-name_width_M: 400px; 
+  --home-my-name_width_L: 500px; 
+  --home-text_width_M: 400px;
+  --home-text_width_L: 500px;
+  /* container height */
+  --home_title_height_S: 150px;
+  --home_image_height_S: 175px;
+  --home_image_height_M: 225px;
+  --home_image_height_L: 250px; 
+  --home-my-name_height_S: 100px; 
+  /* font size  */
+  --home_font_title_S: 3rem;
+  --home_font_title_M: 3.5rem;
+  --home_font_title_L: 4rem;
+  --home_font_my_name_S: 2.2rem;
+  --home_font_my_name_M: 2.4rem;
+  --home_font_my_name_L: 2.6rem;
+  --home_font-text_S: 1.4rem;
+  --home_font-text_M: 1.6rem;
+  --home_font-text_L: 1.8rem;
 }
