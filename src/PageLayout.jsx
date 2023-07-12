@@ -9,11 +9,26 @@ import FullContent from './components/FullContent'
 import PageNotFound from './components/PageNotFound'
 import { useModalContext } from './context/ModalContext'
 import ProjectCardModal from './components/ProjectCardModal'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function PageLayout() {
   // CONTEXT
   const { isModalToggled } = useModalContext();
+
+  // PROPS
+  const toastProps = {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    newestOnTop: false,
+    closeOnClick: true,
+    rtl: false,
+    pauseOnFocusLoss: true,
+    draggable: true,
+    pauseOnHover: true,
+    theme: "dark",
+  }; 
 
   return (
     <>
@@ -29,7 +44,8 @@ export default function PageLayout() {
       </Routes>
       {/* Modal */}
       { isModalToggled && <ProjectCardModal /> }
+      {/* Toast */}
+      <ToastContainer {...toastProps} />
     </>
   )
 }
-
