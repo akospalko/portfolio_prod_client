@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import './PageNotFound.css'
 import './Shared.css'
 import { useNavigate } from 'react-router-dom'
-import SpaceCat from './SpaceCat'
+import LittleHero from './LittleHero'
 import { textBubbleContentPageNotFound } from '../helper/dataControl'
 
 export default function PageNotFound() {
@@ -29,10 +29,7 @@ export default function PageNotFound() {
         <h1> Planet is not found! </h1>
       </div>
       <div className='error-page-image'> 
-        <SpaceCat 
-          textBubbleContent={ textBubbleContentPageNotFound } 
-          countdownValue={ countdown }
-        />
+        <LittleHero />
       </div>
     </div>
   )

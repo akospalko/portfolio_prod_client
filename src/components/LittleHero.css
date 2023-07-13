@@ -1,0 +1,92 @@
+.little-hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.little-hero-container {
+  height: 150px;
+  position: relative;
+}
+
+.little-hero-proximity-hover {
+  display: none;
+}
+
+.little-hero,
+.little-hero img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  position: absolute;
+  top: 75px;
+  user-select: none;
+  z-index: var(--z_2);
+}
+
+.little-hero img {
+  opacity: 0; 
+  animation-name: appear-from-below;
+  animation-duration: .3s;
+  animation-timing-function: ease-in;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards; 
+  position: absolute;
+  bottom: 0;
+}
+
+.little-hero-proximity-hover:hover + .little-hero {
+  transform: translateY(75px);
+}
+
+@keyframes appear-from-below {
+  0% {
+    opacity: 0;
+    top: 150px; 
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+.little-hero {
+  transition: transform .4s;
+}
+
+.little-hero-eyes {
+  position: absolute;
+  top: 48px;
+  left: -29px;
+}
+#eye-1 {
+  width: 16px;
+  height: 16px;
+  right: -57px;
+}
+#eye-2 {
+  width: 16px;
+  height: 16px;
+}
+
+/* MEDIA QUERY */
+@media (min-width: 768px) {
+  .little-hero-proximity-hover { 
+    display: flex;
+    user-select: none;
+    transition: transform .4s;
+    background-color: transparent;
+    z-index: var(--z_3);
+    width: 75%;
+    height: 100%;
+    position: absolute;
+    top: 10px;
+  }
+
+  .little-hero,
+  .little-hero img {
+    top: 10px;
+  }
+}
