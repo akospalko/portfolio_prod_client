@@ -4,6 +4,7 @@ import './ProjectCardModal.css';
 import './Shared.css';
 import { useModalContext } from '../context/ModalContext';
 import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from './SVGComponents';
+import { TagItems } from './TagItems';
 
 export default function ProjectCardModal() {
   // CONTEXT
@@ -48,22 +49,7 @@ export default function ProjectCardModal() {
   }
 
   // ELEMENTS
-  // mapped tags 
-  const tagItem = (
-    <>
-      { tags.map((tag, i) => 
-        <div
-          key={ i }
-          style={{ backgroundColor: tag.backgroundColor, color: tag.color }}
-          className='shared-tag-item'
-        >
-          <span> { tag.name } </span>
-        </div>
-      )}
-    </>
-  )
-
-  // what i learned items
+  // mapped what i learned items
   const whatILearned = (
     <>
       { learnedAbout?.map(item => 
@@ -77,22 +63,20 @@ export default function ProjectCardModal() {
     </>
   )
 
-  // content links
+  // mapped content links
   const linkItems = (
-    <>
-      { links.map(link => 
-        <a 
-          className='project-card-modal-content-link-item'
-          key={ link.id } 
-          href={ link.link }
-          target='_blank' 
-          rel='noopener noreferrer'
-        >
-          <div className='project-card-modal-content-link-item-icon'> { link.icon } </div>
-          <span> { link.title } </span>
-        </a>
-      ) }
-    </>
+    links.map(link => 
+      <a 
+        className='project-card-modal-content-link-item'
+        key={ link.id } 
+        href={ link.link }
+        target='_blank' 
+        rel='noopener noreferrer'
+      >
+        <div className='project-card-modal-content-link-item-icon'> { link.icon } </div>
+        <span> { link.title } </span>
+      </a>
+    )
   )
 
   return (
@@ -114,7 +98,13 @@ export default function ProjectCardModal() {
               />
             </div>
           </div>
-          <div className='shared-tags shared-tags--modal'> { tagItem } </div>
+          <div className='shared-tags'> 
+            <TagItems 
+              tags={ tags } 
+              tagStyle='shared-tag-item--modal'
+              allowDisplayInfo 
+            />
+          </div>
         </div>
         {/* preview img */}
         <div style={ backgroundStyle } className='project-card-modal-preview-image'></div>

@@ -1,44 +1,28 @@
+// Project card
 import React from 'react';
 import './ProjectCard.css';
 import './Shared.css';
+import { TagItems } from './TagItems';
 
-export default function ProjectCard({ data }) {
-  // PROP
-  const { background, tags, title } = data;
-
-  // ELEMENTS
-  // project card tag items
-  const tagItem = (
-    <>
-      { tags?.map((tag, i) => {
-        if(i < 3) { // render the first 3 tags for card view
-           return(
-            <div
-              key={ i }
-              style={{ backgroundColor: tag.backgroundColor, color: tag.color }}
-              className='shared-tag-item'
-            >
-              <span> { tag.name } </span>
-            </div>
-           )
-          }
-        }
-      )}
-    </>
-  )
+export default function ProjectCard(props) {
+  // PROPS
+  // data
+  const { background, tags, title } = props.data;
+  const { borderRadiusStyle } = props;
+  // console.log(borderRadiusStyle);
 
   return (
-    <div className='project-card'>
+    <div className={ `project-card ${ borderRadiusStyle.item } ` } >
       {/* header */}
-      <div className='project-card-header'> 
+      <div className={ `project-card-header ` } > 
         {/* title */}
         <h2> { title } </h2>
         <div className='shared-tags'>
-          { tagItem }
+          <TagItems tags={ tags.slice(0, 3) } />
         </div>
       </div>
       {/* image preview */}
-      <div className='project-card-image-preview'>
+      <div className={ `project-card-image-preview ${ borderRadiusStyle.itemImg } `} >
         <img src={ background } />
       </div>
     </div>

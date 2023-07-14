@@ -4,29 +4,9 @@ import './About.css'
 import './Shared.css'
 import Anchor from './Anchor';
 import { aboutSkills, backgroundText } from '../helper/dataControl'
-import { toast } from 'react-toastify';
+import { TagItems } from './TagItems';
 
 export default function About({ pageLayout }) {
-  // HANDLER
-  const callToaster = (popupText = '') => {
-    toast(popupText, {
-      position: "top-right",
-      className: 'toast-message',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  }
-
-  const popupClickHandler = (e, popupText) => {
-    e.preventDefault();
-    callToaster(popupText);
-  };
-
   // ELEMENTS
   // my background text
   const myBackgroundText = (
@@ -37,26 +17,6 @@ export default function About({ pageLayout }) {
     ))
   )
 
-  // skill card tag items
-  const skillCardTags = (tagsArray) => (
-    tagsArray?.map((tag, i) => {
-      return(
-        <div
-          key={ i }
-          style={{ 
-            backgroundColor: tag.backgroundColor, color: tag.color, border: `2px solid ${ tag.borderColor }`,
-          }}
-          className='shared-tag-item shared-tag-item--skill'
-        >
-          <span
-            onClick={ (e) => popupClickHandler(e, tag?.info || tag?.name) }
-          > { tag.name } </span>
-        </div>
-        )
-      }
-    )
-  )
-
   // skill card content group
   const cardContentGroup = (skillsArray) => (
     skillsArray?.map(item => (
@@ -65,7 +25,11 @@ export default function About({ pageLayout }) {
           <h3> { item.title } </h3> 
         </div>
         <div className='shared-tags shared-tags--skill'>
-          { skillCardTags(item.tags) }
+          <TagItems 
+            tags={ item.tags } 
+            tagStyle='shared-tag-item--skill'
+            allowDisplayInfo 
+          />
         </div>
       </div>
     ))
@@ -74,7 +38,7 @@ export default function About({ pageLayout }) {
   // skill cards 
   const skillCards = (
     aboutSkills.map( card => 
-      <div key={ card.id } className='about-skill-card'>
+      <div key={ card.id } id={ `card-${ card.id }` } className='about-skill-card'>
         <div className='about-skill-card-header'>
           <div className='about-skill-card-title'>
             <h2> { card.title } </h2>
@@ -98,11 +62,13 @@ export default function About({ pageLayout }) {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
   }
+  // conditional layout
+  const componentContainer = pageLayout === 'fullContentPage';
 
   return (
     <article className='shared-page-container'>
       {/* anchor tag for full content page */}
-      { pageLayout === 'fullContentPage' ? <Anchor componentName='about' /> : null }
+      { componentContainer ? <Anchor componentName='about' /> : null }
       <div className='about-content'>
         {/* Page title */}
         <div className='shared-title'>
