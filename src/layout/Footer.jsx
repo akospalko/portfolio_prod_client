@@ -1,8 +1,9 @@
+// Responsive footer
 import React from 'react'
 import './Footer.css'
 import '../components/Shared.css'
 import { LogoIcon } from '../components/SVGComponents'
-import { navigationElementsTemplate, socialLinks } from '../helper/dataControl'
+import { navigationElementsTemplate } from '../helper/dataControl'
 import ScrollToTopButton from '../components/ScrollToTopButton'
 import { useMediaQuery } from 'react-responsive'
 
@@ -47,8 +48,9 @@ export default function Footer() {
       )) }
     </div>
   )
+
   // Branding
-  // Customized layout for small screens
+  // customized layout for small screens
   const smallScreenBranding = (
     <div className='footer-branding'>
       {/* logo */}
@@ -60,7 +62,7 @@ export default function Footer() {
       </span>
     </div>
   )
-   // Customized layout for large screens
+  // customized layout for large screens
   const largeScreenBranding = (
     <div className='footer-branding' >
       {/* label */}
@@ -73,7 +75,7 @@ export default function Footer() {
   )
 
   // LAYOUTS
-  // for small screens
+  // customized layout for small screens
   const smallScreenLayout = (
       <>
         { scrollToTop }
@@ -82,7 +84,7 @@ export default function Footer() {
       </>
     )
     
-  // for large screens
+  // customized layout for large screens
   const largeScreenLayout = (
     <>
       <div className='footer-group-1'> 
@@ -96,7 +98,6 @@ export default function Footer() {
   return (
     <div className='footer-container'>
       { isBelow768Px ? smallScreenLayout : largeScreenLayout }
-    
     </div>
   )
 }
