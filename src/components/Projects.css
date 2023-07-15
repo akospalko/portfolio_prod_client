@@ -1,5 +1,33 @@
+/* test border */
+.border-radius-top-left {
+  border-radius: 10px 0 0 0;
+}
+.border-radius-top-right {
+  border-radius: 0 10px 0 0;
+}
+.border-radius-bottom-left {
+  border-radius: 0 0 0 10px ;
+}
+.border-radius-bottom-right {
+  border-radius: 0 0 10px 0;
+}
+.border-radius-left {
+  border-radius: 10px 0 0 10px;
+}
+.border-radius-right {
+  border-radius: 0 10px 10px 0;
+}
+.border-radius-full {
+  border-radius: 10px;
+}
+.border-radius-top {
+  border-radius: 10px 10px 0 0;
+}
+.border-radius-bottom {
+  border-radius: 0 0 10px 10px;
+}
+
 .projects-content,
-.projects-display,
 .projects-card-wrapper {
   display: flex;
   justify-content: center;
@@ -13,52 +41,48 @@
 }
 
 .projects-display {
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 2rem;
+  gap: 10px;
 }
 
-.projects-card-wrapper {
-  flex: 100%;
-}
-
-@media screen and (min-width: 550px) {
+/* MEDIA QUERY */
+@media screen and (max-width: 300px) {
   .projects-display {
-    width: calc(100% - 2rem);
-    flex-direction: row;
-    justify-content: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    /* grid-template-rows: auto auto;
+    width: 400px; */
   }
-  
-  .projects-card-wrapper {
-    flex: calc(50% - 1rem);
-    max-width: calc(50% - 0.5rem);
-  }
-  .projects-card-wrapper:last-child {
-    max-width: calc(50% - 0.5rem);
+}
+@media screen and (min-width: 500px) {
+  .projects-display {
+    grid-template-rows: auto auto;
+    width: 400px;
   }
 }
 
-/* MEDIA */
+/* MEDIA  QUERY */
 @media screen and (min-width: 768px) {
   .projects-display {
-    width: calc(750px - 2rem);
-    flex-direction: row;
-    justify-content: flex-start;
+    grid-template-columns: 1fr 1fr;
+    width: 700px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .projects-display {
-    width: calc(1000px - 2rem);
-    flex-direction: row;
-    justify-content: flex-start;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 1000px;
   }
+} 
   
-  .projects-card-wrapper {
-    flex: calc(33.33% - 2rem);
-    max-width: none;
-    width: 300px;
+@media screen and (min-width: 1366px) {
+  .projects-display {
+    width: 1300px;
   }
-  .projects-card-wrapper:last-child {
-    max-width: 50%;
-  }
-}
+}  
