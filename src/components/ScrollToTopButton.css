@@ -1,0 +1,16 @@
+.scroll-to-top-button {
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  font-size: 2rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .2s ease-in;
+}
+.scroll-to-top-button:hover,
+.scroll-to-top-button:focus,
+.scroll-to-top-button:active {
+  opacity: 0.5;
+}
