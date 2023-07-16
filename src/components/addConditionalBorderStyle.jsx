@@ -1,5 +1,6 @@
-// TODO: outsource css from project.css
 // Project cards: add custom border radii for different items at different grid locations   
+import './addConditionalBorderStyle.css';
+
 export const addConditionalBorderStyle = (array, i, columnCount) => {
   if (array.length === 0) return {};
 
