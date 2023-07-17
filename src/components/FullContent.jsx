@@ -1,6 +1,5 @@
-// outsource Home to its own component
-import React from 'react'
-import './FullContent.css'
+// Render multiple pages as one  
+import React, { useRef } from 'react'
 import About from './About'
 import Contact from './Contact'
 import Projects from './Projects'
@@ -8,13 +7,23 @@ import Home from './Home'
 import Footer from '../layout/Footer'
 
 export default function FullContent() {
+  // REF
+  const targetRef = useRef(null);
+
+  // HANDLER
+  const handleScrollDown = () => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <> 
-      <Home pageLayout={'fullContentPage'}/>
-      <About pageLayout={'fullContentPage'}/>
-      <Projects pageLayout={'fullContentPage'}/>
-      <Contact pageLayout={'fullContentPage'}/>
-      <Footer/>
+      <Home handleScrollDown={ handleScrollDown }/>
+      <About isAutoHeight targetRef={ targetRef }/>
+      <Projects isAutoHeight />
+      <Contact isAutoHeight />
+      <Footer/> 
     </>
   )
 }

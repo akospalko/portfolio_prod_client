@@ -7,7 +7,7 @@
   width: 100%;
   padding: 1rem;
   background-color: var(--color_2);
-  border-top: 2px solid var(--color_3);
+  border-top: 2px solid var(--color_3_light);
   z-index: var(--z_11);
 }
 .footer-scroll-to-top {
@@ -150,7 +150,7 @@
     align-items: center;
     height: 100%;
     font-size: var(--font-size--L);
-    line-height: calc(var(--font-size--L));
+    line-height: var(--font-size--L);
   }
   .footer-navigation-element span {
     font-size: calc(var(--font-size--L) * 1.2);

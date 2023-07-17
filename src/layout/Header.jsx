@@ -1,15 +1,32 @@
 // Header for all layouts
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
-import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { NavLink } from "react-router-dom";
 import Navigation from './Navigation';
+import { useMediaQuery } from 'react-responsive';
+import { myContactsTemplate } from '../helper/dataControl';
 
 export default function Header() {
-  const [toggled, setToggled] = useState(false); // menu bar toggle for responsive view
+  // CONSTANT
+  const iconSizeMenuToggler = 25;
+  
+  // HOOK
+  const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
+  
+  // STATE
+  const [ toggled, setToggled ] = useState(false); // menu bar toggle for responsive view
 
-  //toggle menu bar handler for responsive view, disable scroll for body
+  // EFFECT
+  // close modal when screen size is changed to large screen
+  useEffect( () => {
+    if(toggled && !isBelow768Px ) {
+      closeMenuHandler();
+    }
+  }, [ isBelow768Px ])
+
+  // HANDLERS
+  // toggle menu bar handler, page scroll lock
   const toggleMenuHandler = () => {
     setToggled(prev => {
       if(prev === true) {
@@ -22,7 +39,7 @@ export default function Header() {
         return !prev;
     });
   }
-  //close menu and remove active menubar styles when clicking on home logo   
+  // close menu, remove page scroll lock
   const closeMenuHandler = () => {
     setToggled(prev => {
       if(prev === true) {
@@ -35,61 +52,100 @@ export default function Header() {
     });
   }
 
-  //Conditional rendering header
-  //responsive view
-  const headerResponsive = 
-    <div className={'layout-header-responsive'}>
-      <div 
-        className='header_responsive-menubar'
-        onClick={ toggleMenuHandler }
+  // ELEMENTS
+  // Logo
+  const logo = (
+    <div 
+      className='header-logo-container'
+      onClick={ closeMenuHandler }
+    >  
+      <NavLink 
+        to={ '/' }
+        className={ ({ isActive }) => (
+          isActive ? 
+            'header-logo header-logo--active' 
+            : 
+            'header-logo' 
+        ) }
       > 
-        {toggled ? 
-          <MenuCloseIcon 
-            height={35} 
-            width={35} 
-            stroke={'var(--color_5)'}
-          />
+        <LogoIcon width={ 40 } height={ 40 } />
+      </NavLink>
+    </div>
+  )
+
+  // Highlighted contact links
+  const hilightedContacts = (
+    <div className='header-contacts'>
+      { myContactsTemplate
+        ?.filter(contact => contact.title === 'Github' || contact.title === 'LinkedIn')
+        ?.map(contact => {
+          return (
+            <a 
+              key={ contact.id } 
+              className='header-contacts-item'
+              title={ contact.title }
+              href={ contact.link }
+              target='_blank' 
+              rel='noopener noreferrer'
+            >
+              { contact.icon('var(--color_4)') } 
+            </a>
+          )
+      }) }
+    </div>
+  )
+
+  // Menu
+  // menu toggler button (for small screen layout)
+  const menuToggler = (
+    <div 
+      className='header-menu-toggler'
+      onClick={ toggleMenuHandler }
+    > 
+      { toggled ? 
+        <MenuCloseIcon 
+          height={ iconSizeMenuToggler } 
+          width={ iconSizeMenuToggler } 
+          stroke={ 'var(--color_5)' }
+        />
         :
-          <MenuOpenIcon 
-            height={35} 
-            width={35} 
-            stroke={'var(--color_5)'}
-          />
-        }
-      </div>
-      <div 
-        className='header_responsive-logo'
-        onClick={ closeMenuHandler}
-      >  
-        <Link to={'/'}> 
-          <LogoIcon width={ 60 } height={ 60 }/>
-        </Link>
-      </div>
-      <div className='header'> </div>
-      {/* menu bar */}
-      {toggled ? 
-        (<div className={'header_responsive-navmenu'}>
-          <Navigation toggleHandler={ toggleMenuHandler } />
-        </div>) : null
+        <MenuOpenIcon 
+          height={ iconSizeMenuToggler } 
+          width={ iconSizeMenuToggler } 
+          stroke={ 'var(--color_5)' }
+        />
       }
     </div>
-
-  //pc view
-  const header =     
-    <div className={'layout-header-pc'}>
-      <div className='header-logo'>  
-        <Link to={'/'}> 
-          <LogoIcon width={ 60 } height={ 60 }/>
-        </Link>
-      </div>
-      <Navigation />     
-      <div className={ ['header', 'dummy'].join(' ') }> </div>
+  )
+  // menu modal (for small screen layout)
+  const menuModal = (
+    <div className='header-menu-modal'>
+      <Navigation closeModal={ closeMenuHandler } />
+      { hilightedContacts }
     </div>
+  )
+
+  // LAYOUTS
+  // customized layout for large screens
+  const smallScreenLayout = (
+    <>
+      { menuToggler }
+      { logo }
+      { toggled || !isBelow768Px ? menuModal : null }
+    </>
+  );
+  // customized layout for large screens
+  const largeScreenLayout = (
+    <>
+      { logo }
+      <Navigation />
+      { hilightedContacts }
+    </>
+  );
 
   return (
-    <>
-      { headerResponsive }
-      { header }
-    </>
+    <div id='header' className='header-container'> {/* NOTE: id is required to navigate back to home pg */}
+      { isBelow768Px ? smallScreenLayout : largeScreenLayout }
+    </div>
   )
 }

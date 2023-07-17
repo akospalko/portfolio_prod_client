@@ -1,48 +1,64 @@
-//responsive navbar: full screen
+// Navigaton wrapper with elements inside: small & large screen layouts
 import React from 'react'
-import { navElements } from '../helper/dataControl'
+import { navigationElementsTemplate } from '../helper/dataControl'
 import './Navigation.css'
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 
-export default function NavigationResponsive({ toggleHandler }) {
-//conditional rendering: navigation elements
-  const responsiveNav = 
-  <div className='navigation_responsive-container'>
-    <ul> {
-      navElements.map((elem) => {
-        if(elem.id === 0) return; // don't render home route
-        return <NavLink 
-          key={elem.id} 
-          to={elem.path}
-          onClick={toggleHandler}
-        > 
-          <li className='navigation_responsive-item'> <p> {elem.name} </p> </li>
-        </NavLink>
-      })
-    } </ul> 
-  </div>
+export default function NavigationResponsive(props) {
+  // PROPS
+  const { closeModal } = props; // close menu modal on nav element click
+  
+  // HOOK
+  const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
 
-  const nav = 
-  <div className='navigation-container'>
-    <ul> {
-      navElements.map((elem) => {
-        if(elem.id === 0) return; // don't render home route
-        return <NavLink 
-          key={elem.id} 
-          to={elem.path}
-          className={({ isActive }) => 
-          (isActive ? 'navigation-item--active' : null )}
-        > 
-          <li className='navigation-item'> <p> {elem.name} </p> </li>
-        </NavLink>
-      })
-    } </ul> 
-  </div> 
+  // ELEMENTS
+  // Navigation elements
+  // nav elements for menu modal / small screen layout
+  const menuModalNavigationElements = (
+    navigationElementsTemplate.map( (elem) => {
+      if(elem.id === 0) return; // don't render home route
+        return ( 
+          <NavLink 
+            key={ elem.id } 
+            to={ elem.path }
+            onClick={ closeModal }
+            className={ ({ isActive }) => (
+              isActive ? 
+                'navigation-item navigation-item--active' 
+                : 
+                'navigation-item' 
+            ) }
+          >
+            <span> { elem.name } </span> 
+          </NavLink>
+        )
+    }) 
+  )
+  // nav elements for header/ large screen layout
+  const headerNavigationElements = (
+    navigationElementsTemplate.map( (elem) => {
+      if(elem.id === 0) return; 
+        return ( 
+          <NavLink 
+            key={ elem.id } 
+            to={ elem.path }
+            className={ ({ isActive }) => (
+              isActive ? 
+                'navigation-item navigation-item--active' 
+                : 
+                'navigation-item' 
+            ) }
+          >
+            <span> { elem.name } </span> 
+          </NavLink>
+        )
+    })
+  )
 
   return (
-    <>
-      {responsiveNav}
-      {nav}
-    </>
+    <div className='navigation-container'>
+      { isBelow768Px ? menuModalNavigationElements : headerNavigationElements }
+    </div>
   )
 }

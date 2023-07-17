@@ -1,4 +1,5 @@
 // Container to hold page layout: header route/body content, modal
+import React from 'react';
 import './App.css'
 import Header from './layout/Header'
 import { Route, Routes } from "react-router-dom"
@@ -13,9 +14,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function PageLayout() {
-  // CONTEXT
-  const { isModalToggled } = useModalContext();
-
   // PROPS
   const toastProps = {
     position: "top-right",
@@ -30,22 +28,26 @@ export default function PageLayout() {
     theme: "dark",
   }; 
 
+  // CONTEXT
+  const { isModalToggled } = useModalContext();
+
   return (
     <>
       {/* Header/Navigation layout */}
-      <Header/>
+      {  <Header /> }
+      {/* { showHeader && <Header /> } */}
       {/* Routes */}
       <Routes>
-        <Route path={'/'} element={ <FullContent/> } />
-        <Route path={'/about'} element={ <About/> } /> 
-        <Route path={'/projects'} element={ <Projects/> } /> 
-        <Route path={'/contact'} element={ <Contact/> } /> 
-        <Route path={'*'} element={ <PageNotFound/> } /> 
+        <Route path={ '/' } element={ <FullContent/> } />
+        <Route path={ '/about' } element={ <About/> } /> 
+        <Route path={ '/projects' } element={ <Projects/> } />  
+        <Route path={ '/contact' } element={ <Contact/> } /> 
+        <Route path={ '*' } element={ <PageNotFound/> } />
       </Routes>
       {/* Modal */}
       { isModalToggled && <ProjectCardModal /> }
       {/* Toast */}
-      <ToastContainer {...toastProps} />
+      <ToastContainer { ...toastProps } />
     </>
   )
 }
