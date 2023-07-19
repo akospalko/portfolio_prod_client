@@ -35,9 +35,9 @@ export const useAnimationPause = (pageName) => {
       onClick={ toggleAnimation }
     >
       { isAnimationPaused ? 
-        <PlayIcon fill='var(--color_3)' /> 
+        <PlayIcon fill='var(--color_3_light)' /> 
         : 
-        <PauseIcon fill='var(--color_3)' /> 
+        <PauseIcon fill='var(--color_3_light)' /> 
       } 
     </div>
   )
