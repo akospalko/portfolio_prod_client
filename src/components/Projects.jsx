@@ -9,7 +9,7 @@ import { useModalContext } from '../context/ModalContext';
 import { useMediaQuery } from 'react-responsive';
 import { addConditionalBorderStyle } from './addConditionalBorderStyle';
 
-export default function Projects({ pageLayout }) {
+export default function Projects({ isAutoHeight }) {
   // HOOK
   const isBelow1024Px = useMediaQuery({ query: '(max-width: 1023px)' });
   const isBelow768Px = useMediaQuery({ query: '(max-width:767px)' });
@@ -17,14 +17,10 @@ export default function Projects({ pageLayout }) {
   // CONTEXT 
   const { toggleModalHandler } = useModalContext();
 
-  // STYLE
-  // conditional layout
-  const componentContainer = pageLayout === 'fullContentPage';
-
   return (
-    <article className='shared-page-container'>
+    <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       {/* anchor tag for full content page */}
-      { componentContainer && <Anchor componentName='projects' /> }
+      { isAutoHeight && <Anchor componentName='projects' /> }
       <div className='projects-content'>
         {/* page title */}
         <div className='shared-title'>
@@ -36,7 +32,7 @@ export default function Projects({ pageLayout }) {
             let borderRadiusStyle = addConditionalBorderStyle(projectCards, i, columnCount);
             return <div 
               key={ card.id }
-              onClick={ e => toggleModalHandler(e, card.id) }  
+              onClick={ () => toggleModalHandler(card.id) }  
               className='projects-card-wrapper'
             > 
               <ProjectCard data={{ ...card }} borderRadiusStyle={ borderRadiusStyle } /> 

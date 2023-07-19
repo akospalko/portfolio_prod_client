@@ -11,7 +11,6 @@ export default function ProjectCardModal() {
   // CONTEXT
   const { activeModalContent, toggleModalHandler } = useModalContext();
   const { id, title, tags, url, description, links, learnedAbout } = activeModalContent;
-  console.log(url);
   // EFFECTS
   // close modal when pressing keyboard 'escape'
   useEffect(() => {
@@ -39,15 +38,6 @@ export default function ProjectCardModal() {
       toggleModalHandler(id, false);
     }
   }
-
-  // STYLE
-  // project card img preivew background style
-  // const backgroundStyle = { 
-  //   backgroundImage: `url(${ background })`,
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'no-repeat',
-  //   backgroundPosition: 'center'
-  // }
 
   // ELEMENTS
   // mapped what i learned items

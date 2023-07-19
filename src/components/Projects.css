@@ -9,6 +9,7 @@
 
 .projects-content {
   margin-bottom: 1rem;
+  /* align-items: initial; */
 }
 
 .projects-display {
@@ -16,6 +17,7 @@
   grid-template-columns: 1fr;
   margin-bottom: 2rem;
   gap: 10px;
+  width: 100%;
 }
 
 /* MEDIA QUERY */
