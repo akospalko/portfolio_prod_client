@@ -1,0 +1,8 @@
+.default-pause-background-animation {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+.default-pause-background-animation:hover {
+  opacity: 1;
+}

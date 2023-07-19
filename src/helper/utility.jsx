@@ -1,6 +1,5 @@
-//storage for utility functions
-
-//find anchor link obj to populate navigation anchor tag
+// Utility functions
+// find anchor link obj to populate navigation anchor tag
 export const findAnchorLink = (navigationData, itemToFind) => {
   let anchorObj = {}
   navigationData.find((elem) => {
@@ -11,7 +10,7 @@ export const findAnchorLink = (navigationData, itemToFind) => {
   return anchorObj; 
 }
 
-//build input fields from contact form data
+// build input fields from contact form data
 export const buildForm = (formElements) => {
   const newFormArr = [];
   for(let element in formElements) {
@@ -29,9 +28,9 @@ export const buildForm = (formElements) => {
   return newFormObj;
 }
 
-//character counter for forms: calculate remaining characters left (e.g. characters entered: 50 -> char left: 450, char entered: 500, char left: 0 -> you reached full length)
+// character counter for forms: calculate remaining characters left (e.g. characters entered: 50 -> char left: 450, char entered: 500, char left: 0 -> you reached full length)
 export const calcRemainingCharacters = (currentCharacters, maximumCharacters) => {
   let remainingCharacters = maximumCharacters - currentCharacters;
-  remainingCharacters > 0 ? null : remainingCharacters = 'max character count reached';  
+  remainingCharacters > 0 ? remainingCharacters === 1 ? remainingCharacters= `${ remainingCharacters } char.` : remainingCharacters= `${ remainingCharacters } chars.` : remainingCharacters = 'max character count reached';  
   return remainingCharacters;
 }

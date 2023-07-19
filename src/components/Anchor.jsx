@@ -1,22 +1,24 @@
-//reusable anchor link to align scroll to the top of the linked article/page
+// Reusable anchor link to snap to top of the page, only in multiple page layout
 import React from 'react'
 import './Shared.css'
 import { findAnchorLink } from '../helper/utility'
-import { navElements } from '../helper/dataControl'
+import { navigationElementsTemplate } from '../helper/dataControl'
 import { AnchorIcon } from './SVGComponents'
 
 export default function Anchor({ componentName }) {
-  const anchorName = findAnchorLink(navElements, componentName).name;
+  const anchorName = findAnchorLink(navigationElementsTemplate, componentName).name;
   return (
-    <div className='shared-anchor'>
-      <a id={ anchorName } href={ `#${ anchorName }` }>
-        <AnchorIcon 
-          id={ anchorName }
-          width={50} 
-          height={50}
-          stroke={'var(--color_5)'}
-        /> 
-      </a>
-    </div>
+    <a 
+      id={ anchorName } 
+      href={ `#${ anchorName }` }
+      className='shared-anchor'
+    >
+      <AnchorIcon 
+        id={ anchorName }
+        width={ 50 } 
+        height={ 50 }
+        stroke={ 'var(--color_4)' }
+      /> 
+    </a>
   )
 }

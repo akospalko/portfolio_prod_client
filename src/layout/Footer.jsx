@@ -1,52 +1,103 @@
+// Responsive footer
 import React from 'react'
 import './Footer.css'
 import '../components/Shared.css'
 import { LogoIcon } from '../components/SVGComponents'
-import { navElements, socialLinks } from '../helper/dataControl'
+import { navigationElementsTemplate } from '../helper/dataControl'
+import ScrollToTopButton from '../components/ScrollToTopButton'
+import { useMediaQuery } from 'react-responsive'
 
 export default function Footer() {
-  const footer = 
-  <div className='footer-container'>
-    {/* navigation links  */}
-    <ul className='footer-navlinks'> 
-      { navElements.map(elem => (
+  // HOOK
+  const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
+
+  // ELEMENTS
+  // Scroll to top
+  // customized layout for small screens
+  const smallScreenBrandingScrollToTop = (
+    <>
+      <ScrollToTopButton />
+      <span> TOP </span>
+    </>
+  )
+  // customized layout for large screens
+  const largeScreenBrandingScrollToTop = (
+    <>
+      <span> TOP </span>
+      <ScrollToTopButton />
+    </>
+  )
+  // rendered elem
+  const scrollToTop = (
+    <div className='footer-scroll-to-top'>
+      { isBelow768Px ? smallScreenBrandingScrollToTop : largeScreenBrandingScrollToTop }
+    </div>
+  )
+
+  // Navigation elements 
+  const navigationElements = (
+    <div className='footer-navigation-elements'> 
+      { navigationElementsTemplate.map(elem => (
         <a 
-          key={elem.id}
+          key={ elem.id }
           href={ `#${ elem.name }` }
+          className='footer-navigation-element'
         > 
-          <li id={elem.name}> 
-            <span> {elem.name} </span> 
-          </li>    
-        </a>
-      )) }
-    </ul>
-    {/* social links */}
-    <div className='shared-sociallinks footer-sociallinks--added_margin'>
-      { socialLinks.map( link => (
-        <a 
-          key={ link.id } 
-          href={ link.link }
-        >  
-          { link.icon }                  
+          <span> { elem.name } </span> 
         </a>
       )) }
     </div>
-    {/* info */}
-    <div className='footer-info'>
+  )
+
+  // Branding
+  // customized layout for small screens
+  const smallScreenBranding = (
+    <div className='footer-branding'>
       {/* logo */}
-      <div className='footer-logo'> 
-      <LogoIcon width={ 60 } height={ 60 }/>
-      </div>
-      {/* made-by */}
-      <div className='footer-aboutcreator'> 
-        <p> My Name, 2023 </p>
-      </div>
+        <LogoIcon width={ 50 } height={ 50 }/>
+      {/* label */}
+      <span> 
+        Created by <br/> 
+        Ákos Palkó, 2023
+      </span>
     </div>
-  </div>
+  )
+  // customized layout for large screens
+  const largeScreenBranding = (
+    <div className='footer-branding' >
+      {/* label */}
+      <span> 
+        Created by Ákos Palkó, 2023
+      </span>
+      {/* logo */}
+      <LogoIcon width={ 40 } height={ 40 } />
+    </div>
+  )
+
+  // LAYOUTS
+  // customized layout for small screens
+  const smallScreenLayout = (
+      <>
+        { scrollToTop }
+        { navigationElements }
+        { smallScreenBranding }
+      </>
+    )
+    
+  // customized layout for large screens
+  const largeScreenLayout = (
+    <>
+      <div className='footer-group-1'> 
+        { largeScreenBranding }
+        { navigationElements }  
+      </div>
+      { scrollToTop }
+    </>
+  )
 
   return (
-    <>
-      { footer }
-    </>
+    <div className='footer-container'>
+      { isBelow768Px ? smallScreenLayout : largeScreenLayout }
+    </div>
   )
 }

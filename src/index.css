@@ -1,75 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
-:root {
-  font-family: 'Overpass', sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  
-  /* color palette */
-  --color_1: #001b2e;
-  --color_2: #1d3f58;
-  --color_3: #537692;
-  --color_3_50: #53769280;
-  --color_4:  #b3cde4;
-  --color_5: #eef3f9; 
-  --color_accent_1: rgb(246, 0, 0); 
-  --color_disabled: rgb(149, 149, 149);
-  --color_invalid: rgb(135, 9, 9);
-
-  /* custom values (size) */
-  --header_height: 75px; 
-  --footer_height: 250px;
-  /* z-index */
-  --z_1: 1;
-  --z_2: 2;
-  --z_3: 3;
-  --z_4: 4;
-  --z_6: 6;
-  --z_8: 8;
-  --z_10: 10;
-/* padding */
---padding_default: 0.5rem;
-
-/* 
-views:display: 
-S (small) - mobile
-M (medium) - tablet
-L (large) - pc/laptop
-*/
-/* container width */
---home_title_width_M: 400px;
---home_title_width_L: 750px;
---home-my-name_width_M: 400px; 
---home-my-name_width_L: 500px; 
---home-text_width_M: 400px;
---home-text_width_L: 500px;
-/* container height */
---home_title_height_S: 150px;
---home_image_height_S: 175px;
---home_image_height_M: 225px;
---home_image_height_L: 250px; 
---home-my-name_height_S: 100px; 
-/* font size  */
---home_font_title_S: 3rem;
---home_font_title_M: 3.5rem;
---home_font_title_L: 4rem;
---home_font_my_name_S: 2.2rem;
---home_font_my_name_M: 2.4rem;
---home_font_my_name_L: 2.6rem;
---home_font-text_S: 1.4rem;
---home_font-text_M: 1.6rem;
---home_font-text_L: 1.8rem;
-}
 html, body {
   height: 100vh;
   margin: 0;
@@ -78,10 +8,85 @@ html, body {
 body {
   overflow-y: scroll;
 }
+/* stop scroll while modal is opened */
+body.modal-open {
+  overflow: hidden;
+}
 *, *:before, *:after {
   box-sizing: inherit;
 }
 /* reCaptcha badge */
 .grecaptcha-badge {
-  z-index: var(--z_10);
+  z-index: -1;
+  /* z-index: var(--z_10); */
+}
+
+:root {
+  font-family: 'Inconsolata', monospace;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--color_4);
+  background-color: var(--color_1);
+  height: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* COLORS */
+  /* color palette: https://colorhunt.co/palette/232931393e464ecca3eeeeee*/
+  --color_1: #191e23;
+  --color_2: #393e46;
+  --color_3: #399d7c;
+  --color_3_light2: #b4e4d4;
+  --color_3_light: #40b08b;
+  --color_3_medium: #328b6d;
+  --color_3_dark: #2b785e;
+  --color_4: #eeeeee;
+  --color_4_transparent_85: rgba(238, 238, 238, .85);
+  --color_4_transparent_60: rgba(238, 238, 238, .60);
+  --color_4_transparent_35: rgba(238, 238, 238, .35);
+  --color_5: #fff; 
+  
+  /* border colors */
+  --border_1: 2px solid var(--color_3);
+  /* toastify colors */
+  --toastify-color-dark: var(--color_2);
+  --toastify-text-color-dark:var(--color_4);
+  --toastify-color-progress-dark: var(--color_3_light);
+
+  /* z-index */
+  --z_1: 1;
+  --z_2: 2;
+  --z_3: 3;
+  --z_4: 4;
+  --z_6: 6;
+  --z_8: 8;
+  --z_10: 10;
+  --z_11: 11;
+
+  /* FONTS */
+  /* Headers */
+  /* h1 */
+  --header-1--S: 2rem;
+  --header-1--M: 2.5rem;
+  --header-1--L: 3rem;
+  /* h2 */
+  --header-2--S: 1.4rem;
+  --header-2--M: 1.6rem;
+  --header-2--L: 1.8rem;
+  /* h3 */
+  --header-3--S: 1.2rem;
+  --header-3--M: 1.4rem;
+  --header-3--L: 1.6rem;
+  /* font-size */
+  --font-size--S: 0.9rem;
+  --font-size--M: 1rem;
+  --font-size--L: 1.1rem;
+  
+  /* MISC */
+  --header_height: 75px; 
 }

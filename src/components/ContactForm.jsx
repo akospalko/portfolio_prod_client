@@ -1,25 +1,50 @@
+// Content send message form 
 import React from 'react'
-import { useState, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './ContactForm.css'
-import { contactFormData, SENDING_EMAIL, RECAPTCHA_NOT_AVAILABLE } from '../helper/dataControl'
+import { 
+  contactFormData, 
+  SENDING_EMAIL, 
+  RECAPTCHA_NOT_AVAILABLE, 
+  titleFormButtonDisabled, 
+  titleFormButtonEnabled
+ } from '../helper/dataControl'
 import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
 import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
 import { LoaderIcon } from './SVGComponents'
 import axios from 'axios'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import { validateForm } from '../helper/validateForm'
+import { toast } from 'react-toastify'
 
 export default function ContactForm() {
-  //Hooks 
+  // HOOKS 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { validateReCaptcha } = useValidateReCaptcha();
-  //States
+  
+  // STATES
   const [contactData, setContactData] = useState(contactFormData);
   const [isFormValid, setIsFormValid] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [isSubmittingForm, setIsSubmittingForm] = useState(false);
-  //Handlers
-  //input change handler
+
+  // HANDLERS
+  // toaster with mail send status message 
+  const callToaster = (status = '') => {
+    toast(status, {
+      position: "top-right",
+      className: 'toast-message',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+// input change handler
   const changeHandler = (e) => {
     e.preventDefault();
     const { name: eventName, value: eventValue } = e.target;
@@ -31,11 +56,8 @@ export default function ContactForm() {
     updateElement.wordCount = updateElement.value.length; // update word count
     updateObject[eventName] = updateElement;
     setContactData(updateObject);
-    //check form validity
-    let validatedForm = true;
-    for(let elem in updateObject) {
-      validatedForm = updateObject[elem].valid && validatedForm
-    }
+    // check form validity
+    const validatedForm = Object.values(updateObject).every((elem) => elem.valid);
     setIsFormValid(validatedForm);
   }
 
@@ -71,29 +93,39 @@ export default function ContactForm() {
       setIsFormValid(true);
     } 
     // allow users to read status messages if request happens too quickly 
-    setTimeout(() => {
+    setTimeout( () => {
       setIsSubmittingForm(false); 
-    }, [1000])
+    }, [1000] )
   }, [executeRecaptcha, setStatusMessage, validateReCaptcha])
 
+  // EFFECT
+  // call toaster on status change
+  useEffect(() => {
+    if (isSubmittingForm && statusMessage) {
+      callToaster(statusMessage);
+    }
+  }, [isSubmittingForm, statusMessage]);
+
   return (
-    <form onSubmit={ submitFormHandler } className='form'>
+    <form onSubmit={ submitFormHandler } className='contact-form'>
       {/* enable loader modal when msg is being sent */}
-      { isSubmittingForm ? <div className='form-loadermodal '> 
-        <div className='form-loader'> 
+      { isSubmittingForm ? <div className='contact-form-loader-modal '> 
+        <div className='contact-form-loader'> 
           <LoaderIcon 
-            width={ 60 } 
-            height={ 60 } 
-            stroke={ 'var(--color_1)' } 
+            width='75'
+            height='75'
+            stroke={ 'var(--color_3_light)' } 
           />
         </div> 
-        <div className='form-statusmessage'> { statusMessage } </div>
+        <div className='contact-form-status-message'> 
+          <span> { statusMessage } </span>
+        </div>
       </div> : null }
-      { buildForm(contactData).map((elem) => {
+      { buildForm(contactData).map( (elem) => {
         if(elem.config.fieldType === 'input') {
           return <input 
             key={ elem.id }
-            className={ elem.config.valid === true ? 'form-input-field valid' : 'form-input-field invalid' } 
+            className={ elem.config.valid === true ? 'contact-form-input-field valid' : 'contact-form-input-field invalid' } 
             onChange={ changeHandler } 
             type={ elem.config.type } 
             name={ elem.config.name }
@@ -104,10 +136,10 @@ export default function ContactForm() {
           />
         } else if (elem.config.fieldType === 'textarea') {
           return <div 
-          className='form-message'
+          className='contact-form-message'
           key={ elem.id }>
             <textarea 
-              className={ elem.config.valid === true ? 'form-input-field valid' : 'form-input-field invalid' } 
+              className={ elem.config.valid === true ? 'contact-form-textarea valid' : 'contact-form-textarea invalid' } 
               onChange={ changeHandler } 
               type={ elem.config.type } 
               name={ elem.config.name }
@@ -115,14 +147,23 @@ export default function ContactForm() {
               maxLength={ elem.config.validation.maxLength }
               placeholder={ elem.config.placeholder }
             />
-            <div className='form-charactercount'> 
-              { calcRemainingCharacters(elem.config.wordCount, elem.config.validation.maxLength) } 
+            <div className='contact-form-character-count'> 
+              <span
+                title='remaining characters'
+                className={ elem.config.wordCount < elem.config.validation.maxLength && elem.config.wordCount >= elem.config.validation.minLength ? 'valid-color' : 'invalid-color'}
+              >
+                { calcRemainingCharacters(elem.config.wordCount, elem.config.validation.maxLength) } 
+              </span>
             </div>
           </div>
         }
       }) }
-      <div className='form-button'> 
-        <button disabled={ !isFormValid }> <span> { !isFormValid ? ' Fill in form ': ' Send '} </span> </button>
+      <div className='contact-form-button' > 
+        <button disabled={ !isFormValid || isSubmittingForm } > 
+          <span> 
+            { !isFormValid ? titleFormButtonDisabled : titleFormButtonEnabled } 
+          </span> 
+        </button>
       </div>
     </form>
   )

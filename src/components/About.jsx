@@ -1,64 +1,107 @@
+// About page
 import React from 'react'
 import './About.css'
 import './Shared.css'
 import Anchor from './Anchor';
-import { aboutSkills } from '../helper/dataControl'
+import { aboutSkills, backgroundText, profileImageURLs } from '../helper/dataControl'
+import { TagItems } from './TagItems';
+import { useMediaQuery } from 'react-responsive';
+import ImageWithPlaceholder from './ImageWithPlaceholder';
 
-export default function About({ pageLayout }) {
-    //conditional render height of the page based on if it is displayed as a single component vs together with other components
-    let componentContainer = 'shared-page-container';
-    pageLayout === 'fullContentPage' ?  
-    componentContainer = ['shared-page-container','shared-page-container--minheight'].join(' ')
-    : null;  
+export default function About({ isAutoHeight, targetRef }) {
+  // PROPS
+  // isAutoHeight - bool, layout condition for single / multiple pages 
+  // targetRef - ref, ref to first page (about) - scroll here on scroll-down button click
   
+  // HOOK
+  // query to change bck img size when device screen is btw the specified dimensions to fit the layout better
+  const isBetween768PxAnd1023Px = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1023px)'});
+
+  // ELEMENTS
+  // My background
+  // profile image
+  const profileImage = (
+    <div  className='about-background-photo' > 
+      <ImageWithPlaceholder 
+        src={ profileImageURLs } 
+        alt='profile image' 
+        width='100%' 
+        height='100%' 
+        objectFit={ !isBetween768PxAnd1023Px && 'cover' } 
+      /> 
+    </div>
+  ) 
+  // intro text
+  const introductionText = (
+    <div className='about-background-text'> 
+      <h2> My background </h2>
+      { backgroundText.map(elem => (
+        <span key={ elem.id }>
+          { elem.text }
+        </span>
+      )) }
+    </div>
+  )
+  // my background text
+  const myBackground = (
+    <section className='about-background'> 
+      { profileImage }
+      { introductionText }
+    </section>
+  )
+
+  // Skills
+  // skill card content group
+  const cardContentGroup = (skillsArray) => (
+    skillsArray?.map(item => (
+      <div key={ item.id } className='about-skill-card-content-group'>
+        <div className='about-skill-card-content-group-title'>
+          <h3> { item.title } </h3> 
+        </div>
+        <div className='shared-tags shared-tags--skill'>
+          <TagItems 
+            tags={ item.tags } 
+            tagStyle='shared-tag-item--skill'
+            allowDisplayInfo 
+          />
+        </div>
+      </div>
+    ))
+  )
+  // skill cards 
+  const skillCards = (
+    <section className='about-skills'> 
+      { aboutSkills.map( card => 
+        <div key={ card.id } id={ `card-${ card.id }` } className='about-skill-card'>
+          <div className='about-skill-card-header'>
+            <div className='about-skill-card-title'>
+              <h2> { card.title } </h2>
+            </div>
+            <div className='about-skill-card-icon'>
+              { card.icon }
+            </div>
+          </div>
+          <div className='about-skill-card-groups'>
+            { cardContentGroup(card.skills) }
+          </div>
+        </div>
+      ) }
+    </section>
+  )
+      
   return (
-    <article className={ componentContainer }>
+    <article ref={ targetRef } className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       {/* anchor tag for full content page */}
-      { pageLayout === 'fullContentPage' ? <Anchor componentName='about' /> : null }
+      { isAutoHeight && <Anchor componentName='about' /> }
       <div className='about-content'>
         {/* Page title */}
         <div className='shared-title'>
           <h1> About </h1>
         </div>
-        {/* page section 1 */}
-        <section className='about-section background'>
-          <h2> Background </h2>
-          <p> 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. Nunc sit amet efficitur diam. Sed ut ullamcorper purus. Vivamus dapibus iaculis lectus. Vivamus non nunc in nulla lacinia placerat. Nam at ultrices sapien. Vestibulum rhoncus vitae purus quis mattis. Nulla elementum efficitur massa in rutrum. In ac est vel lorem placerat accumsan eget eu turpis. Nulla laoreet nisi vel dapibus eleifend.
-            Fusce congue, enim vitae tincidunt iaculis, arcu mauris gravida purus, id cursus est nibh id urna. Sed vehicula urna odio, sit amet condimentum justo congue non. Curabitur tincidunt est id tristique condimentum. Praesent vel ante at tellus commodo tempus ut id risus. In sagittis, neque eu laoreet dignissim, elit massa suscipit elit, vel consequat tellus nunc non nulla. Proin ut arcu leo. Nam tempus metus vitae neque aliquet, a tempor leo cursus.
-          </p>
-        </section>
-        {/* page section 2 */}
-        <section className='about-section skillset'>
-          <h2> Skillset </h2>
-          <div className='about-section-content'>
-            { aboutSkills.map((elem) => (
-              //groups 
-              <div key={ elem.id } id={ elem.id } className='about-section-group'>
-                <div className='about-section-group-flex-wrapper'> 
-                  <div className='about-section-group-header'>
-                    {/* <img src={ elem.icon } alt={ elem.iconAlt }/> */}
-                    <div className='about-section-group-header-icon'>   { elem.icon }  </div>
-                    <h3> { elem.title } </h3>
-                  </div>
-                  { elem.content.map((content) => {  
-                    return <div key={ content.id } className='about-section-group-content'>
-                     { content.title && <span> { content.title } </span> } 
-                      <p> { content.text } </p> 
-                    </div>
-                  })}
-                </div>
-              </div> 
-            ))}
-          </div>
-        </section>
-        {/* page section 3 */}
-        <section className='about-section hobbies'> 
-          <h2> Hobbies and interests </h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. Nunc sit amet efficitur diam. Sed ut ullamcorper purus. Vivamus dapibus iaculis lectus. Vivamus non nunc in nulla lacinia placerat. Nam at ultrices sapien. Vestibulum rhoncus vitae purus quis mattis. Nulla elementum efficitur massa in rutrum. In ac est vel lorem placerat accumsan eget eu turpis. Nulla laoreet nisi vel dapibus eleifend.
-          </p>
-        </section>
+        <div className='about-introduction-wrapper'>
+          { myBackground }
+          { skillCards }
+        </div>
       </div>
     </article>
   )

@@ -1,46 +1,44 @@
-import React, { useState } from 'react'
+// Project page
+import React from 'react'
 import './Projects.css' 
 import './Shared.css' 
 import Anchor from './Anchor'
 import ProjectCard from './ProjectCard';
 import { projectCards } from '../helper/dataControl'
+import { useModalContext } from '../context/ModalContext';
+import { useMediaQuery } from 'react-responsive';
+import { addConditionalBorderStyle } from './addConditionalBorderStyle';
 
-export default function Projects({ pageLayout }) {
-  const [toggleCard, setToggleCard] = useState({});
-  let componentContainer = 'shared-page-container';
-  pageLayout === 'fullContentPage' ?  
-  componentContainer = ['shared-page-container','shared-page-container--minheight'].join(' ')
-  : null;  
-  
+export default function Projects({ isAutoHeight }) {
+  // HOOK
+  const isBelow1024Px = useMediaQuery({ query: '(max-width: 1023px)' });
+  const isBelow768Px = useMediaQuery({ query: '(max-width:767px)' });
+
+  // CONTEXT 
+  const { toggleModalHandler } = useModalContext();
+
   return (
-    <article className={ componentContainer }>
+    <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       {/* anchor tag for full content page */}
-      { pageLayout === 'fullContentPage' ? <Anchor componentName='projects' /> : null }
+      { isAutoHeight && <Anchor componentName='projects' /> }
       <div className='projects-content'>
-        {/* Page title */}
-        {/* <div className='projects-title'> */}
+        {/* page title */}
         <div className='shared-title'>
           <h1> Projects </h1>
         </div>
-        <div className='projects-text'>
-          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien maximus ante scelerisque egestas. Nunc sit amet efficitur diam. Sed ut ullamcorper purus. Vivamus dapibus iaculis lectus. Vivamus non nunc in nulla lacinia placerat. Nam at ultrices sapien. Vestibulum rhoncus vitae purus quis mattis. Nulla elementum efficitur massa in rutrum. In ac est vel lorem placerat accumsan eget eu turpis. Nulla laoreet nisi vel dapibus eleifend. </p>
-        </div>
         <div className='projects-display'>
-          <div className='projects-display-content'>
-            { projectCards.map(card => (
-              <div 
-                className='projects-display-group'
-                key={card.id}
-              > 
-                <ProjectCard  
-                  toggle={ toggleCard }
-                  setToggle={ setToggleCard }
-                  data={{ ...card }}
-                /> 
-              </div> 
-            )) }
-          </div>
-        </div>
+          { projectCards.map( (card, i) => {
+            let columnCount = isBelow1024Px ? isBelow768Px ? 1 : 2 : 3; // number of displaye columns: 1-3
+            let borderRadiusStyle = addConditionalBorderStyle(projectCards, i, columnCount);
+            return <div 
+              key={ card.id }
+              onClick={ () => toggleModalHandler(card.id) }  
+              className='projects-card-wrapper'
+            > 
+              <ProjectCard data={{ ...card }} borderRadiusStyle={ borderRadiusStyle } /> 
+            </div>
+          }) }
+        </div> 
       </div>
     </article>
   )
