@@ -1005,10 +1005,10 @@ export const WaveAnimation = ({ minHeight, minWidth, isStatic }) => {
   >
     <g transform="translate(750,750) scale(1,1) translate(-750,-750)">
       <linearGradient id="lg-0.174779772099253" x1={0} x2={1} y1={0} y2={0}>
-        <stop stopColor="var(--color_3_dark)" offset={0.35} />
-        <stop stopColor="var(--color_3_medium)" offset={0.6} />
-        <stop stopColor="var(--color_3_light)" offset={0.8} />
-        <stop stopColor="var(--color_3_light2)" offset={1} />
+        <stop stopColor="var(--color_3_light)" offset={0} />
+        <stop stopColor="var(--color_3_light)" offset={0.25} />
+        <stop stopColor="var(--color_3)" offset={0.75} />
+        <stop stopColor="var(--color_3_medium)" offset={1} />
       </linearGradient>
       <path d="" fill="url(#lg-0.174779772099253)" opacity={0.1}>
         <animate

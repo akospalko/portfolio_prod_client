@@ -114,7 +114,7 @@ export default function ContactForm() {
           <LoaderIcon 
             width='75'
             height='75'
-            stroke={ 'var(--color_3)' } 
+            stroke={ 'var(--color_3_light)' } 
           />
         </div> 
         <div className='contact-form-status-message'> 

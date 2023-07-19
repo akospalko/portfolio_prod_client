@@ -8,7 +8,7 @@
   height: var(--header_height);
   width: 100%;
   background-color: var(--color_1);
-  border-bottom: 2px solid var(--color_3_light);
+  border-bottom: var(--border_1);
   z-index: var(--z_3);
 }
 .header-menu-toggler {

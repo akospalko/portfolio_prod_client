@@ -72,6 +72,7 @@
   display: grid; 
   grid-area: 4 / 1 / 5 / 2;
   grid-template-columns: 50px 1fr 50px;
+  grid-template-rows: 75px;
   justify-items: center;
   align-items: center;
   z-index: var(--z_2);
@@ -95,9 +96,9 @@
   grid-area: 1 / 3 / 2 / 4;
   width: 100%;
   align-items: end;
+  justify-self: end;
   height: 35px;
   z-index: var(--z_2);
-  justify-self: end; /* Added property */
 }
 .home-background {
   position: absolute;
@@ -141,11 +142,8 @@
     margin: 0;
   }
   .home-bottom-toolbar {
-    grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     height: 100%;
-    flex: 1 1 auto;
-    align-items: flex-end;
   }
   .home-scroll-down-button {
     display: flex;

@@ -1,11 +1,12 @@
 // Header for all layouts
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Header.css';
 import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
 import { NavLink } from "react-router-dom";
 import Navigation from './Navigation';
 import { useMediaQuery } from 'react-responsive';
 import { myContactsTemplate } from '../helper/dataControl';
+import { useModalContext } from '../context/ModalContext';
 
 export default function Header() {
   // CONSTANT
@@ -14,50 +15,23 @@ export default function Header() {
   // HOOK
   const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
   
-  // STATE
-  const [ toggled, setToggled ] = useState(false); // menu bar toggle for responsive view
-
+  // CONTEXT 
+  const { isMenuToggled, toggleMenuHandler } = useModalContext();
+  
   // EFFECT
   // close modal when screen size is changed to large screen
   useEffect( () => {
-    if(toggled && !isBelow768Px ) {
-      closeMenuHandler();
+    if(isMenuToggled && !isBelow768Px ) {
+      toggleMenuHandler(true);
     }
-  }, [ isBelow768Px ])
-
-  // HANDLERS
-  // toggle menu bar handler, page scroll lock
-  const toggleMenuHandler = () => {
-    setToggled(prev => {
-      if(prev === true) {
-        document.body.style.position = 'static';
-        document.body.style.removeProperty('width');
-      } else {
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-      }
-        return !prev;
-    });
-  }
-  // close menu, remove page scroll lock
-  const closeMenuHandler = () => {
-    setToggled(prev => {
-      if(prev === true) {
-        document.body.style.position = 'static';
-        document.body.style.removeProperty('width');
-        return !prev;
-      } else {
-        return prev;
-      }
-    });
-  }
+  }, [ isMenuToggled, isBelow768Px ])
 
   // ELEMENTS
   // Logo
   const logo = (
     <div 
       className='header-logo-container'
-      onClick={ closeMenuHandler }
+      onClick={ () => toggleMenuHandler(true) }
     >  
       <NavLink 
         to={ '/' }
@@ -100,9 +74,9 @@ export default function Header() {
   const menuToggler = (
     <div 
       className='header-menu-toggler'
-      onClick={ toggleMenuHandler }
+      onClick={ () => toggleMenuHandler() }
     > 
-      { toggled ? 
+      { isMenuToggled ? 
         <MenuCloseIcon 
           height={ iconSizeMenuToggler } 
           width={ iconSizeMenuToggler } 
@@ -120,7 +94,7 @@ export default function Header() {
   // menu modal (for small screen layout)
   const menuModal = (
     <div className='header-menu-modal'>
-      <Navigation closeModal={ closeMenuHandler } />
+      <Navigation/>
       { hilightedContacts }
     </div>
   )
@@ -131,7 +105,7 @@ export default function Header() {
     <>
       { menuToggler }
       { logo }
-      { toggled || !isBelow768Px ? menuModal : null }
+      { isMenuToggled || !isBelow768Px ? menuModal : null }
     </>
   );
   // customized layout for large screens

@@ -24,6 +24,9 @@ export const useAnimationPause = (pageName) => {
     case 'contact':
     buttonStyle = 'contact-pause-background-animation';
     break;
+    case 'error':
+    buttonStyle = 'error-pause-background-animation';
+    break;
     default: ''
   }
 

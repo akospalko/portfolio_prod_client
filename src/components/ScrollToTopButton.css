@@ -1,4 +1,7 @@
 .scroll-to-top-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50px;
   width: 50px;
   background-color: transparent;

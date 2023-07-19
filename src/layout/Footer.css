@@ -7,7 +7,7 @@
   width: 100%;
   padding: 1rem;
   background-color: var(--color_2);
-  border-top: 2px solid var(--color_3_light);
+  border-top: var(--border_1);
   z-index: var(--z_11);
 }
 .footer-scroll-to-top {

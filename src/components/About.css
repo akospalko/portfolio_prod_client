@@ -18,6 +18,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   width: 100%;
+  gap: 10px;
 }
 .about-background-photo {
   display: flex;
@@ -29,7 +30,7 @@
   word-wrap: break-word;
   flex-wrap: wrap;
   border-radius: 10px 10px 0 0;
-  border-bottom: 3px solid var(--color_3_light);
+  border: var(--border_1);
   overflow: hidden;
 }
 .about-background-text {
@@ -39,6 +40,7 @@
   width: 100%;
   padding: 0 1rem;
   word-wrap: break-word;
+  border: var(--border_1);
 }
 .about-background-text h2 {
   width: 100%;
@@ -68,6 +70,7 @@
   height: auto;
   background-color: var(--color_2);
   padding: 1rem;
+  border: var(--border_1);
 }
 .about-skill-card:nth-child(4) {
   border-radius: 0 0 10px 10px;
@@ -155,7 +158,6 @@
   }
   .about-background-photo {
     transition: transform 0.3s ease-out;
-    border-bottom: none;
   }
   .about-background-photo:hover { 
     transform: scale(1.02);
@@ -215,6 +217,9 @@
   .about-introduction-wrapper {
     grid-template-columns: 1fr 2fr;
     width: 1000px;
+  }
+  .about-background-photo {
+    border-radius: 10px 0 0 0;
   }
   .about-background {
     grid-template-columns: 1fr;

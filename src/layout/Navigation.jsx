@@ -4,11 +4,11 @@ import { navigationElementsTemplate } from '../helper/dataControl'
 import './Navigation.css'
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
+import { useModalContext } from '../context/ModalContext';
 
-export default function NavigationResponsive(props) {
-  // PROPS
-  const { closeModal } = props; // close menu modal on nav element click
-  
+export default function Navigation() {
+  // CONTEXT 
+  const { toggleMenuHandler } = useModalContext();
   // HOOK
   const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
 
@@ -22,7 +22,7 @@ export default function NavigationResponsive(props) {
           <NavLink 
             key={ elem.id } 
             to={ elem.path }
-            onClick={ closeModal }
+            onClick={ () => toggleMenuHandler(true) }
             className={ ({ isActive }) => (
               isActive ? 
                 'navigation-item navigation-item--active' 
