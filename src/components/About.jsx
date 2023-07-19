@@ -3,20 +3,54 @@ import React from 'react'
 import './About.css'
 import './Shared.css'
 import Anchor from './Anchor';
-import { aboutSkills, backgroundText } from '../helper/dataControl'
+import { aboutSkills, backgroundText, profileImageURLs } from '../helper/dataControl'
 import { TagItems } from './TagItems';
+import { useMediaQuery } from 'react-responsive';
+import ImageWithPlaceholder from './ImageWithPlaceholder';
 
-export default function About({ pageLayout }) {
+export default function About({ isAutoHeight, targetRef }) {
+  // PROPS
+  // isAutoHeight - bool, layout condition for single / multiple pages 
+  // targetRef - ref, ref to first page (about) - scroll here on scroll-down button click
+  
+  // HOOK
+  // query to change bck img size when device screen is btw the specified dimensions to fit the layout better
+  const isBetween768PxAnd1023Px = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1023px)'});
+
   // ELEMENTS
+  // My background
+  // profile image
+  const profileImage = (
+    <div  className='about-background-photo' > 
+      <ImageWithPlaceholder 
+        src={ profileImageURLs } 
+        alt='profile image' 
+        width='100%' 
+        height='100%' 
+        objectFit={ !isBetween768PxAnd1023Px && 'cover' } 
+      /> 
+    </div>
+  ) 
+  // intro text
+  const introductionText = (
+    <div className='about-background-text'> 
+      <h2> My background </h2>
+      { backgroundText.map(elem => (
+        <span key={ elem.id }>
+          { elem.text }
+        </span>
+      )) }
+    </div>
+  )
   // my background text
-  const myBackgroundText = (
-    backgroundText.map(elem => (
-      <span key={ elem.id }>
-        { elem.text }
-      </span>
-    ))
+  const myBackground = (
+    <section className='about-background'> 
+      { profileImage }
+      { introductionText }
+    </section>
   )
 
+  // Skills
   // skill card content group
   const cardContentGroup = (skillsArray) => (
     skillsArray?.map(item => (
@@ -34,57 +68,39 @@ export default function About({ pageLayout }) {
       </div>
     ))
   )
-
   // skill cards 
   const skillCards = (
-    aboutSkills.map( card => 
-      <div key={ card.id } id={ `card-${ card.id }` } className='about-skill-card'>
-        <div className='about-skill-card-header'>
-          <div className='about-skill-card-title'>
-            <h2> { card.title } </h2>
+    <section className='about-skills'> 
+      { aboutSkills.map( card => 
+        <div key={ card.id } id={ `card-${ card.id }` } className='about-skill-card'>
+          <div className='about-skill-card-header'>
+            <div className='about-skill-card-title'>
+              <h2> { card.title } </h2>
+            </div>
+            <div className='about-skill-card-icon'>
+              { card.icon }
+            </div>
           </div>
-          <div className='about-skill-card-icon'>
-            { card.icon }
+          <div className='about-skill-card-groups'>
+            { cardContentGroup(card.skills) }
           </div>
         </div>
-        <div className='about-skill-card-groups'>
-          { cardContentGroup(card.skills) }
-        </div>
-      </div>
-    )
+      ) }
+    </section>
   )
       
-  // STYLE
-  // project card img preivew background style
-  const backgroundStyle = { 
-    backgroundImage: `url(${ "https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" })`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-  }
-  // conditional layout
-  const componentContainer = pageLayout === 'fullContentPage';
-
   return (
-    <article className='shared-page-container'>
+    <article ref={ targetRef } className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       {/* anchor tag for full content page */}
-      { componentContainer ? <Anchor componentName='about' /> : null }
+      { isAutoHeight && <Anchor componentName='about' /> }
       <div className='about-content'>
         {/* Page title */}
         <div className='shared-title'>
           <h1> About </h1>
         </div>
         <div className='about-introduction-wrapper'>
-          <section className='about-background'> 
-            <div style={ backgroundStyle } className='about-background-photo'> </div>
-            <div className='about-background-text'> 
-              <h2> My background </h2>
-              { myBackgroundText }
-            </div>
-          </section>
-          <section className='about-skills'> 
-            { skillCards }
-          </section>
+          { myBackground }
+          { skillCards }
         </div>
       </div>
     </article>

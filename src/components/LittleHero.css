@@ -58,17 +58,18 @@
 
 .little-hero-eyes {
   position: absolute;
-  top: 48px;
+  top: 35px;
   left: -29px;
 }
 #eye-1 {
   width: 16px;
   height: 16px;
-  right: -57px;
+  right: -59px;
 }
 #eye-2 {
   width: 16px;
   height: 16px;
+  left: -4px;
 }
 
 /* MEDIA QUERY */

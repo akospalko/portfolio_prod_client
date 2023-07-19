@@ -3,16 +3,16 @@ import React from 'react';
 import './ProjectCard.css';
 import './Shared.css';
 import { TagItems } from './TagItems';
+import ImageWithPlaceholder from './ImageWithPlaceholder';
 
 export default function ProjectCard(props) {
   // PROPS
   // data
-  const { background, tags, title } = props.data;
+  const { url, tags, title } = props.data;
   const { borderRadiusStyle } = props;
-  // console.log(borderRadiusStyle);
 
   return (
-    <div className={ `project-card ${ borderRadiusStyle.item } ` } >
+    <div className={ `project-card ${ borderRadiusStyle.item }` } >
       {/* header */}
       <div className={ `project-card-header ` } > 
         {/* title */}
@@ -22,8 +22,14 @@ export default function ProjectCard(props) {
         </div>
       </div>
       {/* image preview */}
-      <div className={ `project-card-image-preview ${ borderRadiusStyle.itemImg } `} >
-        <img src={ background } />
+      <div className={ `project-card-image-preview ${ borderRadiusStyle.itemImg }` } >
+        <ImageWithPlaceholder 
+          src={ url } 
+          alt={ title }
+          width='100%' 
+          height='100%' 
+          // objectFit={ isBetween768PxAnd1023Px ? 'contain' : 'cover' } 
+        /> 
       </div>
     </div>
   )

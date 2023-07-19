@@ -2,8 +2,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './LittleHero.css';
 import { throttle } from 'lodash';
-import littleHero from '../assets/space_cat.png';
-import littleHeroEye from '../assets/space_cat_eye.png';
+import { littleHeroImgURLs } from '../helper/dataControl';
+import LittleHeroImg from '../assets/little_hero.png';
+import LittleHeroEyeImg from '../assets/little_hero_eye.png';
 
 export default function LittleHero() {
   // STATE
@@ -61,10 +62,10 @@ export default function LittleHero() {
     <div className="little-hero-container">
       <div className="little-hero-proximity-hover"></div>
       <div className="little-hero">
-        <img id="anchor" ref={ anchorRef } src={ littleHero } />
+        <img id="anchor" ref={ anchorRef } src={ littleHeroImgURLs.hero.large } />
         <div className="little-hero-eyes">
-          <img id="eye-1" className="little-hero-eye" src={ littleHeroEye } />
-          <img id="eye-2" className="little-hero-eye" src={ littleHeroEye } />
+          <img id="eye-1" className="little-hero-eye" src={ littleHeroImgURLs.eye.large || LittleHeroImg } />
+          <img id="eye-2" className="little-hero-eye" src={ littleHeroImgURLs.eye.large || LittleHeroEyeImg } />
         </div>
       </div>
     </div>

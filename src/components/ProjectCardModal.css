@@ -11,6 +11,7 @@
   align-items: center;
   cursor: pointer;
   background-color: var(--color_1);
+  z-index: var(--z_11);
 } 
 
 .project-card-modal {
@@ -20,7 +21,7 @@
   width: 100%;
   cursor: default; 
   overflow-y: auto;
-  z-index: 11;
+  z-index: var(--z_11);
   border-radius: 10px;
 }
 
@@ -60,10 +61,15 @@
   opacity: 0.5;
 }
 .project-card-modal-preview-image {
-  min-height: 300px;
+  display: flex;
+  height: 100%;
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color_2);
   width: 100%;
+  overflow: hidden;
 }
-
 .project-card-modal-content {
   display: flex;
   flex-direction: column;

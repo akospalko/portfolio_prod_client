@@ -5,18 +5,19 @@ import './Shared.css';
 import { useModalContext } from '../context/ModalContext';
 import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from './SVGComponents';
 import { TagItems } from './TagItems';
+import ImageWithPlaceholder from './ImageWithPlaceholder';
 
 export default function ProjectCardModal() {
   // CONTEXT
   const { activeModalContent, toggleModalHandler } = useModalContext();
-  const { id, title, tags, background, description, links, learnedAbout } = activeModalContent;
-
+  const { id, title, tags, url, description, links, learnedAbout } = activeModalContent;
+  console.log(url);
   // EFFECTS
   // close modal when pressing keyboard 'escape'
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        toggleModalHandler(e, id, false);
+        toggleModalHandler(id, false);
       }
     };
     document.addEventListener('keydown', handleKeyDown);
@@ -35,18 +36,18 @@ export default function ProjectCardModal() {
   // handle backdrop click close modal
   const handleBackdropClick = (e) => {
     if (e.target.classList.contains('project-card-modal-backdrop')) {
-      toggleModalHandler(e, id, false);
+      toggleModalHandler(id, false);
     }
   }
 
   // STYLE
   // project card img preivew background style
-  const backgroundStyle = { 
-    backgroundImage: `url(${ background })`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center'
-  }
+  // const backgroundStyle = { 
+  //   backgroundImage: `url(${ background })`,
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundPosition: 'center'
+  // }
 
   // ELEMENTS
   // mapped what i learned items
@@ -89,7 +90,7 @@ export default function ProjectCardModal() {
             <h2> { title } </h2> 
             {/* modal close */}
             <div 
-              onClick={ e => toggleModalHandler(e, id, false) }  className='project-card-modal-close' 
+              onClick={ () => toggleModalHandler(id, false) }  className='project-card-modal-close' 
             > 
               <MenuCloseIcon 
                 height={ 20 } 
@@ -107,8 +108,13 @@ export default function ProjectCardModal() {
           </div>
         </div>
         {/* preview img */}
-        <div style={ backgroundStyle } className='project-card-modal-preview-image'></div>
-        
+        <div className='project-card-modal-preview-image'>
+          <ImageWithPlaceholder 
+            src={ url } 
+            alt={ title } 
+            objectFit='cover'
+          /> 
+        </div>
         {/* content */}
         <div className='project-card-modal-content'>
           {/* description */}
