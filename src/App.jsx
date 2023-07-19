@@ -7,12 +7,12 @@ import PageLayout from './PageLayout';
 function App() {
   return (
     <div className='layout-container' >
-      <GoogleReCaptchaProvider reCaptchaKey={ import.meta.env.VITE_CAPTCHA_V3_SITE_KEY }>
       <ModalProvider>
-        {/* Page layout */}
-        <PageLayout/>
-      </ModalProvider>
+      <GoogleReCaptchaProvider reCaptchaKey={ import.meta.env.VITE_CAPTCHA_V3_SITE_KEY }>
+            {/* Page layout */}
+            <PageLayout/>
       </GoogleReCaptchaProvider>
+      </ModalProvider>
     </div>
   )
 }

@@ -7,8 +7,8 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import FullContent from './components/FullContent'
-import PageNotFound from './components/PageNotFound'
-import { useModalContext } from './context/ModalContext'
+import ErrorPage from './components/ErrorPage'
+import { useModalContext } from './context/ModalContext';
 import ProjectCardModal from './components/ProjectCardModal'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,23 +31,25 @@ export default function PageLayout() {
   // CONTEXT
   const { isModalToggled } = useModalContext();
 
+  // asdad asdoadaiolkdj adasda
   return (
     <>
+      {/* Modal */}
+      { isModalToggled && <ProjectCardModal /> }
+      {/* Toast */}
+      <ToastContainer { ...toastProps } />
+      
       {/* Header/Navigation layout */}
-      {  <Header /> }
-      {/* { showHeader && <Header /> } */}
+      { <Header /> }
       {/* Routes */}
       <Routes>
         <Route path={ '/' } element={ <FullContent/> } />
         <Route path={ '/about' } element={ <About/> } /> 
         <Route path={ '/projects' } element={ <Projects/> } />  
         <Route path={ '/contact' } element={ <Contact/> } /> 
-        <Route path={ '*' } element={ <PageNotFound/> } />
+        <Route path={ '*' } element={ <ErrorPage/> } />
       </Routes>
-      {/* Modal */}
-      { isModalToggled && <ProjectCardModal /> }
-      {/* Toast */}
-      <ToastContainer { ...toastProps } />
+    
     </>
   )
 }
