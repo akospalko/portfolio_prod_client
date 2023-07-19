@@ -23,6 +23,7 @@
   overflow-y: auto;
   z-index: var(--z_11);
   border-radius: 10px;
+  border: var(--border_1);
 }
 
 .project-card-modal-header {

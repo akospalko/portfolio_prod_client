@@ -129,7 +129,7 @@ color: var(--color_4_transparent_85);
   pointer-events: none;
 }
 .contact-form-button button:disabled > span {
-  color: var(--color_4_transparent_85);
+  color: var(--color_4_transparent_60);
 }
 .contact-form-character-count {
   display: flex;

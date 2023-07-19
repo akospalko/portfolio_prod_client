@@ -612,7 +612,7 @@ export const myContactsTemplate = [
         fill={ color || 'var(--color_1)' }
       /> ), 
     title: 'Email', 
-    value: 'p.akos1148@gmail.com' 
+    value: 'akospalko.contact@gmail.com' 
   },
   { 
     id: 2, 
