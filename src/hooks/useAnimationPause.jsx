@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { PauseIcon, PlayIcon } from '../components/SVGComponents';
 import './useAnimationPause.css';
 
-export const useAnimationPause = (pageName) => {
+export const useAnimationPause = (pageName, iconColor) => {
   // PARAM
   // pageName - string, pause button related page (decide style)
-  
+  // iconColor - custom icon color
   // STATE
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
 
@@ -38,9 +38,9 @@ export const useAnimationPause = (pageName) => {
       onClick={ toggleAnimation }
     >
       { isAnimationPaused ? 
-        <PlayIcon fill='var(--color_3_light)' /> 
+        <PlayIcon fill={ iconColor || 'var(--color_3_light)' } /> 
         : 
-        <PauseIcon fill='var(--color_3_light)' /> 
+        <PauseIcon fill={ iconColor || 'var(--color_3_light)' } /> 
       } 
     </div>
   )

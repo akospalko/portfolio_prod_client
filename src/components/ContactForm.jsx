@@ -85,6 +85,7 @@ export default function ContactForm() {
         setStatusMessage(sendMailResponse.data.statusMessage);
         setContactData(contactFormData) // reset form to its initial state  
       } catch (error) {
+        console.log(error);
         setStatusMessage(`${ error.response.data.statusMessage } (${ error.response.status })`);
         setIsFormValid(true); // revert back form validity (re-enable send button)
       }

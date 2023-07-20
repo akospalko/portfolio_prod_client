@@ -19,11 +19,12 @@ import {
 // TEMPLATES / INITIALIZERS
 // Navigation elements
 export const navigationElementsTemplate = [
+  // {
+  //   id: 0,
+  //   name: 'header',
+  //   path: '/'
+  // }, 
   {
-    id: 0,
-    name: 'header',
-    path: '/'
-  }, {
     id: 1,
     name: 'about',
     path: '/about'
@@ -237,6 +238,20 @@ const tags = {
     color: '#000',
     borderColor: '#61c26a',
   },
+  pix4d: {
+    name: 'Pix4D',
+    info: 'Pix4D is a software that specializes in photogrammetry and drone mapping solutions.',
+    backgroundColor: '#1be45e',
+    color: '#084564',
+    borderColor: '#1be45e',
+  },
+  lastools: {
+    name: 'LASTools',
+    info: 'LASTools is a collection of command-line tools designed for efficiently processing and analyzing LiDAR data, including data compression, filtering, classification, conversion, and visualization.',
+    backgroundColor: '#fff',
+    color: '#d91433',
+    borderColor: '#fff',
+  },
   blender: {
     name: 'Blender',
     info: 'Is a free and open-source 3D computer graphics software used for creating animated films, visual effects, art, 3D models.',
@@ -344,6 +359,13 @@ const tags = {
     color: 'var(--color_1)',
     borderColor: '#83c143'
   },
+  kml: {
+    name: 'KML',
+    info: 'KML (Keyhole Markup Language) is an XML-based file format used for representing geographic data and features with associated attributes, commonly used in applications like Google Earth and Google Maps.',
+    backgroundColor: 'var(--color_3_light2)',
+    color: 'var(--color_1)',
+    borderColor: 'var(--color_3_light2)',
+  },
   authentication: {
     name: 'authentication',
     info: 'Authentication is the process of verifying the identity of a user or system to grant access to specific resources or functionalities.',
@@ -434,12 +456,12 @@ export const aboutSkills = [
       {
         id: 2, 
         title: 'CAD && 3D', 
-        tags: [ tags.microstation, tags.topodot, tags.pcs, tags.autocad, tags.metashape, tags.cloudcompare, tags.blender ]
+        tags: [ tags.microstation, tags.topodot, tags.pcs, tags.autocad, tags.metashape, tags.pix4d, tags.lastools, tags.cloudcompare, tags.blender ]
       },
       {
         id: 3, 
         title: 'Misc.', 
-        tags: [ tags.pointcloudanalysis, tags.rasteranalysis, tags.digitalmap, tags.leaflet ]
+        tags: [ tags.pointcloudanalysis, tags.rasteranalysis, tags.digitalmap, tags.leaflet, tags.kml ]
       },
     ]
   },
@@ -594,45 +616,45 @@ const iconSize = '75%';
 export const myContactsTemplate = [
   { 
     id: 0, 
-    icon: (color) => (
+    icon: (color, size) => (
       <ProfileIcon
-        width={ iconSize }
-        height={ iconSize }
-        stroke={ color || 'var(--color_1)' }
+        width={ size || iconSize }
+        height={ size || iconSize }
+        stroke={ color || 'var(--color_4)' }
       /> ), 
     title: 'Name', 
     value: 'Ákos Palkó' 
   },
   { 
     id: 1, 
-    icon: (color) => (
+    icon: (color, size) => (
       <EmailIcon 
-        width={ iconSize } 
-        height={ iconSize } 
-        fill={ color || 'var(--color_1)' }
+        width={ size || iconSize } 
+        height={ size || iconSize } 
+        fill={ color || 'var(--color_4)' }
       /> ), 
     title: 'Email', 
-    value: 'p.akos1148@gmail.com' 
+    value: 'akospalko.contact@gmail.com' 
   },
   { 
     id: 2, 
-    icon: (color) => ( 
+    icon: (color, size) => ( 
       <MobilPhoneIcon 
-        width={ iconSize } 
-        height={ iconSize } 
-        fill={ color || 'var(--color_1)' }
+        width={ size || iconSize } 
+        height={ size || iconSize } 
+        fill={ color || 'var(--color_4)' }
       /> ), 
     title: 'Phone number', 
-    value: '+3620479336' 
+    value: '+36204791336' 
   },
   { 
     id: 3, 
-    icon: (color) => ( 
+    icon: (color, size) => ( 
       <GithubIcon 
-        width={ iconSize } 
-        height={ iconSize } 
+        width={ size || iconSize } 
+        height={ size || iconSize } 
         strokeWidth={ 1 } 
-        stroke={ color || 'var(--color_1)' }
+        stroke={ color || 'var(--color_4)' }
       />),
     title: 'Github', 
     value: 'Github', 
@@ -640,11 +662,11 @@ export const myContactsTemplate = [
   },
   { 
     id: 4, 
-    icon: (color) => ( 
+    icon: (color, size) => ( 
       <LinkedInIcon 
-        width={ iconSize } 
-        height={ iconSize } 
-        fill={ color || 'var(--color_1)' }
+        width={ size || iconSize } 
+        height={ size || iconSize } 
+        fill={ color || 'var(--color_4)' }
       />), 
     title: 'LinkedIn', 
     value: 'LinkedIn', 
@@ -652,11 +674,11 @@ export const myContactsTemplate = [
   },
   { 
     id: 5, 
-    icon: (color) => ( 
+    icon: (color, size) => ( 
       <CodeWarsIcon 
-        width={ iconSize } 
-        height={ iconSize } 
-        fill={ color || 'var(--color_1)' }
+        width={ size || iconSize } 
+        height={ size || iconSize } 
+        fill={ color || 'var(--color_4)' }
       />), 
     title: 'Codewars', 
     value: 'Codewars', 
@@ -664,11 +686,11 @@ export const myContactsTemplate = [
   },
   { 
     id: 6, 
-    icon: (color) => ( 
+    icon: (color, size) => ( 
       <LeetCodeIcon 
-        width={ iconSize } 
-        height={ iconSize } 
-        fill={ color || 'var(--color_1)' } 
+        width={ size || iconSize } 
+        height={ size || iconSize } 
+        fill={ color || 'var(--color_4)' } 
       />), 
     title: 'Leetcode', 
     value: 'Leetcode', 
@@ -743,15 +765,12 @@ export const contactFormData = {
 export const welcomeText = `Welcome aboard!`
 export const subtitleText = `My name is Ákos Palkó and this is my personal website, have fun!`
 export const introductionText = (
-  <span>
-    A <u>GIS Specialist</u>, with 2 years of experience in the field of geospatial / point cloud analysis as well as a <u>Web Developer</u> enthusiast with 3 years of hobby level experience and a deep passion for this field.
-  </span>
+  <> A <u>GIS Specialist</u>, with 2 years of experience in the field of geospatial / point cloud analysis as well as a <u>Web Developer</u> enthusiast with 3 years of self-study experience and a deep passion for this field. </>
 )
-
 // TITLES
 // contact 
-export const contactCTA = "I'm currently open to work. If you are interested in working together or have any questions, don't hesitate to reach out!";
-export const myContacts = "Contact Information:";
+export const contactCTA = "Open to new opportunities and collaboration. Feel free to reach out!";
+export const myContacts = "Contact/general info";
 export const titleFormButtonDisabled = "Fill in form";
 export const titleFormButtonEnabled = "Send";
 export const noImageText = 'no img';
@@ -760,7 +779,7 @@ export const pageNotFoundText = 'Oh no, the requested page was not found.'
 
 // Status messages:
 export const API_REQUEST_UNABLE_TO_REACH_SERVER = 'Unable to reach server';
-export const SENDING_EMAIL = 'Sending email...';
+export const SENDING_EMAIL = <> <span> Sending email... <br/> (it may take a while) </span> </>
 export const RECAPTCHA_NOT_AVAILABLE = 'Recaptcha is not yet available';
 export const RECAPTCHA_NO_TOKEN = 'Could not find recaptcha token';
 export const RECAPTCHA_VALIDATION_FAIL = 'Validating captcha has failed';

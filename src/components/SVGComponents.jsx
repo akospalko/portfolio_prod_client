@@ -981,104 +981,57 @@ export function ImagePlaceholderIcon({ height, width, fill, fill2 }) {
   );
 }
 
-// Wave background animation 
-export const WaveAnimation = ({ minHeight, minWidth, isStatic }) => {
+// Fluid background animation 
+export const WaveAnimation = ({ minHeight, minWidth, positionX, positionY, isStatic }) => {
+  // pause/play  animation
   const animationKeyState = isStatic ? "static" : "animated"; // toggle btw static and animated svg states
-  const animationDuration = isStatic ? "0s" : "10s" // animation duration for static and animated states
+  const animationDuration = isStatic ? "0s" : "10s"; // animation duration for static and animated states
+  // translate object on x-y axes
+  const translateX = positionX || 2350;
+  const translateY = positionY || 400;
+
   return (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    style={{
-      margin: "auto",
-      background: "var(--color_2)",
-      display: "block",
-      zIndex: 1,
-      position: "absolute",
-      top: 0,
-      left: 0,
-      minHeight: minHeight || "100%",
-      minHeight: minWidth || "100%",
-    }}
-    preserveAspectRatio="xMidYMid"
-    viewBox="0 0 1500 1500"
-  >
-    <g transform="translate(750,750) scale(1,1) translate(-750,-750)">
-      <linearGradient id="lg-0.174779772099253" x1={0} x2={1} y1={0} y2={0}>
-        <stop stopColor="var(--color_3_light)" offset={0} />
-        <stop stopColor="var(--color_3_light)" offset={0.25} />
-        <stop stopColor="var(--color_3)" offset={0.75} />
-        <stop stopColor="var(--color_3_medium)" offset={1} />
-      </linearGradient>
-      <path d="" fill="url(#lg-0.174779772099253)" opacity={0.1}>
-        <animate
-          attributeName="d"
-          dur={ animationDuration }
-          repeatCount="indefinite"
-          keyTimes="0;0.333;0.667;1"
-          calcMode="spline"
-          keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
-          begin={ "0s"}
-          values="M0 0L 0 1860Q 250 1374.1758813241552  500 1349.7447136122223T 1000 839.4894272244446T 1500 329.23414083666717L 1500 0 Z;M0 0L 0 1860Q 250 1425.4770264999954  500 1386.1367821475867T 1000 912.2735642951733T 1500 438.4103464427599L 1500 0 Z;M0 0L 0 1860Q 250 1353.3393319239153  500 1325.4515528238805T 1000 790.9031056477611T 1500 256.35465847164164L 1500 0 Z;M0 0L 0 1860Q 250 1374.1758813241552  500 1349.7447136122223T 1000 839.4894272244446T 1500 329.23414083666717L 1500 0 Z"
-          key={ animationKeyState }
-        />
-      </path>
-      <path d="" fill="url(#lg-0.174779772099253)" opacity={1}>
-        <animate
-          attributeName="d"
-          dur={ animationDuration }
-          repeatCount="indefinite"
-          keyTimes="0;0.333;0.667;1"
-          calcMode="spline"
-          keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
-          begin={ "-2s" }
-          values="M0 0L 0 1860Q 250 1310.668234144558  500 1297.5874107236887T 1000 735.1748214473771T 1500 172.76223217106576L 1500 0 Z;M0 0L 0 1860Q 250 1314.1532894118598  500 1276.753440414765T 1000 693.50688082953T 1500 110.2603212442948L 1500 0 Z;M0 0L 0 1860Q 250 1319.7113791166068  500 1301.5320026803079T 1000 743.0640053606157T 1500 184.59600804092338L 1500 0 Z;M0 0L 0 1860Q 250 1310.668234144558  500 1297.5874107236887T 1000 735.1748214473771T 1500 172.76223217106576L 1500 0 Z"
-          key={ animationKeyState }
-        />
-      </path>
-      <path d="" fill="url(#lg-0.174779772099253)" opacity={0.3}>
-        <animate
-          attributeName="d"
-          dur={ animationDuration }
-          repeatCount="indefinite"
-          keyTimes="0;0.333;0.667;1"
-          calcMode="spline"
-          keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
-          begin={ "-4s" }
-          values="M0 0L 0 1860Q 250 1324.2747300134802  500 1307.4427354239642T 1000 754.8854708479282T 1500 202.32820627189244L 1500 0 Z;M0 0L 0 1860Q 250 1310.0415349049804  500 1286.8930811110013T 1000 713.7861622220023T 1500 140.67924333300357L 1500 0 Z;M0 0L 0 1860Q 250 1331.7353022719851  500 1302.8025352900313T 1000 745.6050705800626T 1500 188.4076058700939L 1500 0 Z;M0 0L 0 1860Q 250 1324.2747300134802  500 1307.4427354239642T 1000 754.8854708479282T 1500 202.32820627189244L 1500 0 Z"
-          key={ animationKeyState }
-        />
-      </path>
-      <path d="" fill="url(#lg-0.174779772099253)" opacity={0.2}>
-        <animate
-          attributeName="d"
-          dur={ animationDuration }
-          repeatCount="indefinite"
-          keyTimes="0;0.333;0.667;1"
-          calcMode="spline"
-          keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
-          begin={ "-6s" }
-          values="M0 0L 0 1860Q 250 1371.2868554218896  500 1335.4898341036544T 1000 810.9796682073088T 1500 286.4695023109632L 1500 0 Z;M0 0L 0 1860Q 250 1386.7522972615848  500 1373.7202953099616T 1000 887.4405906199232T 1500 401.1608859298849L 1500 0 Z;M0 0L 0 1860Q 250 1332.7985647414973  500 1286.4243428457462T 1000 712.8486856914926T 1500 139.27302853723904L 1500 0 Z;M0 0L 0 1860Q 250 1371.2868554218896  500 1335.4898341036544T 1000 810.9796682073088T 1500 286.4695023109632L 1500 0 Z"
-          key={ animationKeyState }
-        />
-      </path>
-      <path d="" fill="url(#lg-0.174779772099253)" opacity={0.1}>
-        <animate
-          attributeName="d"
-          dur={ animationDuration }
-          repeatCount="indefinite"
-          keyTimes="0;0.333;0.667;1"
-          calcMode="spline"
-          keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1"
-          begin={ "-8s" }
-          values="M0 0L 0 1860Q 250 1417.3140663107972  500 1373.9789241457916T 1000 887.9578482915832T 1500 401.9367724373749L 1500 0 Z;M0 0L 0 1860Q 250 1389.4094893807503  500 1350.2323479412134T 1000 840.464695882427T 1500 330.69704382364057L 1500 0 Z;M0 0L 0 1860Q 250 1334.8758610492514  500 1314.6579683402952T 1000 769.3159366805903T 1500 223.97390502088547L 1500 0 Z;M0 0L 0 1860Q 250 1417.3140663107972  500 1373.9789241457916T 1000 887.9578482915832T 1500 401.9367724373749L 1500 0 Z"
-          key={ animationKeyState }
-        />
-      </path>
-    </g>
-  </svg>
-  )
-}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      style={{
+        margin: "auto",
+        background: "var(--color_1)",
+        display: "block",
+        zIndex: 1,
+        position: "absolute",
+        top: 0,
+        right: 0,
+        minHeight: minHeight || "100%",
+        minWidth: minWidth || "100%",
+      }}
+      preserveAspectRatio="xMidYMid"
+      viewBox="0 0 1500 1125"
+    >
+      <g
+        transform={`translate(${translateX}, ${translateY}) scale(1,-1) translate(-750,-750)`}
+      >
+        <g transform="scale(100)" opacity={0.9}>
+          <path
+            d="M5.0925 0 C5.0925 1.6799999999999997 5.011619311659656 2.6357405268728558 3.823679919266256 3.8236799192662554 S1.68 5.0925 3.1182569123289485e-16 5.0925 S-2.6357405268728558 5.011619311659656 -3.8236799192662554 3.823679919266256 S-5.0925 1.6800000000000004 -5.0925 6.236513824657897e-16 S-5.011619311659656 -2.6357405268728558 -3.8236799192662563 -3.8236799192662554 S-1.6800000000000006 -5.0925 -9.354770736986845e-16 -5.0925 S2.635740526872855 -5.011619311659656 3.8236799192662545 -3.8236799192662563 S5.0925 -1.680000000000001 5.0925 -1.2473027649315794e-15"
+            fill="#40b08b"
+            strokeWidth={0}
+          >
+            <animateTransform
+             attributeName="transform"
+             type="rotate"
+             dur={ animationDuration || "5s" }
+             repeatCount="indefinite"
+             values="0;90"
+             key={ animationKeyState }
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  );
+};
+
 // Ocean background animation 
 export const OceanAnimation = ({ minHeight, minWidth, isStatic }) => {
   const animationEnd = isStatic ? "0s" : ""; // set the animation end to the same as animation begin (0s) - render it static

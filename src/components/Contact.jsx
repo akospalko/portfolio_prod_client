@@ -13,10 +13,10 @@ import { useAnimationPause } from '../hooks/useAnimationPause';
 
 export default function Contact({ isAutoHeight }) {
   // HOOK
-  // media query
-  const isBelow300px = useMediaQuery({ query: '(max-width: 300px)'});
+  // media queries
+  const isBelow768px = useMediaQuery({ query: '(max-width: 768px)'});
   // toggle background animation
-  const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause('contact');
+  const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause('contact', 'var(--color_1)');
 
   // HANDLERS
   // send toast when contact item is copied to clipboard
@@ -35,28 +35,32 @@ export default function Contact({ isAutoHeight }) {
   }
 
   // ELEMENTS
-  // call to action text
+  // Call to action text
   const ctaText = (
-    <div className='contact-cta-text'> 
+    <div className='contact-cta'> 
       <h2> { contactCTA } </h2>
     </div>
   )
 
-  // contact information
-  const contactInfo = (
-    <div className='contact-info'> 
-      <div className='contact-info-header'> 
+  // Contact information
+  const contactIconSize = isBelow768px ? 25 : 30;
+  //
+  const contactItems = (
+    <div className='contact-items'> 
+      <div className='contact-items-header'> 
         <h3> { myContacts } </h3> 
       </div>
-      <div className='contact-info-content'>
+      <div className='contact-item'>
         { myContactsTemplate?.map(contact => {
           // item content
           const itemContent = (
             <>
-              <div className='contact-info-item-icon'> 
-                { contact.icon(isBelow300px ? 'var(--color_3)' : undefined) } 
+              <div className='contact-item-icon'> 
+                { contact.icon('', contactIconSize) } 
               </div>
-              <span> { contact.value } </span>
+              <div className='contact-item-text' >
+                <span> { contact.value } </span>
+              </div>
             </>
           )
           // container for link items
@@ -90,25 +94,64 @@ export default function Contact({ isAutoHeight }) {
     </div>
   )
 
+  // Background
+  // background element position coordinates
+  const elementPositionXSmall = 2350;
+  const elementPositionYSmall = 400;
+  const elementPositionXLarge = 2100;
+  const elementPositionYLarge = 250;
+  // small screen background - paused/live state
+  const smallScreenBackground = isAnimationPaused ? 
+    <WaveAnimation 
+      isStatic 
+      positionX={ elementPositionXSmall } 
+      positionY={ elementPositionYSmall } 
+    /> 
+    : 
+    <WaveAnimation 
+      positionX={ elementPositionXSmall } 
+      positionY={ elementPositionYSmall } 
+    /> 
+  // large screen background - paused/live state
+  const largeScreenBackground = isAnimationPaused ? 
+    <WaveAnimation 
+      isStatic 
+      positionX={ elementPositionXLarge } 
+      positionY={ elementPositionYLarge } 
+    /> 
+    : 
+    <WaveAnimation 
+      positionX={ elementPositionXLarge } 
+      positionY={ elementPositionYLarge } 
+    /> 
+
+
   return (
     <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       { isAutoHeight && <Anchor componentName='contact' /> }
       <div className='contact-content'>
         <div className='contact-groups-wrapper'>
+
           <div className='contact-group-1'>
             <div className='contact-header'> 
               <div className='shared-title'> 
                 <h1> Contact </h1>
               </div> 
             </div>
-            { ctaText }
-            { contactInfo }
-            { pauseBackgroundAnimationButton }
-            <div className='contact-animation-background'> 
-              { isAnimationPaused ? <WaveAnimation isStatic /> : <WaveAnimation /> }
+            <div className='contact-information'>
+              { ctaText }
+              { contactItems }
+              { pauseBackgroundAnimationButton }
+              <div className='contact-animation-background'> 
+                { isBelow768px ? smallScreenBackground : largeScreenBackground }
+              </div>
+              {/* <div className='contact-background-color'> </div>  */}
             </div>
-            <div className='contact-background-color'> </div>
           </div>
+
+
+
+
           <div className='contact-group-2'>
             <div className='contact-hero-icon'>  
               <LittleHero />

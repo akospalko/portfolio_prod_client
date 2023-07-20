@@ -11,7 +11,7 @@
   position: relative;
   height: 650px;
   padding: 1rem;
-  background-color: var(--color_2);
+  background-color: var(--color_1);
   border: var(--border_1);
   border-radius: 10px;
   z-index: var(--z_4);
@@ -22,7 +22,7 @@
 }
 .contact-form-input-field,
 .contact-form-textarea {
-  background-color: var(--color_2);
+  background-color: var(--color_1);
   outline: none;
   border: 0;
   padding: 0.5rem 0;
@@ -52,7 +52,7 @@
   border-bottom: 2px solid var(--color_4_transparent_85); 
 }
 .valid-color { 
-  color: var(--color_3_light2); 
+  color: var(--color_3); 
 }
 .invalid-color {
 color: var(--color_4_transparent_85); 
@@ -64,7 +64,7 @@ color: var(--color_4_transparent_85);
   left: 0;
   right: 0;
   border-radius: 10px;
-  background-color: var(--color_2);
+  background-color: var(--color_1);
   z-index: var(--z_4);
 }
 .contact-form-loader,
@@ -83,6 +83,7 @@ color: var(--color_4_transparent_85);
 .contact-form-status-message span {
   font-size: calc(var(--font-size--S) * 1.3);
   color: var(--color_4_transparent_85);
+  text-align: center;
 }
 .contact-form-button {
   display: flex;
@@ -100,7 +101,8 @@ color: var(--color_4_transparent_85);
   height: 50px;
   border: none;
   margin: 0;
-  background-color: var(--color_3_light);
+  border: var(--border_1);
+  background-color: var(--color_1);
   cursor: pointer;
   transition: all 0.4s ease;
 }
@@ -108,7 +110,7 @@ color: var(--color_4_transparent_85);
   font-size: calc(var(--font-size--S) * 1.3);
   line-height: calc(calc(var(--font-size--S) * 1.3) * 1.3);
   letter-spacing: 1px;
-  color: var(--color_1);
+  color: var(--color_3_light);
 }
 .contact-form-button button:hover {
   background-color: var(--color_3);
@@ -125,11 +127,12 @@ color: var(--color_4_transparent_85);
   color: var(--color_1);
 }
 .contact-form-button button:disabled {
-  background-color: var(--color_4_transparent_35);
   pointer-events: none;
+  border: 2px solid var(--color_4_transparent_60);
+  background-color: transparent;
 }
 .contact-form-button button:disabled > span {
-  color: var(--color_4_transparent_85);
+  color: var(--color_4_transparent_60);
 }
 .contact-form-character-count {
   display: flex;
@@ -184,7 +187,7 @@ color: var(--color_4_transparent_85);
 @media (min-width: 768px) {
   .contact-form {
     height: 100%;
-    padding: 2rem 3rem;
+    padding: 2rem;
   }
   .contact-form-input-field,
   .contact-form-textarea {
