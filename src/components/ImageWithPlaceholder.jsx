@@ -40,8 +40,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
       <img
         className='image'
         srcSet={ `${src.small} 500w, ${src.medium} 1200w, ${ src.large } 1500w` } 
-        // sizes="(max-width: 500px) 100vw, (max-width: 768px) 768px, 1024px"
-        sizes="(max-width: 499px) 100vw, 600px"
+        sizes="(max-width: 499px) 100vw, (max-width: 768px) 600px, 1000px"
         src={ src.medium }
         alt={ alt }
         style={ imageStyle }
