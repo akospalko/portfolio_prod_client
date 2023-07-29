@@ -561,7 +561,7 @@ export const projectCards = [
     ],
   }, {
     id: 3,
-    title: 'Photo gallery',
+    title: 'GeoLen Gallery',
     tags: [ tags.react, tags.css, tags.node, tags.express, tags.leaflet, tags.awss3, tags.mongo, tags.mongoose, tags.responsive, tags.postman, tags.restapi, tags.authentication, tags.rbac, tags.bcrypt, tags.jwt ],
     url: {
       small: '' ,
@@ -580,8 +580,8 @@ export const projectCards = [
       { 
         id: 1, 
         icon: <HomePageIcon width={ '75%' } height={ '75%' } fill={'var(--color_4)'} />,
-        title: 'Coming soon', 
-        link: '' 
+        title: 'Site', 
+        link: 'https://geolens-gallery.onrender.com' 
       },
       { 
         id: 2, 
