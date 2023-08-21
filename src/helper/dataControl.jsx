@@ -399,15 +399,15 @@ const tags = {
 // About 
 // profile img
 export const profileImageURLs = { 
-  small: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/profile_image_original_500w.png', // 500w
-  medium: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/profile_image_original_1200w.png', // 1200w
-  large: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/profile_image_original_1500w.png' // 1500w
+  small: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/profile_image_500w.png', // 500w
+  medium: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/profile_image_1200w.png', // 1200w
+  large: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/profile_image_1500w.png' // 1500w
 }
 // my background text
 export const backgroundText = [
   {
     id: 1, 
-    text: `During my time at university, while studying Geographic Information Systems (GIS) I had the opportunity to learn Python and utilize it for task automation, GIS scripting, web scraping, and data visualization. Additionally, I took a self-study course on C++ to get a good grasp of programming fundamentals. Later, I encountered JavaScript in the context of GIS, which led me to explore web-based map creation and sparked my interest in web development.`
+    text: `During my time at university, while studying Geographic Information Systems (GIS) I had the opportunity to learn Python and utilize it for task automation, GIS scripting, web scraping and data visualization. Additionally, I took a self-study course on C++ to get a good grasp of programming fundamentals. Later, I encountered JavaScript in the context of GIS, which led me to explore web-based map creation and sparked my interest in web development.`
   },
   {
     id: 2, 
@@ -428,8 +428,8 @@ export const aboutSkills = [
     skills: [
       {
         id: 1, 
-        title: 'Languages && frameworks', 
-        tags: [ tags.javascript,tags.typescript, tags.react, tags.node, tags.express, tags.html, tags.css, tags.python, tags.cpp ]
+        title: 'Languages && technologies', 
+        tags: [ tags.javascript, tags.typescript, tags.react, tags.node, tags.express, tags.html, tags.css, tags.python, tags.cpp ]
       },
       {
         id: 2, 
@@ -495,38 +495,74 @@ export const aboutSkills = [
 // Projects 
 // project cards
 export const projectCards = [
-  { id: 1,
-    title: 'Task manager',
-    tags: [ tags.react, tags.node, tags.express, tags.mongo, tags.mongoose, tags.postman, tags.css ],
+  {
+    id: 1,
+    title: ' Password security checker',
+    tags: [ tags.react, tags.css, tags.responsive ],
     url: {
-      small: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/project_1_task_manager_500w.png' ,
-      medium: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/project_1_task_manager_1200w.png' ,
-      large: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/project_1_task_manager_1500w.png' ,
+      small: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/password_security_checker_500w.png' ,
+      medium: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/password_security_checker_1200w.png',
+      large: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/password_security_checker_1500w.png',
     },
-    description: 'Manage and store your daily tasks in a database.',
+    description: 'A landing page & authentication form with password strength checker and display',
     learnedAbout: [
-      { id: 1, text: '- Set up database and create data model/schema with mongoDB and mongoose.'}
+      { id: 1, text: '- create responsive landing page' },
+      { id: 2, text: '- set up authentication form' },
+      { id: 3, text: '- create password check with strength indicator' },
     ],
     links: [ 
       { 
         id: 1, 
-        icon: <HomePageIcon width={ '75%' } height={ '75%' } fill={'var(--color_4)'} />, 
+        icon: <HomePageIcon width={ '75%' } height={ '75%' } fill={'var(--color_4)'} />,
         title: 'Site', 
-        link: 'https://task-manager-client.onrender.com/' 
+        link: 'https://password-security-checker.onrender.com/' 
       },
       { 
         id: 2, 
-        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />, 
+        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />,  
         title: 'Frontend', 
-        link: 'https://github.com/akospalko/task-manager-client' },
+        link: 'https://github.com/akospalko/password-security-checker' 
+      }
+    ],
+  }, 
+  {
+    id: 2,
+    title: 'GeoLens Gallery',
+    tags: [ tags.react, tags.css, tags.node, tags.express, tags.leaflet, tags.awss3, tags.mongo, tags.mongoose, tags.responsive, tags.postman, tags.restapi, tags.authentication, tags.rbac, tags.bcrypt, tags.jwt ],
+    url: {
+      small: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/geolens_gallery_500w.png',
+      medium: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/geolens_gallery_1200w.png',
+      large: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/geolens_gallery_1500w.png',
+    },
+    description: 'A gallery for storing photos with geolocation',
+    learnedAbout: [
+      { id: 1, text: '- authentication, authorization, design different roles for access control' },
+      { id: 2, text: '- set up and connect cloud storage (aws s3) and db (mongoDB) with backend, create presigned url\'s' },
+      { id: 3, text: '- set up backend, design RESTful API' },
+      { id: 4, text: '- responsive design' },
+      { id: 5, text: '- web-based map creation using Leaflet, and displaying of geographic locations as markers on map' },
+    ],
+    links: [ 
+      { 
+        id: 1, 
+        icon: <HomePageIcon width={ '75%' } height={ '75%' } fill={'var(--color_4)'} />,
+        title: 'Site', 
+        link: 'https://geolens-gallery.onrender.com' 
+      },
+      { 
+        id: 2, 
+        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />,  
+        title: 'Frontend', 
+        link: 'https://github.com/akospalko/image-gallery_client' },
       { id: 3,
-        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />,
+        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />, 
         title: 'Backend',
-        link: 'https://github.com/akospalko/task-manager-api' 
+        link: 'https://github.com/akospalko/image-gallery_api' 
       },
     ],
-  }, {
-    id: 2,
+  },
+  {
+    id: 3,
     title: 'Portfolio site',
     tags: [ tags.react, tags.css, tags.node, tags.express, tags.nodemailer, tags.inkscape ],
     url: {
@@ -559,39 +595,35 @@ export const projectCards = [
         link: 'https://github.com/akospalko/portfolio_prod_server' 
       },
     ],
-  }, {
-    id: 3,
-    title: 'GeoLen Gallery',
-    tags: [ tags.react, tags.css, tags.node, tags.express, tags.leaflet, tags.awss3, tags.mongo, tags.mongoose, tags.responsive, tags.postman, tags.restapi, tags.authentication, tags.rbac, tags.bcrypt, tags.jwt ],
+  }, 
+  { id: 4,
+    title: 'Task manager',
+    tags: [ tags.react, tags.node, tags.express, tags.mongo, tags.mongoose, tags.postman, tags.css ],
     url: {
-      small: '' ,
-      medium: '' ,
-      large: '' ,
+      small: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/project_1_task_manager_500w.png' ,
+      medium: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/project_1_task_manager_1200w.png' ,
+      large: 'https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/project_1_task_manager_1500w.png' ,
     },
-    description: 'A gallery for storing photos with geolocation',
+    description: 'Manage and store your daily tasks in a database.',
     learnedAbout: [
-      { id: 1, text: '- authentication, authorization, design different roles for access control' },
-      { id: 2, text: '- set up and connect cloud storage (aws s3) and db (mongoDB) with backend, create presigned url\'s' },
-      { id: 3, text: '- set up backend, design RESTful API' },
-      { id: 4, text: '- responsive design' },
-      { id: 5, text: '- web-based map creation using Leaflet, and displaying of geographic locations as markers on map' },
+      { id: 1, text: '- Set up database and create data model/schema with mongoDB and mongoose.'}
     ],
     links: [ 
       { 
         id: 1, 
-        icon: <HomePageIcon width={ '75%' } height={ '75%' } fill={'var(--color_4)'} />,
+        icon: <HomePageIcon width={ '75%' } height={ '75%' } fill={'var(--color_4)'} />, 
         title: 'Site', 
-        link: 'https://geolens-gallery.onrender.com' 
+        link: 'https://task-manager-client.onrender.com/' 
       },
       { 
         id: 2, 
-        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />,  
-        title: 'Frontend', 
-        link: 'https://github.com/akospalko/image-gallery_client' },
-      { id: 3,
         icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />, 
+        title: 'Frontend', 
+        link: 'https://github.com/akospalko/task-manager-client' },
+      { id: 3,
+        icon: <GithubIcon width={ '75%' } height={ '75%' } strokeWidth={ 1 } stroke={ 'var(--color_4)' } />,
         title: 'Backend',
-        link: 'https://github.com/akospalko/image-gallery_api' 
+        link: 'https://github.com/akospalko/task-manager-api' 
       },
     ],
   }
@@ -670,7 +702,7 @@ export const myContactsTemplate = [
       />), 
     title: 'LinkedIn', 
     value: 'LinkedIn', 
-    link: 'https://www.linkedin.com/in/%C3%A1kos-palk%C3%B3-87a5191a2/'
+    link: 'https://www.linkedin.com/in/akos-palko/'
   },
   { 
     id: 5, 
@@ -765,8 +797,9 @@ export const contactFormData = {
 export const welcomeText = `Welcome aboard!`
 export const subtitleText = `My name is Ákos Palkó and this is my personal website, have fun!`
 export const introductionText = (
-  <> A <u>GIS Specialist</u>, with 2 years of experience in the field of geospatial / point cloud analysis as well as a <u>Web Developer</u> enthusiast with 3 years of self-study experience and a deep passion for this field. </>
+  <> A <u>Web Developer</u> enthusiast with 3 years of dedicated self-study including 1 year of project level experience as well as a <u>GIS Specialist</u>, with 2 years of experience processing and analysing remote sensed data including point clouds and satellite imagery. </>
 )
+
 // TITLES
 // contact 
 export const contactCTA = "Open to new opportunities and collaboration. Feel free to reach out!";
