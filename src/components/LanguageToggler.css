@@ -1,0 +1,25 @@
+.language-toggler {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.language-toggle-button {
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.language-toggle-button:hover {
+  opacity: 0.5;
+}
+
+.language-toggle-button--active {
+  color: rgb(123, 62, 210);
+}
+
+.language-toggle-button--active:hover {
+  opacity: 1;
+}
