@@ -7,6 +7,7 @@ import Navigation from './Navigation';
 import { useMediaQuery } from 'react-responsive';
 import { myContactsTemplate } from '../helper/dataControl';
 import { useModalContext } from '../context/ModalContext';
+import LanguageToggler from '../components/LanguageToggler';
 
 export default function Header() {
   // CONSTANT
@@ -19,7 +20,7 @@ export default function Header() {
   const { isMenuToggled, toggleMenuHandler } = useModalContext();
   
   // EFFECT
-  // close modal when screen size is changed to large screen
+  // Close modal when screen size is changed to large screen
   useEffect( () => {
     if(isMenuToggled && !isBelow768Px ) {
       toggleMenuHandler(true);
@@ -48,24 +49,37 @@ export default function Header() {
   )
 
   // Highlighted contact links
-  const hilightedContacts = (
-    <div className='header-contacts'>
+  const highlightedContacts = (
+    <div className={ `header-contacts ${ isBelow768Px ? 'header-contacts--small-layout' : 'header-contacts--large-layout' }` }>
       { myContactsTemplate
         ?.filter(contact => contact.title === 'Github' || contact.title === 'LinkedIn')
         ?.map(contact => {
           return (
             <a 
               key={ contact.id } 
-              className='header-contacts-item'
+              className={ `header-contacts-item ${ isBelow768Px ? 'header-contacts-item--small-layout' : 'header-contacts-item--large-layout' }` }
               title={ contact.title }
               href={ contact.link }
               target='_blank' 
               rel='noopener noreferrer'
-            >
-              { contact.icon('var(--color_4)') } 
+            > { contact.icon('var(--color_4)') } 
             </a>
           )
       }) }
+    </div>
+  )
+
+  // Header's toolbar (language toggler, social icons)
+  const toolbarLargeScreen = (
+    <div className='header-toolbar'>
+      <LanguageToggler/>
+      {highlightedContacts}
+    </div>
+  )
+  
+  const toolbarSmallScreen = (
+    <div className='header-toolbar'>
+      <LanguageToggler/>
     </div>
   )
 
@@ -91,11 +105,12 @@ export default function Header() {
       }
     </div>
   )
+
   // menu modal (for small screen layout)
   const menuModal = (
     <div className='header-menu-modal'>
       <Navigation/>
-      { hilightedContacts }
+      { highlightedContacts }
     </div>
   )
 
@@ -105,15 +120,17 @@ export default function Header() {
     <>
       { menuToggler }
       { logo }
+      { toolbarSmallScreen }
       { isMenuToggled || !isBelow768Px ? menuModal : null }
     </>
   );
+
   // customized layout for large screens
   const largeScreenLayout = (
     <>
       { logo }
       <Navigation />
-      { hilightedContacts }
+      { toolbarLargeScreen }
     </>
   );
 
