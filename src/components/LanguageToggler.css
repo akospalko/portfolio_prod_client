@@ -1,25 +1,57 @@
 .language-toggler {
+  grid-column: 1 / 2;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
 
-.language-toggle-button {
+.button--language-toggler {
   background-color: transparent;
-  outline: none;
   border: 0;
   cursor: pointer;
   user-select: none;
+  height: 30px;
+  width: 30px;
 }
 
-.language-toggle-button:hover {
+.button--language-toggler:hover .button--language-toggler-content {
   opacity: 0.5;
+  transition: opacity 0.25 ease;
 }
 
-.language-toggle-button--active {
-  color: rgb(123, 62, 210);
+.button--language-toggler:first-of-type {
+  border: 2px solid var(--color_3_light);
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
 }
 
-.language-toggle-button--active:hover {
+.button--language-toggler:last-of-type {
+  border: 2px solid var(--color_3_light);
+  border-left: 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.button--language-toggler span {
+  height: 100%;
+}
+
+.button--language-toggler--active {
+  cursor: default;
+  color: var(--color_1);
+  background-color: var(--color_3_light);
+  transition: background-color 0.25 ease, color 0.25 ease;
+}
+
+.button--language-toggler--active:first-of-type {
+  border-radius: 10px 0 0 10px;
+}
+
+.button--language-toggler--active:last-of-type {
+  border-radius: 0 10px 10px 0;
+}
+
+.button--language-toggler--active:hover .button--language-toggler-content {
   opacity: 1;
 }

@@ -20,7 +20,7 @@ const LanguageToggler = () => {
   // HANDLER
   const onLanguageChange = (langauge) => {
     i18n.changeLanguage(langauge);
-    setActiveLanguage(langauge)
+    setActiveLanguage(langauge);
   };
 
   // STYLE
@@ -29,18 +29,16 @@ const LanguageToggler = () => {
   return (
     <div className='language-toggler'>
       <button 
-        className={ `language-toggle-button ${ activeLanguageCheck(CONSTANTS.LANGUAGE_EN) && 'language-toggle-button--active' }` }
+        className={ `button--language-toggler ${ activeLanguageCheck(CONSTANTS.LANGUAGE_EN) && 'button--language-toggler--active' }` }
         onClick={ () => onLanguageChange(CONSTANTS.LANGUAGE_EN) }
         disabled={ activeLanguageCheck(CONSTANTS.LANGUAGE_EN) }
-      > 
-      <span> {CONSTANTS.LANGUAGE_EN} </span>
+      > <span className='button--language-toggler-content'> {CONSTANTS.LANGUAGE_EN} </span>
       </button>
       <button 
-        className={ `language-toggle-button ${ activeLanguageCheck(CONSTANTS.LANGUAGE_HU) && 'language-toggle-button--active' }` }
+        className={ `button--language-toggler ${ activeLanguageCheck(CONSTANTS.LANGUAGE_HU) && 'button--language-toggler--active' }` }
         onClick={ () => onLanguageChange(CONSTANTS.LANGUAGE_HU) }
-        disabled={activeLanguageCheck(CONSTANTS.LANGUAGE_HU)}
-      > 
-      <span> {CONSTANTS.LANGUAGE_HU} </span>
+        disabled={ activeLanguageCheck(CONSTANTS.LANGUAGE_HU) }
+      > <span className='button--language-toggler-content'> {CONSTANTS.LANGUAGE_HU} </span>
       </button>
     </div>
   );
