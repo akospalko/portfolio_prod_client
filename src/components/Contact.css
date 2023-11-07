@@ -45,6 +45,7 @@
   word-wrap: break-word;
   justify-content: center;
   align-items: center;
+  user-select: none;
 }
 .contact-cta h2 {
   color: var(--color_3_light);

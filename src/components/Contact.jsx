@@ -7,9 +7,9 @@ import ContactForm from './ContactForm'
 import { contactCTA, myContacts, myContactsTemplate } from '../helper/dataControl'
 import LittleHero from './LittleHero'
 import { WaveAnimation } from './SVGComponents'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import { useMediaQuery } from 'react-responsive'
-import { useAnimationPause } from '../hooks/useAnimationPause';
+import { useAnimationPause } from '../hooks/useAnimationPause'
 
 export default function Contact({ isAutoHeight }) {
   // HOOK
@@ -77,17 +77,19 @@ export default function Contact({ isAutoHeight }) {
             </a>
           // container for text items
           } else {
-            return <div 
-              key={ contact.id } 
-              className='contact-info-item'
-              title={ contact.title }
-              onClick={ () => {
-                navigator.clipboard.writeText(contact.value);
-                copyClipboardToastHandler(contact.title);
-              } }
-            > 
-              { itemContent }
-            </div>
+            return (
+              <div 
+                key={ contact.id } 
+                className='contact-info-item'
+                title={ contact.title }
+                onClick={ () => {
+                  navigator.clipboard.writeText(contact.value);
+                  copyClipboardToastHandler(contact.title);
+                } }
+              >
+                { itemContent }
+              </div>
+            ) 
           }
         }) }
       </div>
@@ -125,7 +127,6 @@ export default function Contact({ isAutoHeight }) {
       positionY={ elementPositionYLarge } 
     /> 
 
-
   return (
     <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       { isAutoHeight && <Anchor componentName='contact' /> }
@@ -145,13 +146,8 @@ export default function Contact({ isAutoHeight }) {
               <div className='contact-animation-background'> 
                 { isBelow768px ? smallScreenBackground : largeScreenBackground }
               </div>
-              {/* <div className='contact-background-color'> </div>  */}
             </div>
           </div>
-
-
-
-
           <div className='contact-group-2'>
             <div className='contact-hero-icon'>  
               <LittleHero />
