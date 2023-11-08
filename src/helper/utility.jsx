@@ -3,7 +3,7 @@
 export const findAnchorLink = (navigationData, itemToFind) => {
   let anchorObj = {}
   navigationData.find((elem) => {
-    if(elem.name === itemToFind) {
+    if(elem.path.split('/').pop()  === itemToFind) {
       anchorObj = elem;    
     }
   })
@@ -26,11 +26,4 @@ export const buildForm = (formElements) => {
     newFormObj = {...newFormObj, [element]: formData[element].value};
   }
   return newFormObj;
-}
-
-// character counter for forms: calculate remaining characters left (e.g. characters entered: 50 -> char left: 450, char entered: 500, char left: 0 -> you reached full length)
-export const calcRemainingCharacters = (currentCharacters, maximumCharacters) => {
-  let remainingCharacters = maximumCharacters - currentCharacters;
-  remainingCharacters > 0 ? remainingCharacters === 1 ? remainingCharacters= `${ remainingCharacters } char.` : remainingCharacters= `${ remainingCharacters } chars.` : remainingCharacters = 'max character count reached';  
-  return remainingCharacters;
 }
