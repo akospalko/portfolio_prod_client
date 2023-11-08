@@ -78,7 +78,7 @@ export default function Header() {
   const toolbarLargeScreen = (
     <div className='header-toolbar'>
       <LanguageToggler/>
-      {highlightedContacts}
+      { highlightedContacts }
     </div>
   )
   

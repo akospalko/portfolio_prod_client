@@ -16,7 +16,7 @@ export default function ModalProvider({ children }) {
   const [ isMenuToggled, setIsMenuToggled ] = useState(false); // header menu bar toggle for responsive view
 
   // CONSTANTS
-  const {projectCards} = ProjectCardsData();
+  const { projectCards } = ProjectCardsData();
 
   // HANDLER
   // Toggle modal 
@@ -53,13 +53,13 @@ export default function ModalProvider({ children }) {
 
   return (
     <ModalContext.Provider 
-      value={{ 
+      value={ { 
         isModalToggled, setIsModalToggled, // track project card toggle state
         activeModalContent, setActiveModalContent, // modal content to be rendered
         toggleModalHandler, // toggler for project card modals  
         isMenuToggled, // menu bar toggle for responsive view
         toggleMenuHandler,
-      }}
+      } }
     > { children }
     </ModalContext.Provider> 
   )
