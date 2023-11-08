@@ -1,20 +1,24 @@
 // Header for all layouts
 import React, { useEffect } from 'react';
-import './Header.css';
 import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
 import { NavLink } from "react-router-dom";
 import Navigation from './Navigation';
 import { useMediaQuery } from 'react-responsive';
-import { myContactsTemplate } from '../helper/dataControl';
 import { useModalContext } from '../context/ModalContext';
 import LanguageToggler from '../components/LanguageToggler';
+import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks';
+import './Header.css';
 
 export default function Header() {
   // CONSTANT
-  const iconSizeMenuToggler = 25;
-  
+  const iconSizeMenuToggler = '25px';
+  const iconSizeLogo = '40px';
+  const iconColorMenuToggler = 'var(--color_5)';
+  const iconColorHighlightedContacts = 'var(--color_4)';
+
   // HOOK
-  const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
+  const isBelow768Px = useMediaQuery( { query: '(max-width: 767px)' } );
+  const { availabilityAndProfileLinks } = AvailabilityAndProfileLinks();
   
   // CONTEXT 
   const { isMenuToggled, toggleMenuHandler } = useModalContext();
@@ -22,8 +26,8 @@ export default function Header() {
   // EFFECT
   // Close modal when screen size is changed to large screen
   useEffect( () => {
-    if(isMenuToggled && !isBelow768Px ) {
-      toggleMenuHandler(true);
+    if( isMenuToggled && !isBelow768Px ) {
+      toggleMenuHandler( true );
     }
   }, [ isMenuToggled, isBelow768Px ])
 
@@ -32,18 +36,18 @@ export default function Header() {
   const logo = (
     <div 
       className='header-logo-container'
-      onClick={ () => toggleMenuHandler(true) }
+      onClick={ () => toggleMenuHandler( true ) }
     >  
       <NavLink 
         to={ '/' }
-        className={ ({ isActive }) => (
+        className={ ( { isActive } ) => (
           isActive ? 
             'header-logo header-logo--active' 
             : 
             'header-logo' 
         ) }
       > 
-        <LogoIcon width={ 40 } height={ 40 } />
+        <LogoIcon width={ iconSizeLogo } height={ iconSizeLogo } />
       </NavLink>
     </div>
   )
@@ -51,7 +55,7 @@ export default function Header() {
   // Highlighted contact links
   const highlightedContacts = (
     <div className={ `header-contacts ${ isBelow768Px ? 'header-contacts--small-layout' : 'header-contacts--large-layout' }` }>
-      { myContactsTemplate
+      { availabilityAndProfileLinks
         ?.filter(contact => contact.title === 'Github' || contact.title === 'LinkedIn')
         ?.map(contact => {
           return (
@@ -62,10 +66,11 @@ export default function Header() {
               href={ contact.link }
               target='_blank' 
               rel='noopener noreferrer'
-            > { contact.icon('var(--color_4)') } 
+            > { contact.icon(iconColorHighlightedContacts) } 
             </a>
           )
-      }) }
+        }) 
+      }
     </div>
   )
 
@@ -94,13 +99,13 @@ export default function Header() {
         <MenuCloseIcon 
           height={ iconSizeMenuToggler } 
           width={ iconSizeMenuToggler } 
-          stroke={ 'var(--color_5)' }
+          stroke={ iconColorMenuToggler }
         />
         :
         <MenuOpenIcon 
           height={ iconSizeMenuToggler } 
           width={ iconSizeMenuToggler } 
-          stroke={ 'var(--color_5)' }
+          stroke={ iconColorMenuToggler }
         />
       }
     </div>

@@ -1,15 +1,26 @@
 // Responsive footer
-import React from 'react'
-import './Footer.css'
-import '../components/Shared.css'
-import { LogoIcon } from '../components/SVGComponents'
-import { navigationElementsTemplate } from '../helper/dataControl'
-import ScrollToTopButton from '../components/ScrollToTopButton'
-import { useMediaQuery } from 'react-responsive'
+import React from 'react';
+import { LogoIcon } from '../components/SVGComponents';
+import ScrollToTopButton from '../components/ScrollToTopButton';
+import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
+import NavigationData from '../data/NavigationElementsData';
+import useCurrentYear from '../hooks/useCurrentYear';
+import './Footer.css';
+import '../components/Shared.css';
 
 export default function Footer() {
   // HOOK
-  const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' });
+  const isBelow768Px = useMediaQuery( { query: '(max-width: 767px)' } );
+  const { t } = useTranslation();
+  const currentYear = useCurrentYear();
+
+  // DATA
+  const navigationElementsData = NavigationData();
+
+  // STYLE 
+  const iconSizeSmall = '40px';
+  const iconSizeLarge = '50px';
 
   // ELEMENTS
   // Scroll to top
@@ -17,13 +28,13 @@ export default function Footer() {
   const smallScreenBrandingScrollToTop = (
     <>
       <ScrollToTopButton />
-      <span> TOP </span>
+      <span> { t( 'navigate-top' ) } </span>
     </>
   )
   // customized layout for large screens
   const largeScreenBrandingScrollToTop = (
     <>
-      <span> TOP </span>
+      <span> { t( 'navigate-top' ) } </span>
       <ScrollToTopButton />
     </>
   )
@@ -37,7 +48,7 @@ export default function Footer() {
   // Navigation elements 
   const navigationElements = (
     <div className='footer-navigation-elements'> 
-      { navigationElementsTemplate.map(elem => (
+      { navigationElementsData.map( elem => (
         <a 
           key={ elem.id }
           href={ `#${ elem.name }` }
@@ -45,7 +56,7 @@ export default function Footer() {
         > 
           <span> { elem.name } </span> 
         </a>
-      )) }
+      ) ) }
     </div>
   )
 
@@ -54,35 +65,36 @@ export default function Footer() {
   const smallScreenBranding = (
     <div className='footer-branding'>
       {/* logo */}
-        <LogoIcon width={ 50 } height={ 50 }/>
+        <LogoIcon width={ iconSizeLarge } height={ iconSizeLarge }/>
       {/* label */}
       <span> 
-        Created by <br/> 
-        Ákos Palkó, 2023
+        { t( 'footer-created-by' ) } <br/>
+        { currentYear }
       </span>
     </div>
   )
   // customized layout for large screens
   const largeScreenBranding = (
-    <div className='footer-branding' >
+    <div className='footer-branding'>
       {/* label */}
       <span> 
-        Created by Ákos Palkó, 2023
+        { t( 'footer-created-by' ) } 
+        { currentYear }
       </span>
       {/* logo */}
-      <LogoIcon width={ 40 } height={ 40 } />
+      <LogoIcon width={ iconSizeSmall } height={ iconSizeSmall } />
     </div>
   )
 
   // LAYOUTS
   // customized layout for small screens
   const smallScreenLayout = (
-      <>
-        { scrollToTop }
-        { navigationElements }
-        { smallScreenBranding }
-      </>
-    )
+    <>
+      { scrollToTop }
+      { navigationElements }
+      { smallScreenBranding }
+    </>
+  )
     
   // customized layout for large screens
   const largeScreenLayout = (
