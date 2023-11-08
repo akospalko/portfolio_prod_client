@@ -1,38 +1,49 @@
 // Content send message form 
-import React from 'react'
-import { useState, useEffect, useCallback } from 'react'
-import './ContactForm.css'
-import { 
-  contactFormData, 
-  SENDING_EMAIL, 
-  RECAPTCHA_NOT_AVAILABLE, 
-  titleFormButtonDisabled, 
-  titleFormButtonEnabled
- } from '../helper/dataControl'
-import { buildForm, getFormValues, calcRemainingCharacters } from '../helper/utility'
+import React, { useState, useEffect, useCallback } from 'react'
+import { buildForm, getFormValues } from '../helper/utility'
 import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
 import { LoaderIcon } from './SVGComponents'
 import axios from 'axios'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import { validateForm } from '../helper/validateForm'
 import { toast } from 'react-toastify'
+import ContactFormData from '../data/ContactFormData'
+import { useTranslation } from 'react-i18next'
+import useCalculateRemainingCharacters from '../hooks/useCalculateRemainingCharacters'
+import './ContactForm.css'
 
 export default function ContactForm() {
   // HOOKS 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { validateReCaptcha } = useValidateReCaptcha();
-  
+  const { t, i18n } = useTranslation();
+
+  const initializeContactFormData = ContactFormData();
+
   // STATES
-  const [contactData, setContactData] = useState(contactFormData);
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
-  const [isSubmittingForm, setIsSubmittingForm] = useState(false);
+  const [ contactData, setContactData ] = useState( initializeContactFormData() );
+  const [ isFormValid, setIsFormValid ] = useState( false );
+  const [ statusMessage, setStatusMessage ] = useState( '' );
+  const [ isSubmittingForm, setIsSubmittingForm ] = useState( false );
+
+  // EFFECT
+  // call toaster on status change
+  useEffect( () => {
+    if ( isSubmittingForm && statusMessage ) {
+      callToaster( statusMessage );
+    }
+  }, [ isSubmittingForm, statusMessage ] );
+
+  // reinitialize contact form on each language change  
+  useEffect(() => {
+    setContactData(initializeContactFormData());
+  }, [ i18n.language ]);
 
   // HANDLERS
   // toaster with mail send status message 
-  const callToaster = (status = '') => {
-    toast(status, {
-      position: "top-right",
+  const callToaster = ( status = '' ) => {
+    toast( status, {
+      position: 'top-right',
       className: 'toast-message',
       autoClose: 5000,
       hideProgressBar: false,
@@ -40,72 +51,64 @@ export default function ContactForm() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
-    });
+      theme: 'dark',
+    } );
   };
 
 // input change handler
-  const changeHandler = (e) => {
+  const changeHandler = ( e ) => {
     e.preventDefault();
     const { name: eventName, value: eventValue } = e.target;
     let updateObject = { ...contactData };
-    let updateElement = { ...updateObject[eventName] };
+    let updateElement = { ...updateObject[ eventName ] };
     updateElement.touched = true;
     updateElement.value = eventValue;
-    updateElement.valid = validateForm(updateElement.value, updateElement.validation);
+    updateElement.valid = validateForm( updateElement.value, updateElement.validation );
     updateElement.wordCount = updateElement.value.length; // update word count
-    updateObject[eventName] = updateElement;
-    setContactData(updateObject);
+    updateObject[ eventName ] = updateElement;
+    setContactData( updateObject );
     // check form validity
-    const validatedForm = Object.values(updateObject).every((elem) => elem.valid);
+    const validatedForm = Object.values( updateObject ).every( ( elem ) => elem.valid );
     setIsFormValid(validatedForm);
   }
 
-  const submitFormHandler = useCallback(async (e) => {
+  // submit form
+  const submitFormHandler = useCallback( async (e) => {
     e.preventDefault();
-    setIsSubmittingForm(true); 
-    setStatusMessage(SENDING_EMAIL);
+    setIsSubmittingForm( true ); 
+    setStatusMessage( t('status-sending-mail') );
     // disable button right after submit
-    setIsFormValid(false); 
+    setIsFormValid( false ); 
     // execute recaptcha if available
-    if (!executeRecaptcha) {
-      setStatusMessage(RECAPTCHA_NOT_AVAILABLE);
-      setIsSubmittingForm(false); 
+    if ( !executeRecaptcha ) {
+      setStatusMessage( t('status-recaptcha-not-available') );
+      setIsSubmittingForm( false ); 
       return;
     } 
     //execute captcha: generate token
-    const token = await executeRecaptcha('contact');
+    const token = await executeRecaptcha( 'contact' );
     //validate recaptcha 
-    const { isCaptchaValid, statusMessage, statusCode } = await validateReCaptcha(token); // validate token
-    if(isCaptchaValid) { //if captcha is valid
+    const { isCaptchaValid, statusMessage, statusCode } = await validateReCaptcha( token ); // validate token
+    if( isCaptchaValid ) { // if captcha is valid
       try {
-        //transform form data to mail
-        const mailData = getFormValues(contactData);
-        const sendMailResponse = await axios.post(`${ import.meta.env.VITE_AXIOS_BASE_URL }/sendmail`, mailData);
-        setStatusMessage(sendMailResponse.data.statusMessage);
-        setContactData(contactFormData) // reset form to its initial state  
-      } catch (error) {
-        console.log(error);
-        setStatusMessage(`${ error.response.data.statusMessage } (${ error.response.status })`);
-        setIsFormValid(true); // revert back form validity (re-enable send button)
+        // transform form data to mail
+        const mailData = getFormValues( contactData );
+        const sendMailResponse = await axios.post( `${ import.meta.env.VITE_AXIOS_BASE_URL }/sendmail`, mailData );
+        setStatusMessage( sendMailResponse.data.statusMessage );
+        setContactData( contactFormData ) // reset form to its initial state  
+      } catch ( error ) {
+        setStatusMessage(`${ error.response.data.statusMessage } ( ${ error.response.status } )` );
+        setIsFormValid( true ); // revert back form validity (re-enable send button)
       }
     } else {
-      setStatusMessage(`${ statusMessage } (${ statusCode })`);
-      setIsFormValid(true);
+      setStatusMessage( `${ statusMessage } ( ${ statusCode } )` );
+      setIsFormValid( true );
     } 
     // allow users to read status messages if request happens too quickly 
     setTimeout( () => {
-      setIsSubmittingForm(false); 
-    }, [1000] )
-  }, [executeRecaptcha, setStatusMessage, validateReCaptcha])
-
-  // EFFECT
-  // call toaster on status change
-  useEffect(() => {
-    if (isSubmittingForm && statusMessage) {
-      callToaster(statusMessage);
-    }
-  }, [isSubmittingForm, statusMessage]);
+      setIsSubmittingForm( false ); 
+    }, [ 1000 ] )
+  }, [ executeRecaptcha, setStatusMessage, validateReCaptcha ])
 
   return (
     <form onSubmit={ submitFormHandler } className='contact-form'>
@@ -113,8 +116,8 @@ export default function ContactForm() {
       { isSubmittingForm ? <div className='contact-form-loader-modal '> 
         <div className='contact-form-loader'> 
           <LoaderIcon 
-            width='75'
-            height='75'
+            width='75px'
+            height='75px'
             stroke={ 'var(--color_3_light)' } 
           />
         </div> 
@@ -122,8 +125,8 @@ export default function ContactForm() {
           <span> { statusMessage } </span>
         </div>
       </div> : null }
-      { buildForm(contactData).map( (elem) => {
-        if(elem.config.fieldType === 'input') {
+      { buildForm( contactData ).map( ( elem ) => {
+        if( elem.config.fieldType === 'input' ) {
           return <input 
             key={ elem.id }
             className={ elem.config.valid === true ? 'contact-form-input-field valid' : 'contact-form-input-field invalid' } 
@@ -135,7 +138,11 @@ export default function ContactForm() {
             maxLength={ elem.config.validation.maxLength }
             placeholder={ elem.config.placeholder }
           />
-        } else if (elem.config.fieldType === 'textarea') {
+        } else if ( elem.config.fieldType === 'textarea' ) {
+          const remainingCharacters = useCalculateRemainingCharacters(
+            elem.config.wordCount, elem.config.validation.maxLength
+          );
+
           return <div 
           className='contact-form-message'
           key={ elem.id }>
@@ -151,18 +158,18 @@ export default function ContactForm() {
             <div className='contact-form-character-count'> 
               <span
                 title='remaining characters'
-                className={ elem.config.wordCount < elem.config.validation.maxLength && elem.config.wordCount >= elem.config.validation.minLength ? 'valid-color' : 'invalid-color'}
+                className={ elem.config.wordCount < elem.config.validation.maxLength && elem.config.wordCount >= elem.config.validation.minLength ? 'valid-color' : 'invalid-color' }
               >
-                { calcRemainingCharacters(elem.config.wordCount, elem.config.validation.maxLength) } 
+                { remainingCharacters } 
               </span>
             </div>
           </div>
         }
-      }) }
-      <div className='contact-form-button' > 
-        <button disabled={ !isFormValid || isSubmittingForm } > 
+      } ) }
+      <div className='contact-form-button'> 
+        <button disabled={ !isFormValid || isSubmittingForm }> 
           <span> 
-            { !isFormValid ? titleFormButtonDisabled : titleFormButtonEnabled } 
+            { !isFormValid ? t('status-button-fill-in-form') : t('status-button-submit-form') } 
           </span> 
         </button>
       </div>
