@@ -8,7 +8,7 @@ import ImageWithPlaceholder from './ImageWithPlaceholder';
 export default function ProjectCard(props) {
   // PROPS
   // data
-  const { url, tags, title } = props.data;
+  const { imageURL, tags, title } = props.data;
   const { borderRadiusStyle } = props;
 
   return (
@@ -24,7 +24,7 @@ export default function ProjectCard(props) {
       {/* image preview */}
       <div className={ `project-card-image-preview ${ borderRadiusStyle.itemImg }` } >
         <ImageWithPlaceholder 
-          src={ url } 
+          src={ imageURL } 
           alt={ title }
           width='100%' 
           height='100%' 

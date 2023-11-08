@@ -1,41 +1,50 @@
 // Project card modal with backdrop
 import React, { useEffect } from 'react';
-import './ProjectCardModal.css';
-import './Shared.css';
 import { useModalContext } from '../context/ModalContext';
 import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from './SVGComponents';
 import { TagItems } from './TagItems';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
+import { useTranslation } from 'react-i18next'
+import './ProjectCardModal.css';
+import './Shared.css';
 
 export default function ProjectCardModal() {
   // CONTEXT
   const { activeModalContent, toggleModalHandler } = useModalContext();
-  const { id, title, tags, url, description, links, learnedAbout } = activeModalContent;
+  const { id, title, tags, imageURL, description, links, learnedAbout } = activeModalContent;
+  
+  // HOOKS
+  const { t } = useTranslation();
+
   // EFFECTS
   // close modal when pressing keyboard 'escape'
-  useEffect(() => {
+  useEffect( () => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        toggleModalHandler(id, false);
+      if ( e.key === 'Escape' ) {
+        toggleModalHandler( id, false );
       }
     };
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener( 'keydown', handleKeyDown );
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener( 'keydown', handleKeyDown );
     };
-  }, [toggleModalHandler, id]);
+  }, [ toggleModalHandler, id ] );
 
   // enable / disable scroll on modal toggle 
-  useEffect(() => {
-    document.body.classList.add('modal-open');
-    return () =>  { document.body.classList.remove('modal-open') }
-  }, []);
+  useEffect( () => {
+    document.body.classList.add( 'modal-open' );
+    return () =>  { document.body.classList.remove( 'modal-open' ) }
+  }, [] );
+
+  // STYLING 
+  const iconSize = '40px'
+  const iconColor = 'var(--color_5)'
 
   // HANDLER
   // handle backdrop click close modal
-  const handleBackdropClick = (e) => {
-    if (e.target.classList.contains('project-card-modal-backdrop')) {
-      toggleModalHandler(id, false);
+  const handleBackdropClick = ( e ) => {
+    if ( e.target.classList.contains( 'project-card-modal-backdrop' ) ) {
+      toggleModalHandler( id, false );
     }
   }
 
@@ -43,20 +52,20 @@ export default function ProjectCardModal() {
   // mapped what i learned items
   const whatILearned = (
     <>
-      { learnedAbout?.map(item => 
+      { learnedAbout?.map( item => 
         <div 
           key={ item.id }
           className='project-card-modal-content-learned'
         >
           <span> { item?.text } </span>
         </div>
-      )}
+      ) }
     </>
   )
 
   // mapped content links
   const linkItems = (
-    links.map(link => 
+    links.map( link => 
       <a 
         className='project-card-modal-content-link-item'
         key={ link.id } 
@@ -79,13 +88,11 @@ export default function ProjectCardModal() {
           <div className='project-card-modal-title'>
             <h2> { title } </h2> 
             {/* modal close */}
-            <div 
-              onClick={ () => toggleModalHandler(id, false) }  className='project-card-modal-close' 
-            > 
+            <div onClick={ () => toggleModalHandler(id, false) } className='project-card-modal-close'> 
               <MenuCloseIcon 
-                height={ 20 } 
-                width={ 20 } 
-                stroke={ 'var(--color_5)' }
+                height={ iconSize } 
+                width={ iconSize } 
+                stroke={ iconColor }
               />
             </div>
           </div>
@@ -100,7 +107,7 @@ export default function ProjectCardModal() {
         {/* preview img */}
         <div className='project-card-modal-preview-image'>
           <ImageWithPlaceholder 
-            src={ url } 
+            src={ imageURL } 
             alt={ title } 
             objectFit='cover'
           /> 
@@ -110,9 +117,9 @@ export default function ProjectCardModal() {
           {/* description */}
           <div className='project-card-modal-content-header'>
             <div className='project-card-modal-content-header-icon'>
-              <InformationIcon height={ 30 } width={ 30 } fill={ 'var(--color_5)' } />
+              <InformationIcon height={ iconSize } width={ iconSize } fill={ iconColor } />
             </div>
-            <h3> Description </h3>
+            <h3> { t( 'project-cards-description' ) } </h3>
           </div>
           <div className='project-card-modal-content-description'> 
             <span> 
@@ -122,17 +129,17 @@ export default function ProjectCardModal() {
           {/* what i learned ? */}
           <div className='project-card-modal-content-header'>
             <div className='project-card-modal-content-header-icon'>
-              <LearnedIcon height={ 30 } width={ 30 } fill={ 'var(--color_5)' } />
+              <LearnedIcon height={ iconSize } width={ iconSize } fill={ iconColor } />
             </div>
-            <h3> What did I learn? </h3>
+            <h3> { t( 'project-cards-learned' ) } </h3>
           </div>
           { <span> { whatILearned } </span> }
           {/* links */}
           <div className='project-card-modal-content-header'> 
             <div className='project-card-modal-content-header-icon'>
-              <LinkIcon height={ 30 } width={ 30 } fill={ 'var(--color_5)' } />
+              <LinkIcon height={ iconSize } width={ iconSize } fill={ iconColor } />
             </div>
-            <h3> Links </h3>
+            <h3> { t( 'project-cards-links' ) } </h3>
           </div>
           { linkItems }
         </div> 

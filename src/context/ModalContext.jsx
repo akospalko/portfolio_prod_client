@@ -1,6 +1,6 @@
 // Context to handle modal related state, and handlers
 import { createContext, useContext, useState } from "react";
-import { projectCards } from "../helper/dataControl";
+import ProjectCardsData from "../data/ProjectCardData";
 
 // Create context 
 const ModalContext = createContext();
@@ -11,9 +11,12 @@ export const useModalContext = () => useContext(ModalContext);
 // Set up provider
 export default function ModalProvider({ children }) { 
   // STATE
-  const [isModalToggled, setIsModalToggled] = useState(false); 
-  const [activeModalContent, setActiveModalContent] = useState({}); 
+  const [ isModalToggled, setIsModalToggled ] = useState(false); 
+  const [ activeModalContent, setActiveModalContent ] = useState({}); 
   const [ isMenuToggled, setIsMenuToggled ] = useState(false); // header menu bar toggle for responsive view
+
+  // CONSTANTS
+  const {projectCards} = ProjectCardsData();
 
   // HANDLER
   // Toggle modal 
