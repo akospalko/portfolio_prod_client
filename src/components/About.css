@@ -18,7 +18,6 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   width: 100%;
-  gap: 10px;
 }
 .about-background-photo {
   display: flex;
@@ -30,7 +29,6 @@
   word-wrap: break-word;
   flex-wrap: wrap;
   border-radius: 10px 10px 0 0;
-  border: var(--border_1);
   overflow: hidden;
 }
 .about-background-text {
@@ -40,7 +38,6 @@
   width: 100%;
   padding: 0 1rem;
   word-wrap: break-word;
-  border: var(--border_1);
 }
 .about-background-text h2 {
   width: 100%;
@@ -69,7 +66,6 @@
   height: auto;
   background-color: var(--color_2);
   padding: 1rem;
-  border: var(--border_1);
 }
 .about-skill-card:nth-child(4) {
   border-radius: 0 0 10px 10px;
@@ -84,7 +80,6 @@
 .about-skill-card-icon {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   height: 100%;
   width: 25%;
   transition: transform .2s ease-in;
@@ -95,7 +90,6 @@
 .about-skill-card-title {
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100%;
   width: 75%;
   word-wrap: break-word;
@@ -105,6 +99,7 @@
   line-height: calc(var(--header-2--S) * 1.2);
   width: 100%;
   color: var(--color_4);
+  margin: 0;
 }
 .about-skill-card-groups {
   display: flex;
@@ -151,7 +146,6 @@
   }
   .about-background {
     height: 100%;
-    gap: 10px;
   }
   .about-background-photo {
     transition: transform 0.3s ease-out;
@@ -184,7 +178,7 @@
   .about-background {
     grid-template-columns: 1fr;
     grid-template-rows: 350px auto;
-
+    gap: 10px;
   }
   .about-background-text {
     min-height: 350px;
