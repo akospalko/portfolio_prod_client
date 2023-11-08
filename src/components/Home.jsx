@@ -1,36 +1,44 @@
 // Home: starting / landing pg with basic intro
 import React from 'react';
-import './Home.css';
-import './Shared.css';
-import { welcomeText, subtitleText, introductionText } from '../helper/dataControl';
 import { ArrowIcon, OceanAnimation } from './SVGComponents';
 import { useAnimationPause } from '../hooks/useAnimationPause';
 import Anchor from './Anchor';
+import { useTranslation } from 'react-i18next';
+import './Home.css';
+import './Shared.css';
 
 export default function Home({ handleScrollDown }) {
   // HOOK
   // toggle background animation
-  const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause('home');
+  const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause( 'home' );
+  const { t } = useTranslation();
   
   // ELEMENTS
   // Text
   // header title
   const homeTitle=( 
     <div className='home-title'>
-      <h1> { welcomeText } </h1>
+      <h1> { t( 'home-title' ) } </h1>
     </div>
   )
+
   // header subtitle
   const homeSubitle=( 
     <div className='home-subtitle'>
-      <h2> { subtitleText } </h2>
+      <h2> { t( 'home-subtitle' ) } </h2>
     </div>
   )
   // short introductory text
   const homeIntroduction=( 
     <div className='home-introduction'> 
       <div className='home-introduction-text'> 
-        <span> { introductionText } </span>
+        <span>  
+          { t( 'web-developer-1' ) }
+          <u> { t( 'web-developer-2' ) } </u>
+          { t( 'web-developer-experience' ) }
+          <u> { t( 'gis-specialist' ) } </u>
+          { t( 'gis-specialist-experience' ) }
+        </span>
       </div>
     </div>
   )
@@ -55,8 +63,8 @@ export default function Home({ handleScrollDown }) {
   return (
     <article className='shared-page-container'>
       {/* anchor tag */}
-      <Anchor componentName='home'/> 
-      <div className='home-content'> 
+      <Anchor componentName='home' /> 
+      <div className='home-content' > 
         { homeTitle }
         { homeSubitle }
         { homeIntroduction }
