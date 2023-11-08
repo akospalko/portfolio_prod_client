@@ -12,7 +12,7 @@ import {
 
 const AboutData = () => {
   // HOOK
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   // DATA
   // my background text 
@@ -72,7 +72,7 @@ const AboutData = () => {
     },
     {
       id: 3,
-      icon: <LanguageIcon width={ iconSize } height={ iconSize } fill="var(--color_4)" />,
+      icon: <LanguageIcon width={ iconSize } height={ iconSize } fill='var(--color_4)' />,
       title: t( 'about-skills-languages' ),
       skills: [
         {
