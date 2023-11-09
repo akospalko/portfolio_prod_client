@@ -4,7 +4,7 @@ import { useModalContext } from '../context/ModalContext';
 import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from './SVGComponents';
 import { TagItems } from './TagItems';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 import './ProjectCardModal.css';
 import './Shared.css';
 
@@ -12,14 +12,14 @@ export default function ProjectCardModal() {
   // CONTEXT
   const { activeModalContent, toggleModalHandler } = useModalContext();
   const { id, title, tags, imageURL, description, links, learnedAbout } = activeModalContent;
-  
+
   // HOOKS
   const { t } = useTranslation();
 
   // EFFECTS
   // close modal when pressing keyboard 'escape'
   useEffect( () => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = ( e ) => {
       if ( e.key === 'Escape' ) {
         toggleModalHandler( id, false );
       }

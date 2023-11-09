@@ -1,19 +1,19 @@
 // Project page
-import React from 'react'
-import Anchor from './Anchor'
-import ProjectCard from './ProjectCard'
-import { useModalContext } from '../context/ModalContext'
-import { useMediaQuery } from 'react-responsive'
-import { addConditionalBorderStyle } from './addConditionalBorderStyle'
-import ProjectCardsData from '../data/ProjectCardData'
-import { useTranslation } from 'react-i18next'
-import './Projects.css' 
-import './Shared.css' 
+import React from 'react';
+import Anchor from './Anchor';
+import ProjectCard from './ProjectCard';
+import { useModalContext } from '../context/ModalContext';
+import { useMediaQuery } from 'react-responsive';
+import { addConditionalBorderStyle } from './addConditionalBorderStyle';
+import ProjectCardsData from '../data/ProjectCardData';
+import { useTranslation } from 'react-i18next';
+import './Projects.css' ;
+import './Shared.css' ;
 
 export default function Projects({ isAutoHeight }) {
   // CONSTANT
   // project cards
-  const  projectCards  = ProjectCardsData();
+  const projectCards = ProjectCardsData();
   // HOOK
   const isBelow1024Px = useMediaQuery( { query: '(max-width: 1023px)' } );
   const isBelow768Px = useMediaQuery( { query: '(max-width:767px)' } );
