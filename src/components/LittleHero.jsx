@@ -1,10 +1,10 @@
 // Animated hero that can track the mouse movement with its eyes all day long
 import React, { useEffect, useState, useRef } from 'react';
-import './LittleHero.css';
 import { throttle } from 'lodash';
-import { littleHeroImgURLs } from '../helper/dataControl';
+import littleHeroURL from '../data/littleHeroURL.json'
 import LittleHeroImg from '../assets/little_hero.png';
 import LittleHeroEyeImg from '../assets/little_hero_eye.png';
+import './LittleHero.css';
 
 export default function LittleHero() {
   // STATE
@@ -48,7 +48,7 @@ export default function LittleHero() {
     const angleValue = calcAngle(mousePosition.x, mousePosition.y, anchorX, anchorY);
     // rotate eyes
     eyes.forEach((eye) => {
-      eye.style.transform = `rotate(${angleValue - 90}deg)`;
+      eye.style.transform = `rotate(${ angleValue - 90 }deg)`;
     });
 
     // add / remove listener on mount
@@ -62,10 +62,10 @@ export default function LittleHero() {
     <div className="little-hero-container">
       <div className="little-hero-proximity-hover"></div>
       <div className="little-hero">
-        <img id="anchor" ref={ anchorRef } src={ littleHeroImgURLs.hero.large } />
+        <img id="anchor" ref={ anchorRef } src={ littleHeroURL.hero.large } />
         <div className="little-hero-eyes">
-          <img id="eye-1" className="little-hero-eye" src={ littleHeroImgURLs.eye.large || LittleHeroImg } />
-          <img id="eye-2" className="little-hero-eye" src={ littleHeroImgURLs.eye.large || LittleHeroEyeImg } />
+          <img id="eye-1" className="little-hero-eye" src={ littleHeroURL.eye.large || LittleHeroImg } />
+          <img id="eye-2" className="little-hero-eye" src={ littleHeroURL.eye.large || LittleHeroEyeImg } />
         </div>
       </div>
     </div>

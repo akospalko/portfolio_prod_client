@@ -1,0 +1,49 @@
+{
+  "project-cards-password-strength-meter": {
+    "imageURL": {
+      "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/password_security_checker_500w.png",
+      "medium": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/password_security_checker_1200w.png",
+      "large": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/password_security_checker_1500w.png"
+    },
+    "links": {
+      "website": "https://password-security-checker.onrender.com",
+      "frontend": "https://github.com/akospalko/password-security-checker"
+    }
+  },
+  "project-cards-geolens-gallery": {
+    "imageURL": {
+      "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/geolens_gallery_500w.png",
+      "medium": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/geolens_gallery_1200w.png",
+      "large": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/geolens_gallery_1500w.png"
+    },
+    "links": {
+      "website": "https://geolens-gallery.onrender.com",
+      "frontend": "https://github.com/akospalko/image-gallery_client",
+      "backend": "https://github.com/akospalko/image-gallery_api"
+    }
+  },
+  "project-portfolio-website": {
+    "imageURL": {
+      "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/portfolio-page_500w.png",
+      "medium": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/portfolio-page_1200w.png",
+      "large": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/portfolio-page_1500w.png"
+    },
+    "links": {
+      "website": "https://palkoakos.onrender.com",
+      "frontend": "https://github.com/akospalko/portfolio_prod_client",
+      "backend": "https://github.com/akospalko/portfolio_prod_server"
+    }
+  },
+  "project-task-manager": {
+    "imageURL": {
+      "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/project_1_task_manager_500w.png",
+      "medium": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/project_1_task_manager_1200w.png",
+      "large": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/project_1_task_manager_1500w.png"
+    },
+    "links": {
+      "website": "https://task-manager-client.onrender.com",
+      "frontend": "https://github.com/akospalko/task-manager-client",
+      "backend": "https://github.com/akospalko/task-manager-api"
+    }
+  }
+}

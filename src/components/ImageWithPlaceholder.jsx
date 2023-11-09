@@ -1,13 +1,16 @@
 // Return image / placeholder based on its loading state
 import React, { useState } from 'react';
-import './ImageWithPlaceholder.css';
 import { ImagePlaceholderIcon } from './SVGComponents';
-import { noImageText, loadingImgText } from '../helper/dataControl';
- 
+import { useTranslation } from 'react-i18next'
+import './ImageWithPlaceholder.css';
+
 const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
   // STATE
   const [ isImageLoaded, setIsImageLoaded ] = useState(false); // store img loaded state
   const [ isImageError, setIsImageError ] = useState(false); // store img error status
+
+  // HOOK
+  const { t } = useTranslation();
 
   // HANDLERS
   // set img loaded state to when img is loaded
@@ -40,7 +43,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
       <img
         className='image'
         srcSet={ `${src.small} 500w, ${src.medium} 1200w, ${ src.large } 1500w` } 
-        sizes="(max-width: 499px) 100vw, (max-width: 768px) 600px, 1000px"
+        sizes='(max-width: 499px) 100vw, (max-width: 768px) 600px, 1000px'
         src={ src.medium }
         alt={ alt }
         style={ imageStyle }
@@ -50,7 +53,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
         <div 
           className={ `image-placeholder ${ isImageError ? 'image-placeholder--hidden' : ''}` }
           style={ placeholderStyle }
-          title={ noImageText } 
+          title={ t( 'statuas-img-unavailable' ) } 
         > 
           <ImagePlaceholderIcon 
             fill='var(--color_3_light)' 
@@ -59,7 +62,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
             width='100%'
           />
           <span> 
-            { isImageError ? noImageText : loadingImgText }
+            { isImageError ? t( 'statuas-img-unavailable') : t( 'status-img-loading' ) }
           </span>
         </div>
     </>

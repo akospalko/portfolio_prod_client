@@ -4,7 +4,6 @@
   height: 500px;
   width: 100%;
   background-color: var(--color_2);
-  border: var(--border_1);
   flex-direction: column;
   cursor: pointer;
 }

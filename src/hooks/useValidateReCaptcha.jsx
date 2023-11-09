@@ -1,12 +1,16 @@
 import axios from 'axios';
-import { API_REQUEST_UNABLE_TO_REACH_SERVER, RECAPTCHA_NO_TOKEN } from '../helper/dataControl'
+import { useTranslation } from 'react-i18next'
 
 const useValidateReCaptcha = () => {
+
+  // HOOK
+  const { t } = useTranslation();
+
   const validateReCaptcha = async (token) => {
     //store validation result
     let isCaptchaValid = false;
     let statusMessage = '';
-    let statusCode = 500; //default value: unsuccessful api request
+    let statusCode = 500; // default value: unsuccessful api request
 
     //token validation 
     if(token) { 
@@ -18,13 +22,13 @@ const useValidateReCaptcha = () => {
         statusCode = verifiedCaptcha.status;
       } catch(error) { 
         isCaptchaValid = false;
-        statusMessage = API_REQUEST_UNABLE_TO_REACH_SERVER;
+        statusMessage = t('status-server-error')
         statusCode = error.response.status;
       }
     } 
     else {
       isCaptchaValid = false;
-      statusMessage = RECAPTCHA_NO_TOKEN;
+      statusMessage = t('status-recaptcha-no-token');
     } 
     return { isCaptchaValid, statusMessage, statusCode }; // return validation result (true || false)
   }

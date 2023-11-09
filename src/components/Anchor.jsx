@@ -1,12 +1,19 @@
 // Reusable anchor link to snap to top of the page, only in multiple page layout
-import React from 'react'
-import './Shared.css'
-import { findAnchorLink } from '../helper/utility'
-import { navigationElementsTemplate } from '../helper/dataControl'
-import { AnchorIcon } from './SVGComponents'
+import React from 'react';
+import { findAnchorLink } from '../helper/utility';
+import { AnchorIcon } from './SVGComponents';
+import NavigationElementsData from '../data/NavigationElementsData';
+import './Shared.css';
 
 export default function Anchor({ componentName }) {
-  const anchorName = findAnchorLink(navigationElementsTemplate, componentName).name;
+  // DATA 
+  const navigationElementsData = NavigationElementsData();
+  const anchorName = findAnchorLink( navigationElementsData, componentName ).name;
+  
+  // STYLE
+  const iconSize = '50px';
+  const iconColor = 'var(--color_4)';
+
   return (
     <a 
       id={ anchorName } 
@@ -15,9 +22,9 @@ export default function Anchor({ componentName }) {
     >
       <AnchorIcon 
         id={ anchorName }
-        width={ 50 } 
-        height={ 50 }
-        stroke={ 'var(--color_4)' }
+        width={ iconSize } 
+        height={ iconSize }
+        stroke={ iconColor }
       /> 
     </a>
   )

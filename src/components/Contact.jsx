@@ -1,28 +1,29 @@
 // Contact Page 
 import React from 'react'
-import './Contact.css'
-import './Shared.css'
 import Anchor from './Anchor'
 import ContactForm from './ContactForm'
-import { contactCTA, myContacts, myContactsTemplate } from '../helper/dataControl'
 import LittleHero from './LittleHero'
 import { WaveAnimation } from './SVGComponents'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import { useMediaQuery } from 'react-responsive'
-import { useAnimationPause } from '../hooks/useAnimationPause';
+import { useAnimationPause } from '../hooks/useAnimationPause'
+import { useTranslation } from 'react-i18next'
+import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks'
+import './Contact.css'
+import './Shared.css'
 
-export default function Contact({ isAutoHeight }) {
+export default function Contact( { isAutoHeight } ) {
   // HOOK
-  // media queries
   const isBelow768px = useMediaQuery({ query: '(max-width: 768px)'});
-  // toggle background animation
-  const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause('contact', 'var(--color_1)');
+  const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause( 'contact', 'var(--color_1)' );
+  const { t } = useTranslation(); 
+  const { availabilityAndProfileLinks } = AvailabilityAndProfileLinks();
 
   // HANDLERS
   // send toast when contact item is copied to clipboard
-  const copyClipboardToastHandler = (copiedItem) => {
+  const copyClipboardToastHandler = ( copiedItem ) => {
     toast(`${ copiedItem } is copied to cliplboard`, {
-      position: "top-right",
+      position: 'top-right',
       className: 'toast-message',
       autoClose: 5000,
       hideProgressBar: false,
@@ -30,7 +31,7 @@ export default function Contact({ isAutoHeight }) {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: 'dark',
     });
   }
 
@@ -38,7 +39,7 @@ export default function Contact({ isAutoHeight }) {
   // Call to action text
   const ctaText = (
     <div className='contact-cta'> 
-      <h2> { contactCTA } </h2>
+      <h2> { t( 'contact-cta' ) } </h2>
     </div>
   )
 
@@ -48,23 +49,23 @@ export default function Contact({ isAutoHeight }) {
   const contactItems = (
     <div className='contact-items'> 
       <div className='contact-items-header'> 
-        <h3> { myContacts } </h3> 
+        <h3> { t( 'contact-availablility-and-profile-links-header' ) } </h3> 
       </div>
       <div className='contact-item'>
-        { myContactsTemplate?.map(contact => {
+        { availabilityAndProfileLinks?.map( contact => {
           // item content
           const itemContent = (
             <>
               <div className='contact-item-icon'> 
-                { contact.icon('', contactIconSize) } 
+                { contact.icon( '', contactIconSize ) } 
               </div>
-              <div className='contact-item-text' >
+              <div className='contact-item-text'>
                 <span> { contact.value } </span>
               </div>
             </>
           )
           // container for link items
-          if(contact?.link ) {
+          if( contact?.link ) {
             return <a 
               key={ contact.id } 
               className='contact-info-item'
@@ -77,17 +78,19 @@ export default function Contact({ isAutoHeight }) {
             </a>
           // container for text items
           } else {
-            return <div 
-              key={ contact.id } 
-              className='contact-info-item'
-              title={ contact.title }
-              onClick={ () => {
-                navigator.clipboard.writeText(contact.value);
-                copyClipboardToastHandler(contact.title);
-              } }
-            > 
-              { itemContent }
-            </div>
+            return (
+              <div 
+                key={ contact.id } 
+                className='contact-info-item'
+                title={ contact.title }
+                onClick={ () => {
+                  navigator.clipboard.writeText( contact.value );
+                  copyClipboardToastHandler( contact.title );
+                } }
+              >
+                { itemContent }
+              </div>
+            ) 
           }
         }) }
       </div>
@@ -125,17 +128,15 @@ export default function Contact({ isAutoHeight }) {
       positionY={ elementPositionYLarge } 
     /> 
 
-
   return (
     <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
       { isAutoHeight && <Anchor componentName='contact' /> }
       <div className='contact-content'>
         <div className='contact-groups-wrapper'>
-
           <div className='contact-group-1'>
             <div className='contact-header'> 
               <div className='shared-title'> 
-                <h1> Contact </h1>
+                <h1> { t( 'contact' ) } </h1>
               </div> 
             </div>
             <div className='contact-information'>
@@ -145,20 +146,16 @@ export default function Contact({ isAutoHeight }) {
               <div className='contact-animation-background'> 
                 { isBelow768px ? smallScreenBackground : largeScreenBackground }
               </div>
-              {/* <div className='contact-background-color'> </div>  */}
             </div>
           </div>
-
-
-
-
           <div className='contact-group-2'>
             <div className='contact-hero-icon'>  
-              <LittleHero />
+              <LittleHero/>
             </div>
             <ContactForm/>
           </div> 
         </div>
       </div>
     </article>
-  ) }
+  ) 
+}

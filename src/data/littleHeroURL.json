@@ -1,0 +1,12 @@
+{
+  "hero": {
+    "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/little_hero_500w.png",
+    "medium": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/little_hero_1200w.png",
+    "large": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/little_hero_1500w.png"
+  },
+  "eye": {
+    "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/space_cat_eye_500w.png",
+    "medium": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1200w/space_cat_eye_1200w.png",
+    "large": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_1500w/space_cat_eye_1500w.png"
+  }
+}
