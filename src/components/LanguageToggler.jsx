@@ -13,35 +13,35 @@ const CONSTANTS = {
 const LanguageToggler = () => {
   // HOOK
   const { i18n } = useTranslation();
-  
+
   // STATE
-  const [activeLanguage, setActiveLanguage] = useState(i18n.languages[0]);
+  const [ activeLanguage, setActiveLanguage ] = useState( i18n.language );
   
   // HANDLER
-  const onLanguageChange = (langauge) => {
-    i18n.changeLanguage(langauge);
-    setActiveLanguage(langauge);
+  const onLanguageChange = ( language ) => {
+    i18n.changeLanguage( language );
+    setActiveLanguage( language );
   };
 
   // STYLE
-  const activeLanguageCheck = (language) => activeLanguage === language;
+  const activeLanguageCheck = ( language ) => activeLanguage === language;
   
   return (
     <div className='language-toggler'>
       <button 
-        className={ `button--language-toggler ${ activeLanguageCheck(CONSTANTS.LANGUAGE_EN) && 'button--language-toggler--active' }` }
-        onClick={ () => onLanguageChange(CONSTANTS.LANGUAGE_EN) }
-        disabled={ activeLanguageCheck(CONSTANTS.LANGUAGE_EN) }
-      > <span className='button--language-toggler-content'> {CONSTANTS.LANGUAGE_EN} </span>
+        className={ `button--language-toggler ${ activeLanguageCheck( CONSTANTS.LANGUAGE_EN ) && 'button--language-toggler--active' }` }
+        onClick={ () => onLanguageChange( CONSTANTS.LANGUAGE_EN ) }
+        disabled={ activeLanguageCheck( CONSTANTS.LANGUAGE_EN ) }
+      > <span className='button--language-toggler-content'> { CONSTANTS.LANGUAGE_EN } </span>
       </button>
       <button 
-        className={ `button--language-toggler ${ activeLanguageCheck(CONSTANTS.LANGUAGE_HU) && 'button--language-toggler--active' }` }
-        onClick={ () => onLanguageChange(CONSTANTS.LANGUAGE_HU) }
-        disabled={ activeLanguageCheck(CONSTANTS.LANGUAGE_HU) }
-      > <span className='button--language-toggler-content'> {CONSTANTS.LANGUAGE_HU} </span>
+        className={ `button--language-toggler ${ activeLanguageCheck( CONSTANTS.LANGUAGE_HU ) && 'button--language-toggler--active' }` }
+        onClick={ () => onLanguageChange( CONSTANTS.LANGUAGE_HU ) }
+        disabled={ activeLanguageCheck( CONSTANTS.LANGUAGE_HU ) }
+      > <span className='button--language-toggler-content'> { CONSTANTS.LANGUAGE_HU } </span>
       </button>
     </div>
   );
 }
 
-export default LanguageToggler
+export default LanguageToggler;
