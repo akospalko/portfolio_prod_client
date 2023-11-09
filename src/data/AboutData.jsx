@@ -1,20 +1,22 @@
-// About page related data
-import React from 'react'
-import profileImageURL from '../data/profileImageURL.json'
-import { tags } from '../helper/dataControl'
-import { useTranslation } from 'react-i18next'
+// About page my background text data and skill cards data
+import React from 'react';
+import profileImageURL from '../data/profileImageURL.json';
+import TagsData from './TagsData';
+import { useTranslation } from 'react-i18next';
 import { 
   CodeIcon,
   GlobeIcon,
   LanguageIcon,
   OthersIcon,
-} from '../components/SVGComponents'
+} from '../components/SVGComponents';
 
 const AboutData = () => {
   // HOOK
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   // DATA
+  const tags = TagsData();
+
   // my background text 
   const myBackgroundTextData = [
     { id: 1, text: t('about-background-text-1') },
@@ -72,7 +74,7 @@ const AboutData = () => {
     },
     {
       id: 3,
-      icon: <LanguageIcon width={ iconSize } height={ iconSize } fill='var(--color_4)' />,
+      icon: <LanguageIcon width={ iconSize } height={ iconSize } fill={ fillColor } />,
       title: t( 'about-skills-languages' ),
       skills: [
         {
@@ -84,7 +86,7 @@ const AboutData = () => {
     },
     {
       id: 4,
-      icon: <OthersIcon width={ iconSize } height={ iconSize } fill={ 'var(--color_4)' } />,
+      icon: <OthersIcon width={ iconSize } height={ iconSize } fill={ fillColor } />,
       iconAlt: t( 'about-skills-others' ),
       title: t( 'about-skills-others' ),
       skills: [

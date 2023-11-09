@@ -1,13 +1,13 @@
 // About page
-import React from 'react'
-import Anchor from './Anchor'
-import { TagItems } from './TagItems'
-import { useMediaQuery } from 'react-responsive'
-import ImageWithPlaceholder from './ImageWithPlaceholder'
-import { useTranslation } from 'react-i18next'
-import AboutData from '../data/AboutData'
-import './About.css'
-import './Shared.css'
+import React from 'react';
+import Anchor from './Anchor';
+import { Tags } from './Tags';
+import { useMediaQuery } from 'react-responsive';
+import ImageWithPlaceholder from './ImageWithPlaceholder';
+import { useTranslation } from 'react-i18next';
+import AboutData from '../data/AboutData';
+import './About.css';
+import './Shared.css';
 
 export default function About({ isAutoHeight, targetRef }) {
   // PROPS
@@ -15,18 +15,17 @@ export default function About({ isAutoHeight, targetRef }) {
   // targetRef - ref, ref to first page (about) - scroll here on scroll-down button click
   
   // HOOK
-  // query to change bck img size when device screen is btw the specified dimensions to fit the layout better
   const isBetween768PxAnd1023Px = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1023px)'});
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   // DATA
-  const { profileImageURL, myBackgroundTextData, skillCardsData } = AboutData()
+  const { profileImageURL, myBackgroundTextData, skillCardsData } = AboutData();
 
   // ELEMENTS
   // My background
   // profile image
   const profileImage = (
-    <div className='about-background-photo' > 
+    <div className='about-background-photo'> 
       <ImageWithPlaceholder 
         src={ profileImageURL } 
         alt='profile image' 
@@ -36,17 +35,19 @@ export default function About({ isAutoHeight, targetRef }) {
       /> 
     </div>
   ) 
+
   // intro text
   const introductionText = (
     <div className='about-background-text'> 
-      <h2>{ t('about-background-title') }</h2>
-      { myBackgroundTextData.map(elem => (
+      <h2>{ t( 'about-background-title' ) }</h2>
+      { myBackgroundTextData.map( elem => (
         <span key={ elem.id }>
           { elem.text }
         </span>
       )) }
     </div>
   )
+
   // my background text
   const myBackground = (
     <section className='about-background'> 
@@ -57,14 +58,14 @@ export default function About({ isAutoHeight, targetRef }) {
 
   // Skills
   // skill card content group
-  const cardContentGroup = (skillsArray) => (
+  const cardContentGroup = ( skillsArray ) => (
     skillsArray?.map(item => (
       <div key={ item.id } className='about-skill-card-content-group'>
         <div className='about-skill-card-content-group-title'>
           <h3> { item.title } </h3> 
         </div>
         <div className='shared-tags shared-tags--skill'>
-          <TagItems 
+          <Tags 
             tags={ item.tags } 
             tagStyle='shared-tag-item--skill'
             allowDisplayInfo 
@@ -73,6 +74,7 @@ export default function About({ isAutoHeight, targetRef }) {
       </div>
     ))
   )
+
   // skill cards 
   const skillCards = (
     <section className='about-skills'> 
@@ -87,7 +89,7 @@ export default function About({ isAutoHeight, targetRef }) {
             </div>
           </div>
           <div className='about-skill-card-groups'>
-            { cardContentGroup(card.skills) }
+            { cardContentGroup( card.skills ) }
           </div>
         </div>
       ) }
@@ -101,7 +103,7 @@ export default function About({ isAutoHeight, targetRef }) {
       <div className='about-content'>
         {/* Page title */}
         <div className='shared-title'>
-          <h1> { t('about') } </h1>
+          <h1> { t( 'about' ) } </h1>
         </div>
         <div className='about-introduction-wrapper'>
           { myBackground }

@@ -95,14 +95,10 @@
 }
 .shared-tag-item--skill {
   height: 40px;
-  cursor: pointer;
 }
 .shared-tag-item--skill span { 
   width: 100%;
   font-size: var(--font-size--M);
-}
-.shared-tag-item--modal {
-  cursor: pointer;
 }
 
 /* MEDIA */

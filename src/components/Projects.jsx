@@ -7,12 +7,11 @@ import { useMediaQuery } from 'react-responsive';
 import { addConditionalBorderStyle } from './addConditionalBorderStyle';
 import ProjectCardsData from '../data/ProjectCardData';
 import { useTranslation } from 'react-i18next';
-import './Projects.css' ;
-import './Shared.css' ;
+import './Projects.css';
+import './Shared.css';
 
 export default function Projects({ isAutoHeight }) {
   // CONSTANT
-  // project cards
   const projectCards = ProjectCardsData();
   // HOOK
   const isBelow1024Px = useMediaQuery( { query: '(max-width: 1023px)' } );

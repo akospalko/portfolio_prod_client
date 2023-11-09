@@ -1,6 +1,6 @@
 // Project card
 import React from 'react';
-import { TagItems } from './TagItems';
+import { Tags } from './Tags';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
 import './ProjectCard.css';
 import './Shared.css';
@@ -18,7 +18,7 @@ export default function ProjectCard(props) {
         {/* title */}
         <h2> { title } </h2>
         <div className='shared-tags'>
-          <TagItems tags={ tags.slice( 0, 3 ) } />
+          <Tags tags={ tags.slice( 0, 3 ) } />
         </div>
       </div>
       {/* image preview */}

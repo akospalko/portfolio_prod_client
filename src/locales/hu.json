@@ -81,5 +81,17 @@
   "status-img-unavailable": "nincs kép",
   "status-img-loading": "kép töltése...",
   "status-page-not-found": "Upszi, a keresett oldal nem található.",
-  "status-page-error": "Error"
+  "status-page-error": "Error",
+  "tag-basic": "(alap)",
+  "tag-responsive-design": "Reszponzív design",
+  "tag-raster-analysis": "Raszter elemzés",
+  "tag-digital-map": "Digitális térkép készítés",
+  "tag-hungarian": "Magyar (anyanyelv)",
+  "tag-english": "Angol (C1 - C2)",
+  "tag-ukrainian": "Ukrán (B1)",
+  "tag-german": "Német (A2 – B1)",
+  "tag-drivers-license": "Jogosítvány - B kat.",
+  "tag-point-cloud-analysis": "Pontfelhő elemzés",
+  "tag-authentication": "Hitelesítés",
+  "tag-rbac": "RBAC"
 }

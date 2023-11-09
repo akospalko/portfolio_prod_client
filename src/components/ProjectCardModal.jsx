@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useModalContext } from '../context/ModalContext';
 import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from './SVGComponents';
-import { TagItems } from './TagItems';
+import { Tags } from './Tags';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
 import { useTranslation } from 'react-i18next';
 import './ProjectCardModal.css';
@@ -37,8 +37,8 @@ export default function ProjectCardModal() {
   }, [] );
 
   // STYLING 
-  const iconSize = '40px'
-  const iconColor = 'var(--color_5)'
+  const iconSize = '40px';
+  const iconColor = 'var(--color_5)';
 
   // HANDLER
   // handle backdrop click close modal
@@ -88,7 +88,7 @@ export default function ProjectCardModal() {
           <div className='project-card-modal-title'>
             <h2> { title } </h2> 
             {/* modal close */}
-            <div onClick={ () => toggleModalHandler(id, false) } className='project-card-modal-close'> 
+            <div onClick={ () => toggleModalHandler( id, false ) } className='project-card-modal-close'> 
               <MenuCloseIcon 
                 height={ iconSize } 
                 width={ iconSize } 
@@ -97,7 +97,7 @@ export default function ProjectCardModal() {
             </div>
           </div>
           <div className='shared-tags'> 
-            <TagItems 
+            <Tags 
               tags={ tags } 
               tagStyle='shared-tag-item--modal'
               allowDisplayInfo 

@@ -81,5 +81,17 @@
   "status-img-unavailable": "no img",
   "status-img-loading": "loading img...",
   "status-page-not-found": "Opps, the page does not exist.",
-  "status-page-error": "Error"
+  "status-page-error": "Error",
+  "tag-basic": "(basic)",
+  "tag-responsive-design": "Responsive design",
+  "tag-raster-analysis": "Raster analysis",
+  "tag-digital-map": "Digital map creation",
+  "tag-hungarian": "Hungarian (native)",
+  "tag-english": "English (C1 - C2)",
+  "tag-ukrainian": "Ukrainian (B1)",
+  "tag-german": "German (A2 – B1)",
+  "tag-drivers-license": "Driver's license - B cat.",
+  "tag-point-cloud-analysis": "Point cloud analysis",
+  "tag-authentication": "Authentication",
+  "tag-rbac": "RBAC"
 }
