@@ -1,6 +1,5 @@
 // Contact Page 
 import React from 'react'
-import Anchor from './Anchor'
 import ContactForm from './ContactForm'
 import LittleHero from './LittleHero'
 import { WaveAnimation } from './SVGComponents'
@@ -12,7 +11,7 @@ import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks'
 import './Contact.css'
 import './Shared.css'
 
-export default function Contact( { isAutoHeight } ) {
+export default function Contact() {
   // HOOK
   const isBelow768px = useMediaQuery({ query: '(max-width: 768px)'});
   const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause( 'contact', 'var(--color_1)' );
@@ -129,8 +128,7 @@ export default function Contact( { isAutoHeight } ) {
     /> 
 
   return (
-    <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
-      { isAutoHeight && <Anchor componentName='contact' /> }
+    <article className='shared-page-container'>
       <div className='contact-content'>
         <div className='contact-groups-wrapper'>
           <div className='contact-group-1'>
