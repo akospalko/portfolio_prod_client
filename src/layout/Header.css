@@ -36,7 +36,7 @@
   background-color: var(--color_1);
   width: 100%;
   height: calc(100% - var(--header_height));
-  z-index: var(--color_5);
+  z-index: var(--z_3);
 }
 
 .header-toolbar {

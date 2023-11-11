@@ -1,5 +1,5 @@
 // Container to hold page layout: header route/body content, modal
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import PageLoader from './components/PageLoader';
 import Header from './layout/Header';
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -22,7 +22,7 @@ export default function PageLayout() {
   
   // CONTEXT
   const { isModalToggled } = useModalContext();
-  
+
   return (
     <>
       <Header />

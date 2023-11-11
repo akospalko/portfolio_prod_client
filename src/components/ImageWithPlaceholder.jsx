@@ -42,7 +42,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
     <>
       <img
         className='image'
-        srcSet={ `${src.small} 500w, ${src.medium} 1200w, ${ src.large } 1500w` } 
+        srcSet={ `${ src.small } 500w, ${ src.medium } 1200w, ${ src.large } 1500w` } 
         sizes='(max-width: 499px) 100vw, (max-width: 768px) 600px, 1000px'
         src={ src.medium }
         alt={ alt }
@@ -53,7 +53,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
         <div 
           className={ `image-placeholder ${ isImageError ? 'image-placeholder--hidden' : ''}` }
           style={ placeholderStyle }
-          title={ t( 'statuas-img-unavailable' ) } 
+          title={ t( 'status-img-unavailable' ) } 
         > 
           <ImagePlaceholderIcon 
             fill='var(--color_3_light)' 
@@ -62,7 +62,7 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
             width='100%'
           />
           <span> 
-            { isImageError ? t( 'statuas-img-unavailable') : t( 'status-img-loading' ) }
+            { isImageError ? t( 'status-img-unavailable') : t( 'status-img-loading' ) }
           </span>
         </div>
     </>
