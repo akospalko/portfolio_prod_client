@@ -1,10 +1,10 @@
 // Container to hold page layout: header route/body content, modal
 import React, { lazy, Suspense } from 'react';
+import PageLoader from './components/PageLoader';
 import Header from './layout/Header';
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useModalContext } from './context/ModalContext';
 import { ToastContainer } from 'react-toastify';
-import PageLoader from './components/PageLoader';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -37,24 +37,22 @@ export default function PageLayout() {
   
   // CONTEXT
   const { isModalToggled } = useModalContext();
-
+  
   return (
-    <Suspense fallback={ <PageLoader /> }>
-      {/* Modal */}
-      { isModalToggled && <ProjectCardModal/> }
-      {/* Toast */}
+    <>
+    <Header />
       <ToastContainer { ...toastProps } />
-      {/* Header/Navigation layout */}
-      { <Header /> }
-      {/* Routes */}
-        <Routes>
-          <Route path={ '/' } element={ <Home/> } />
-          <Route path={ '/about' } element={ <About/> } /> 
-          <Route path={ '/projects' } element={ <Projects/> } />  
-          <Route path={ '/contact' } element={ <Contact/> } /> 
-          <Route path={ '*' } element={ <ErrorPage/> } />
-        </Routes>
-      { [ '/about', '/projects', '/contact' ].includes( location.pathname ) && <Footer/> }
-    </Suspense>
+      <Suspense fallback={ <PageLoader /> }>
+        { isModalToggled && <ProjectCardModal/> }
+          <Routes>
+            <Route path={ '/' } element={ <Home/> } />
+            <Route path={ '/about' } element={ <About/> } /> 
+            <Route path={ '/projects' } element={ <Projects/> } />  
+            <Route path={ '/contact' } element={ <Contact/> } /> 
+            <Route path={ '*' } element={ <ErrorPage/> } />
+          </Routes>
+        { [ '/about', '/projects', '/contact' ].includes( location.pathname ) && <Footer/> }
+      </Suspense>
+    </>
   )
 }

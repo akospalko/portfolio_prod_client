@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+.shared-page-container--initial-loader {
+  position: absolute;
+  top: var(--header_height);
+  min-height: calc(100vh - var(--header_height));
+}
+
 .shared-title {
   min-height: 100px;
   text-transform: uppercase;

@@ -7,32 +7,6 @@ https://loading.io/ - animated background
 import React from 'react'
 import './Shared.css'
 
-// // Anchor icon (align view to the top position of the page)
-// export function AnchorIcon({ 
-//   width, 
-//   height, 
-//   fill="none", 
-//   stroke="currentColor" 
-// }) {
-//   return (
-//     <svg xmlns="http://www.w3.org/2000/svg" 
-//       width={ width } 
-//       height={ height }
-//       viewBox="-8 -8 37 37"
-//     >
-//       <g
-//         fill={ fill }
-//         fillRule="evenodd"
-//         stroke={ stroke }
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//       >
-//         <path d="M9.5 11.5c.97 1.367 3.011 1.127 4.011 0l1.989-2c1.124-1.228 1.164-2.814 0-4-1.136-1.157-2.864-1.157-4 0l-2 2"></path>
-//         <path d="M11.5 10.57c-.97-1.367-3-1.197-4-.07l-2 1.975c-1.124 1.228-1.164 2.839 0 4.025 1.136 1.157 2.864 1.157 4 0l2-2"></path>
-//       </g>
-//     </svg>
-//   );
-// }
 // Link icon
 export function LinkIcon({ width, height, fill }) {
   return (
@@ -1151,3 +1125,261 @@ export const OceanAnimation = ({ minHeight, minWidth, isStatic }) => {
     </svg>
   )
 };
+
+// Bubble loader
+export const BubbleLoader = ({ height, width, color1, color2, color3 }) => {
+  return (
+    <svg
+      width={ height || 200 }
+      height={ width || 200 }
+      preserveAspectRatio="xMidYMid"
+      style={ {
+        margin: "auto",
+        background: "rgba(255, 255, 255, 0)",
+        display: "block",
+      } }
+      viewBox="0 0 100 100"
+    >
+      <defs>
+        <pattern
+          id="a"
+          width={100}
+          height={100}
+          x={0}
+          y={0}
+          patternUnits="userSpaceOnUse"
+        >
+          <rect width={100} height={100} x={0} y={0} fill={ color1 || "#eeeeee" } />
+          <circle cx={8} cy={0} r={3} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-0.34615384615384615s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 133;0 -33"
+            />
+          </circle>
+          <circle cx={88} cy={0} r={3} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.4230769230769231s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 148;0 -48"
+            />
+          </circle>
+          <circle cx={2} cy={0} r={6} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-0.3076923076923077s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 128;0 -28"
+            />
+          </circle>
+          <circle cx={25} cy={0} r={1} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.4423076923076923s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 139;0 -39"
+            />
+          </circle>
+          <circle cx={16} cy={0} r={5} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.7884615384615385s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 130;0 -30"
+            />
+          </circle>
+          <circle cx={49} cy={0} r={1} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-0.9423076923076923s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 126;0 -26"
+            />
+          </circle>
+          <circle cx={32} cy={0} r={3} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 139;0 -39"
+            />
+          </circle>
+          <circle cx={87} cy={0} r={5} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.0576923076923077s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 149;0 -49"
+            />
+          </circle>
+          <circle cx={96} cy={0} r={3} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.6538461538461537s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 142;0 -42"
+            />
+          </circle>
+          <circle cx={56} cy={0} r={6} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.2115384615384615s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 133;0 -33"
+            />
+          </circle>
+          <circle cx={99} cy={0} r={7} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-0.2692307692307692s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 111;0 -11"
+            />
+          </circle>
+          <circle cx={87} cy={0} r={8} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.4807692307692308s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 152;0 -52"
+            />
+          </circle>
+          <circle cx={77} cy={0} r={3} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-0.6923076923076923s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 126;0 -26"
+            />
+          </circle>
+          <circle cx={3} cy={0} r={6} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.4423076923076923s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 135;0 -35"
+            />
+          </circle>
+          <circle cx={4} cy={0} r={5} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.6346153846153846s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 130;0 -30"
+            />
+          </circle>
+          <circle cx={51} cy={0} r={4} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.75s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 147;0 -47"
+            />
+          </circle>
+          <circle cx={23} cy={0} r={7} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-0.8653846153846154s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 137;0 -37"
+            />
+          </circle>
+          <circle cx={24} cy={0} r={2} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.1538461538461537s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 111;0 -11"
+            />
+          </circle>
+          <circle cx={27} cy={0} r={1} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.1730769230769231s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 136;0 -36"
+            />
+          </circle>
+          <circle cx={91} cy={0} r={2} fill={ color2 || "#191e23" }>
+            <animateTransform
+              attributeName="transform"
+              begin="-1.4038461538461537s"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              repeatCount="indefinite"
+              type="translate"
+              values="0 136;0 -36"
+            />
+          </circle>
+        </pattern>
+      </defs>
+      <circle
+        cx={50}
+        cy={50}
+        r={40}
+        fill="url(#a)"
+        stroke={ color3 || "#191e23" }
+        strokeWidth={5}
+      />
+    </svg>
+  );
+}
