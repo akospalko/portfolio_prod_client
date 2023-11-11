@@ -153,7 +153,7 @@
 
   .navigation-header-item-large { 
     padding: 0 0.5rem;
-    min-width: 100px;
+    min-width: auto;
     height: 100%;
   }
 
@@ -169,6 +169,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  /* HEADER */
+  .navigation-header-item-large { 
+    min-width: 100px;
+  }
   /* FOOTER */
   .navigation-footer-item-large span {
     font-size: calc(var(--font-size--L) * 1.3);
