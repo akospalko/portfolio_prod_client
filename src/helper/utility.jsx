@@ -1,15 +1,4 @@
 // Utility functions
-// find anchor link obj to populate navigation anchor tag
-export const findAnchorLink = (navigationData, itemToFind) => {
-  let anchorObj = {}
-  navigationData.find((elem) => {
-    if(elem.path.split('/').pop()  === itemToFind) {
-      anchorObj = elem;    
-    }
-  })
-  return anchorObj; 
-}
-
 // build input fields from contact form data
 export const buildForm = (formElements) => {
   const newFormArr = [];
@@ -27,3 +16,11 @@ export const buildForm = (formElements) => {
   }
   return newFormObj;
 }
+
+// scroll smoothly to top of page
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};

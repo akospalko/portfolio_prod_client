@@ -1,12 +1,12 @@
 // Header for all layouts
 import React, { useEffect } from 'react';
 import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
-import { NavLink } from "react-router-dom";
-import Navigation from './Navigation';
 import { useMediaQuery } from 'react-responsive';
 import { useModalContext } from '../context/ModalContext';
 import LanguageToggler from '../components/LanguageToggler';
 import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks';
+import NavigationElements from './NavigationElements';
+import { CustomNavLink } from './CustomNavLink';
 import './Header.css';
 
 export default function Header() {
@@ -29,50 +29,44 @@ export default function Header() {
     if( isMenuToggled && !isBelow768Px ) {
       toggleMenuHandler( true );
     }
-  }, [ isMenuToggled, isBelow768Px ])
+  }, [ isMenuToggled, isBelow768Px ] )
 
   // ELEMENTS
-  // Logo
-  const logo = (
-    <div 
-      className='header-logo-container'
-      onClick={ () => toggleMenuHandler( true ) }
-    >  
-      <NavLink 
-        to={ '/' }
-        className={ ( { isActive } ) => (
-          isActive ? 
-            'header-logo header-logo--active' 
-            : 
-            'header-logo' 
-        ) }
-      > 
-        <LogoIcon width={ iconSizeLogo } height={ iconSizeLogo } />
-      </NavLink>
+  // Logo icon that navigates to home page on click
+  const HomeLogoNavigation = (
+    <div className='header-logo-container'>  
+      <CustomNavLink 
+        style={ { normal: 'navigation-home' } }
+        onClick={ () => toggleMenuHandler( true ) }
+        content={ <LogoIcon width={ iconSizeLogo } height={ iconSizeLogo } /> }
+      />
     </div>
   )
 
   // Highlighted contact links
+  const contacts = [ 'Github', 'LinkedIn' ];
   const highlightedContacts = (
     <div className={ `header-contacts ${ isBelow768Px ? 'header-contacts--small-layout' : 'header-contacts--large-layout' }` }>
       { availabilityAndProfileLinks
-        ?.filter(contact => contact.title === 'Github' || contact.title === 'LinkedIn')
-        ?.map(contact => {
-          return (
-            <a 
-              key={ contact.id } 
-              className={ `header-contacts-item ${ isBelow768Px ? 'header-contacts-item--small-layout' : 'header-contacts-item--large-layout' }` }
-              title={ contact.title }
-              href={ contact.link }
-              target='_blank' 
-              rel='noopener noreferrer'
-            > { contact.icon(iconColorHighlightedContacts) } 
-            </a>
-          )
-        }) 
-      }
+        ?.filter( contact => contacts.includes( contact.title ) )
+        .map( contact => (
+          <a
+            key={ contact.id }
+            className={`header-contacts-item ${
+              isBelow768Px
+                ? 'header-contacts-item--small-layout'
+                : 'header-contacts-item--large-layout'
+            }`}
+            title={ contact.title }
+            href={ contact.link }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            { contact.icon(iconColorHighlightedContacts) }
+          </a>
+        ) ) }
     </div>
-  )
+  );
 
   // Header's toolbar (language toggler, social icons)
   const toolbarLargeScreen = (
@@ -114,7 +108,10 @@ export default function Header() {
   // menu modal (for small screen layout)
   const menuModal = (
     <div className='header-menu-modal'>
-      <Navigation/>
+        { isBelow768Px ?
+        <NavigationElements 
+          type='header-small' 
+        /> : null } 
       { highlightedContacts }
     </div>
   )
@@ -124,7 +121,7 @@ export default function Header() {
   const smallScreenLayout = (
     <>
       { menuToggler }
-      { logo }
+      { HomeLogoNavigation }
       { toolbarSmallScreen }
       { isMenuToggled || !isBelow768Px ? menuModal : null }
     </>
@@ -133,8 +130,8 @@ export default function Header() {
   // customized layout for large screens
   const largeScreenLayout = (
     <>
-      { logo }
-      <Navigation />
+      { HomeLogoNavigation }
+      { isBelow768Px ? null : <NavigationElements type='header-large'/> } 
       { toolbarLargeScreen }
     </>
   );
