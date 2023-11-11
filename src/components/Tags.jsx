@@ -1,6 +1,7 @@
 // Reusable component to render out an array of tags [{}]
 import React from 'react';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+// import { toasterProps } from '../helper/utility';
 
 export function Tags (props) {
   // PROPS
@@ -9,21 +10,10 @@ export function Tags (props) {
     tagStyle, // string, component specific styling  
   } = props;
 
-  // 
-  // toaster with tag info
-  const callToaster = (tagInfo = '') => {
-    toast(tagInfo, {
-      position: "top-right",
-      className: 'toast-message',
-      autoClose: 7000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  };
+  // toaster with tag info // currently not used
+  // const callToaster = (tagInfo = '') => {
+  //   toast(tagInfo, toasterProps);
+  // };
 
   // HANDLER
   // tag item colors: border, background, font colors

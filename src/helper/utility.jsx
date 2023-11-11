@@ -24,3 +24,16 @@ export const scrollToTop = () => {
     behavior: 'smooth',
   });
 };
+
+// toaster props
+export const toasterProps = {
+  position: 'top-right',
+  className: 'toast-message',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'dark',
+} 
