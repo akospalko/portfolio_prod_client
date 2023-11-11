@@ -1,54 +1,43 @@
 // Container to hold page layout: header route/body content, modal
-import React from 'react';
-import './App.css'
-import Header from './layout/Header'
-import { Route, Routes } from "react-router-dom"
-import About from './components/About'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import FullContent from './components/FullContent'
-import ErrorPage from './components/ErrorPage'
+import React, { lazy, Suspense } from 'react';
+import PageLoader from './components/PageLoader';
+import Header from './layout/Header';
+import { Route, Routes, useLocation } from "react-router-dom";
 import { useModalContext } from './context/ModalContext';
-import ProjectCardModal from './components/ProjectCardModal'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
+
+// Lazy-loaded components
+const Home = lazy( () => import('./components/Home') );
+const About = lazy( () => import('./components/About') );
+const Projects = lazy( () => import('./components/Projects') );
+const Contact = lazy( () => import('./components/Contact') );
+const ErrorPage = lazy( () => import('./components/ErrorPage') );
+const ProjectCardModal = lazy( () => import('./components/ProjectCardModal') );
+const Footer = lazy( () => import('./layout/Footer') );
+const ToasterInitializer = lazy( () => import('./components/ToasterInitializer') );
 
 export default function PageLayout() {
-  // PROPS
-  const toastProps = {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    newestOnTop: false,
-    closeOnClick: true,
-    rtl: false,
-    pauseOnFocusLoss: true,
-    draggable: true,
-    pauseOnHover: true,
-    theme: "dark",
-  }; 
-
+  // HOOK
+  const location = useLocation(); 
+  
   // CONTEXT
   const { isModalToggled } = useModalContext();
-
+  
   return (
     <>
-      {/* Modal */}
-      { isModalToggled && <ProjectCardModal /> }
-      {/* Toast */}
-      <ToastContainer { ...toastProps } />
-      
-      {/* Header/Navigation layout */}
-      { <Header /> }
-      {/* Routes */}
-      <Routes>
-        <Route path={ '/' } element={ <FullContent/> } />
-        <Route path={ '/about' } element={ <About/> } /> 
-        <Route path={ '/projects' } element={ <Projects/> } />  
-        <Route path={ '/contact' } element={ <Contact/> } /> 
-        <Route path={ '*' } element={ <ErrorPage/> } />
-      </Routes>
-    
+      <Header />
+      <Suspense fallback={ <PageLoader/> }>
+        <ToasterInitializer/>
+        { isModalToggled && <ProjectCardModal/> }
+          <Routes>
+            <Route path={ '/' } element={ <Home/> } />
+            <Route path={ '/about' } element={ <About/> } /> 
+            <Route path={ '/projects' } element={ <Projects/> } />  
+            <Route path={ '/contact' } element={ <Contact/> } /> 
+            <Route path={ '*' } element={ <ErrorPage/> } />
+          </Routes>
+        { [ '/about', '/projects', '/contact' ].includes( location.pathname ) && <Footer/> }
+      </Suspense>
     </>
   )
 }

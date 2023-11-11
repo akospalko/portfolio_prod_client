@@ -2,17 +2,18 @@
 import React from 'react';
 import { ArrowIcon, OceanAnimation } from './SVGComponents';
 import { useAnimationPause } from '../hooks/useAnimationPause';
-import Anchor from './Anchor';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import './Shared.css';
 
-export default function Home({ handleScrollDown }) {
+export default function Home() {
   // HOOK
   // toggle background animation
   const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause( 'home' );
   const { t } = useTranslation();
-  
+  const navigate = useNavigate();
+
   // ELEMENTS
   // Text
   // header title
@@ -43,12 +44,25 @@ export default function Home({ handleScrollDown }) {
     </div>
   )
 
+  // STYLE
+  const iconSize = '30px'; 
+  const iconColor = 'var(--color_4)';
+  const iconRotate = '180';
+
   // Misc
   // toolbar located at bottom of home page. containing scroll down button and toggle bck animation
   const homeBottomToolbar = (
-    <div className='home-bottom-toolbar' > 
-      <div className='home-scroll-down-button' onClick={ handleScrollDown }> 
-        <ArrowIcon height='30px' width='30px' fill='var(--color_4)' rotate='180' />
+    <div className='home-bottom-toolbar'> 
+      <div 
+        className='home-scroll-down-button' 
+        onClick={ () => { navigate('/about') } }
+      > 
+        <ArrowIcon 
+          height={ iconSize } 
+          width={ iconSize } 
+          fill={ iconColor } 
+          rotate={ iconRotate } 
+        />
       </div>
       { pauseBackgroundAnimationButton } 
     </div>
@@ -61,10 +75,8 @@ export default function Home({ handleScrollDown }) {
   )
 
   return (
-    <article className='shared-page-container'>
-      {/* anchor tag */}
-      <Anchor componentName='home' /> 
-      <div className='home-content' > 
+    <article className='shared-page-container' >
+      <div className='home-content'> 
         { homeTitle }
         { homeSubitle }
         { homeIntroduction }

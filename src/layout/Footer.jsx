@@ -4,19 +4,16 @@ import { LogoIcon } from '../components/SVGComponents';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
-import NavigationData from '../data/NavigationElementsData';
 import useCurrentYear from '../hooks/useCurrentYear';
 import './Footer.css';
 import '../components/Shared.css';
+import NavigationElements from './NavigationElements';
 
 export default function Footer() {
   // HOOK
   const isBelow768Px = useMediaQuery( { query: '(max-width: 767px)' } );
   const { t } = useTranslation();
   const currentYear = useCurrentYear();
-
-  // DATA
-  const navigationElementsData = NavigationData();
 
   // STYLE 
   const iconSizeSmall = '40px';
@@ -42,21 +39,6 @@ export default function Footer() {
   const scrollToTop = (
     <div className='footer-scroll-to-top'>
       { isBelow768Px ? smallScreenBrandingScrollToTop : largeScreenBrandingScrollToTop }
-    </div>
-  )
-
-  // Navigation elements 
-  const navigationElements = (
-    <div className='footer-navigation-elements'> 
-      { navigationElementsData.map( elem => (
-        <a 
-          key={ elem.id }
-          href={ `#${ elem.name }` }
-          className='footer-navigation-element'
-        > 
-          <span> { elem.name } </span> 
-        </a>
-      ) ) }
     </div>
   )
 
@@ -91,17 +73,21 @@ export default function Footer() {
   const smallScreenLayout = (
     <>
       { scrollToTop }
-      { navigationElements }
+      {/* { navigationElements } */}
+      {/* <Navigation/> */}
+      <NavigationElements type='footer-small'/>
       { smallScreenBranding }
     </>
   )
-    
+  
   // customized layout for large screens
   const largeScreenLayout = (
     <>
       <div className='footer-group-1'> 
         { largeScreenBranding }
-        { navigationElements }  
+        {/* { navigationElements } */}
+        {/* <Navigation/> */}
+        <NavigationElements type='footer-large'/>
       </div>
       { scrollToTop }
     </>

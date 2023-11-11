@@ -1,6 +1,5 @@
 // About page
 import React from 'react';
-import Anchor from './Anchor';
 import { Tags } from './Tags';
 import { useMediaQuery } from 'react-responsive';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
@@ -9,11 +8,7 @@ import AboutData from '../data/AboutData';
 import './About.css';
 import './Shared.css';
 
-export default function About({ isAutoHeight, targetRef }) {
-  // PROPS
-  // isAutoHeight - bool, layout condition for single / multiple pages 
-  // targetRef - ref, ref to first page (about) - scroll here on scroll-down button click
-  
+export default function About() {
   // HOOK
   const isBetween768PxAnd1023Px = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1023px)'});
   const { t } = useTranslation();
@@ -97,9 +92,8 @@ export default function About({ isAutoHeight, targetRef }) {
   )
       
   return (
-    <article ref={ targetRef } className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
+    <article className='shared-page-container'>
       {/* anchor tag for full content page */}
-      { isAutoHeight && <Anchor componentName='about'/> }
       <div className='about-content'>
         {/* Page title */}
         <div className='shared-title'>

@@ -11,7 +11,7 @@
   align-items: center;
   cursor: pointer;
   background-color: var(--color_1);
-  z-index: var(--z_11);
+  z-index: var(--z_12);
 } 
 
 .project-card-modal {
@@ -21,7 +21,7 @@
   width: 100%;
   cursor: default; 
   overflow-y: auto;
-  z-index: var(--z_11);
+  z-index: var(--z_12);
   border-radius: 10px;
 }
 

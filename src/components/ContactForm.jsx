@@ -1,16 +1,16 @@
 // Content send message form 
 import React, { useState, useEffect, useCallback } from 'react'
-import { buildForm, getFormValues } from '../helper/utility'
-import useValidateReCaptcha from '../hooks/useValidateReCaptcha'
-import { LoaderIcon } from './SVGComponents'
-import axios from 'axios'
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
-import { validateForm } from '../helper/validateForm'
-import { toast } from 'react-toastify'
-import ContactFormData from '../data/ContactFormData'
-import { useTranslation } from 'react-i18next'
-import useCalculateRemainingCharacters from '../hooks/useCalculateRemainingCharacters'
-import './ContactForm.css'
+import { buildForm, getFormValues, toasterProps } from '../helper/utility';
+import useValidateReCaptcha from '../hooks/useValidateReCaptcha';
+import { LoaderIcon } from './SVGComponents';
+import axios from 'axios';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { validateForm } from '../helper/validateForm';
+import { toast } from 'react-toastify';
+import ContactFormData from '../data/ContactFormData';
+import { useTranslation } from 'react-i18next';
+import useCalculateRemainingCharacters from '../hooks/useCalculateRemainingCharacters';
+import './ContactForm.css';
 
 export default function ContactForm() {
   // HOOKS 
@@ -18,6 +18,7 @@ export default function ContactForm() {
   const { validateReCaptcha } = useValidateReCaptcha();
   const { t, i18n } = useTranslation();
 
+  // DATA
   const initializeContactFormData = ContactFormData();
 
   // STATES
@@ -42,20 +43,10 @@ export default function ContactForm() {
   // HANDLERS
   // toaster with mail send status message 
   const callToaster = ( status = '' ) => {
-    toast( status, {
-      position: 'top-right',
-      className: 'toast-message',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    } );
+    toast( status, toasterProps );
   };
 
-// input change handler
+  // input change handler
   const changeHandler = ( e ) => {
     e.preventDefault();
     const { name: eventName, value: eventValue } = e.target;
@@ -95,7 +86,7 @@ export default function ContactForm() {
         const mailData = getFormValues( contactData );
         const sendMailResponse = await axios.post( `${ import.meta.env.VITE_AXIOS_BASE_URL }/sendmail`, mailData );
         setStatusMessage( sendMailResponse.data.statusMessage );
-        setContactData( contactFormData ) // reset form to its initial state  
+        setContactData( contactData ) // reset form to its initial state  
       } catch ( error ) {
         setStatusMessage(`${ error.response.data.statusMessage } ( ${ error.response.status } )` );
         setIsFormValid( true ); // revert back form validity (re-enable send button)

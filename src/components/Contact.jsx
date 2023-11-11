@@ -1,18 +1,18 @@
 // Contact Page 
-import React from 'react'
-import Anchor from './Anchor'
-import ContactForm from './ContactForm'
-import LittleHero from './LittleHero'
-import { WaveAnimation } from './SVGComponents'
-import { toast } from 'react-toastify'
-import { useMediaQuery } from 'react-responsive'
-import { useAnimationPause } from '../hooks/useAnimationPause'
-import { useTranslation } from 'react-i18next'
-import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks'
-import './Contact.css'
-import './Shared.css'
+import React from 'react';
+import ContactForm from './ContactForm';
+import LittleHero from './LittleHero';
+import { WaveAnimation } from './SVGComponents';
+import { toast } from 'react-toastify';
+import { useMediaQuery } from 'react-responsive';
+import { useAnimationPause } from '../hooks/useAnimationPause';
+import { useTranslation } from 'react-i18next';
+import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks';
+import { toasterProps } from '../helper/utility';
+import './Shared.css';
+import './Contact.css';
 
-export default function Contact( { isAutoHeight } ) {
+export default function Contact() {
   // HOOK
   const isBelow768px = useMediaQuery({ query: '(max-width: 768px)'});
   const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause( 'contact', 'var(--color_1)' );
@@ -22,17 +22,7 @@ export default function Contact( { isAutoHeight } ) {
   // HANDLERS
   // send toast when contact item is copied to clipboard
   const copyClipboardToastHandler = ( copiedItem ) => {
-    toast(`${ copiedItem } is copied to cliplboard`, {
-      position: 'top-right',
-      className: 'toast-message',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'dark',
-    });
+    toast(`${ copiedItem } is copied to cliplboard`, toasterProps);
   }
 
   // ELEMENTS
@@ -129,8 +119,7 @@ export default function Contact( { isAutoHeight } ) {
     /> 
 
   return (
-    <article className={ `shared-page-container ${ isAutoHeight && 'shared-page-container--autoheight' }` }>
-      { isAutoHeight && <Anchor componentName='contact' /> }
+    <article className='shared-page-container'>
       <div className='contact-content'>
         <div className='contact-groups-wrapper'>
           <div className='contact-group-1'>
