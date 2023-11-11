@@ -35,9 +35,9 @@ export default function Home() {
       <div className='home-introduction-text'> 
         <span>  
           { t( 'web-developer-1' ) }
-          <u> { t( 'web-developer-2' ) } </u>
+          <u>{ t( 'web-developer-2' ) }</u>
           { t( 'web-developer-experience' ) }
-          <u> { t( 'gis-specialist' ) } </u>
+          <u>{ t( 'gis-specialist' ) }</u>
           { t( 'gis-specialist-experience' ) }
         </span>
       </div>
