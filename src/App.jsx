@@ -26,22 +26,25 @@ function App() {
   }, []);
 
   return (
-  <>
-    {!isPageLoaded ? 
-      <PageLoader style='shared-page-container--initial-loader'/> 
-      : 
-      ( <div className='layout-container'>
-          <I18nextProvider i18n={ i18n }>
-            <ModalProvider>
-            <GoogleReCaptchaProvider reCaptchaKey={ import.meta.env.VITE_CAPTCHA_V3_SITE_KEY }>
-              <PageLayout/>
-            </GoogleReCaptchaProvider>
-            </ModalProvider>
-          </I18nextProvider>
-        </div> 
-      )
-    }
-  </>
+    <>
+      <I18nextProvider i18n={ i18n }>
+      <ModalProvider>
+      <GoogleReCaptchaProvider reCaptchaKey={ import.meta.env.VITE_CAPTCHA_V3_SITE_KEY }>
+       
+        {/* <PageLayout/> */}
+  
+        {!isPageLoaded ? 
+          <PageLoader style='shared-page-container--initial-loader'/> 
+          : 
+          ( <div className='layout-container'>
+                  <PageLayout/>
+            </div> 
+          )
+        }
+      </GoogleReCaptchaProvider>
+      </ModalProvider>
+      </I18nextProvider>
+    </>
   )
 }
 
