@@ -2,7 +2,7 @@
 import React from 'react';
 import { LogoIcon } from '../components/SVGComponents';
 import ScrollToTopButton from '../components/ScrollToTopButton';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { useTranslation } from 'react-i18next';
 import useCurrentYear from '../hooks/useCurrentYear';
 import './Footer.css';
@@ -11,7 +11,7 @@ import NavigationElements from './NavigationElements';
 
 export default function Footer() {
   // HOOK
-  const isBelow768Px = useMediaQuery( { query: '(max-width: 767px)' } );
+  const isBelow768Px = useMediaQuery('(max-width: 767px)');
   const { t } = useTranslation();
   const currentYear = useCurrentYear();
 

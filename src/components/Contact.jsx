@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 import LittleHero from './LittleHero';
 import { WaveAnimation } from './SVGComponents';
 import { toast } from 'react-toastify';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { useAnimationPause } from '../hooks/useAnimationPause';
 import { useTranslation } from 'react-i18next';
 import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks';
@@ -14,7 +14,7 @@ import './Contact.css';
 
 export default function Contact() {
   // HOOK
-  const isBelow768px = useMediaQuery({ query: '(max-width: 768px)'});
+  const isBelow768px = useMediaQuery('(max-width: 768px)');
   const { isAnimationPaused, pauseBackgroundAnimationButton } = useAnimationPause( 'contact', 'var(--color_1)' );
   const { t } = useTranslation(); 
   const { availabilityAndProfileLinks } = AvailabilityAndProfileLinks();

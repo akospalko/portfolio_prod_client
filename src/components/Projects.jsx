@@ -2,8 +2,8 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import { useModalContext } from '../context/ModalContext';
-import { useMediaQuery } from 'react-responsive';
 import { addConditionalBorderStyle } from './addConditionalBorderStyle';
+import useMediaQuery from '../hooks/useMediaQuery';
 import ProjectCardsData from '../data/ProjectCardData';
 import { useTranslation } from 'react-i18next';
 import './Projects.css';
@@ -13,8 +13,8 @@ export default function Projects() {
   // CONSTANT
   const projectCards = ProjectCardsData();
   // HOOK
-  const isBelow1024Px = useMediaQuery( { query: '(max-width: 1023px)' } );
-  const isBelow768Px = useMediaQuery( { query: '(max-width:767px)' } );
+  const isBelow1024Px = useMediaQuery('(max-width: 1023px)');
+  const isBelow768Px = useMediaQuery('(max-width:767px)');
   const { t } = useTranslation();
 
   // CONTEXT 

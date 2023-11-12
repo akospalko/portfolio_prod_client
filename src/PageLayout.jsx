@@ -4,7 +4,6 @@ import PageLoader from './components/PageLoader';
 import Header from './layout/Header';
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useModalContext } from './context/ModalContext';
-import './App.css';
 
 // Lazy-loaded components
 const Home = lazy( () => import('./components/Home') );

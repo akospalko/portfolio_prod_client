@@ -2,12 +2,12 @@
 import React from 'react';
 import './ScrollToTopButton.css';
 import { ArrowIcon } from './SVGComponents';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { scrollToTop } from '../helper/utility';
 
 const ScrollToTopButton = () => {
   // HOOK
-  const isBelow768Px = useMediaQuery({ query: '(max-width: 767px)' })
+  const isBelow768Px = useMediaQuery('(max-width: 767px)')
 
   // STYLE
   const iconSize = isBelow768Px ? "40px" : "30px";

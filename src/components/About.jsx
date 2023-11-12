@@ -1,7 +1,7 @@
 // About page
 import React from 'react';
 import { Tags } from './Tags';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '../hooks/useMediaQuery';
 import ImageWithPlaceholder from './ImageWithPlaceholder';
 import { useTranslation } from 'react-i18next';
 import AboutData from '../data/AboutData';
@@ -10,7 +10,7 @@ import './Shared.css';
 
 export default function About() {
   // HOOK
-  const isBetween768PxAnd1023Px = useMediaQuery({ query: '(min-width: 768px) and (max-width: 1023px)'});
+  const isBetween768PxAnd1023Px = useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const { t } = useTranslation();
 
   // DATA
