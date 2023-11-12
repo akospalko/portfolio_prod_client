@@ -1,7 +1,7 @@
 // Header for all layouts
 import React, { useEffect } from 'react';
 import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
-import { useMediaQuery } from 'react-responsive';
+import useMediaQuery from '../hooks/useMediaQuery';
 import { useModalContext } from '../context/ModalContext';
 import LanguageToggler from '../components/LanguageToggler';
 import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks';
@@ -17,7 +17,7 @@ export default function Header() {
   const iconColorHighlightedContacts = 'var(--color_4)';
 
   // HOOK
-  const isBelow768Px = useMediaQuery( { query: '(max-width: 767px)' } );
+  const isBelow768Px = useMediaQuery('(max-width: 767px)');
   const { availabilityAndProfileLinks } = AvailabilityAndProfileLinks();
   
   // CONTEXT 
