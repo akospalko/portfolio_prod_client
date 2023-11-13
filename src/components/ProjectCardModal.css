@@ -47,7 +47,7 @@
 
 .project-card-modal-title h2 {
   width: 100%;
-  font-size: var(--header-2--S);
+  font-size: calc(var(--header-2--S) * 1.1);
   margin: 0 0 1.5rem 0;
   word-break: break-all;
 }
@@ -184,7 +184,7 @@
   }
 
   .project-card-modal-title h2 {
-    font-size: var(--header-2--M);
+    font-size: calc(var(--header-2--M) * 1.1);
   }
 
   .project-card-modal-content-header h3 {
@@ -213,7 +213,7 @@
   }
 
   .project-card-modal-title h2 {
-    font-size: var(--header-2--L);
+    font-size: calc(var(--header-2--L) * 1.1);
   }
 
   .project-card-modal-header, 
