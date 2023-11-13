@@ -169,7 +169,7 @@
 }
 
 /* MEDIA */
-@media screen and (max-width: 299px) {
+@media screen and (max-width: 249px) {
   .project-card-modal-wrapper {
     overflow-x: scroll;
   }
