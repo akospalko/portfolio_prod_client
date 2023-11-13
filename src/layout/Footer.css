@@ -43,14 +43,9 @@
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 150px) { 
-  .footer-branding span {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 1rem 0;
-    font-size: 0.5rem;
-    line-height: calc(0.5rem * 1.3);
+@media screen and (max-width: 299px) { 
+  .footer-container {
+    width: 350px;
   }
 }
 

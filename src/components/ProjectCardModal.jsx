@@ -37,7 +37,8 @@ export default function ProjectCardModal() {
   }, [] );
 
   // STYLING 
-  const iconSize = '40px';
+  const headerIconSize = '40px';
+  const closeIconSize = '25px';
   const iconColor = 'var(--color_5)';
 
   // HANDLER
@@ -49,7 +50,7 @@ export default function ProjectCardModal() {
   }
 
   // ELEMENTS
-  // mapped what i learned items
+  // mapped learned items
   const whatILearned = (
     <>
       { learnedAbout?.map( item => 
@@ -81,17 +82,21 @@ export default function ProjectCardModal() {
 
   return (
     <div onClick={ handleBackdropClick } className='project-card-modal-backdrop'>
-      <div className='project-card-modal'>
+      <div className='project-card-modal-wrapper'>
+        <div className='project-card-modal'>
         {/* header */}
         <div className='project-card-modal-header'> 
           {/* title */}
           <div className='project-card-modal-title'>
             <h2> { title } </h2> 
             {/* modal close */}
-            <div onClick={ () => toggleModalHandler( id, false ) } className='project-card-modal-close'> 
+            <div 
+              className='project-card-modal-close'
+              onClick={ () => toggleModalHandler( id, false ) } 
+            > 
               <MenuCloseIcon 
-                height={ iconSize } 
-                width={ iconSize } 
+                height={ closeIconSize } 
+                width={ closeIconSize } 
                 stroke={ iconColor }
               />
             </div>
@@ -111,13 +116,13 @@ export default function ProjectCardModal() {
             alt={ title } 
             objectFit='cover'
           /> 
-        </div>
+        </div> 
         {/* content */}
         <div className='project-card-modal-content'>
           {/* description */}
           <div className='project-card-modal-content-header'>
             <div className='project-card-modal-content-header-icon'>
-              <InformationIcon height={ iconSize } width={ iconSize } fill={ iconColor } />
+              <InformationIcon height={ headerIconSize } width={ headerIconSize } fill={ iconColor } />
             </div>
             <h3> { t( 'project-cards-description' ) } </h3>
           </div>
@@ -129,7 +134,7 @@ export default function ProjectCardModal() {
           {/* what i learned ? */}
           <div className='project-card-modal-content-header'>
             <div className='project-card-modal-content-header-icon'>
-              <LearnedIcon height={ iconSize } width={ iconSize } fill={ iconColor } />
+              <LearnedIcon height={ headerIconSize } width={ headerIconSize } fill={ iconColor } />
             </div>
             <h3> { t( 'project-cards-learned' ) } </h3>
           </div>
@@ -137,12 +142,15 @@ export default function ProjectCardModal() {
           {/* links */}
           <div className='project-card-modal-content-header'> 
             <div className='project-card-modal-content-header-icon'>
-              <LinkIcon height={ iconSize } width={ iconSize } fill={ iconColor } />
+              <LinkIcon height={ headerIconSize } width={ headerIconSize } fill={ iconColor } />
             </div>
             <h3> { t( 'project-cards-links' ) } </h3>
           </div>
           { linkItems }
         </div> 
+
+
+        </div>
       </div>
     </div>
   )

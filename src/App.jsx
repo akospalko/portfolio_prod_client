@@ -9,7 +9,7 @@ import './App.css';
 function App() {
 
   return (
-    <>
+    <div className='layout-container'>
       <I18nextProvider i18n={ i18n }>
       <ModalProvider>
       <GoogleReCaptchaProvider reCaptchaKey={ import.meta.env.VITE_CAPTCHA_V3_SITE_KEY }>
@@ -17,7 +17,7 @@ function App() {
       </GoogleReCaptchaProvider>
       </ModalProvider>
       </I18nextProvider>
-    </>
+    </div>
   )
 }
 
