@@ -43,7 +43,7 @@
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 299px) { 
+@media screen and (max-width: 249px) { 
   .footer-container {
     width: 350px;
   }

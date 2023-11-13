@@ -88,7 +88,7 @@
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 299px) { 
+@media screen and (max-width: 249px) { 
   .header-container {
     width: 350px;
   }

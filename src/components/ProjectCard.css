@@ -46,7 +46,7 @@
   transform: scale(1.05); 
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 249px) {
   .project-card {
     height: auto;
   }

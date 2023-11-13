@@ -128,7 +128,7 @@
 } 
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 299px) {
+@media screen and (max-width: 249px) {
   .about-background,
   .about-skills {
     display: flex;
