@@ -1,5 +1,14 @@
 .layout-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 100vh;
+  background-color: var(--color-1);
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 299px) {
+  .layout-container {
+    overflow-x: scroll;
+  } 
 }

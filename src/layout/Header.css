@@ -45,8 +45,6 @@
   height: 100%;
   width: 100%;
   align-items: center;
-  justify-content: flex-end;
-  padding: 1rem
 }
 
 .header-contacts {
@@ -90,28 +88,18 @@
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 100px) { 
+@media screen and (max-width: 299px) { 
   .header-container {
-    grid-template-columns: 1fr;
-  }
-
-  .header-logo-container {
-    display: none;
+    width: 350px;
   }
   
-  .header-menu-toggler {
-    justify-items: center;
-    padding: 0;
+  .header-menu-modal {
+    overflow-x: scroll;
   }
 }
 
 @media screen and (min-width: 500px) {
-
   .header-menu-toggler {
-    padding: 0;
-  }
-
-  .header-toolbar {
     padding: 0;
   }
 }

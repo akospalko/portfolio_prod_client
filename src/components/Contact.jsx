@@ -19,10 +19,22 @@ export default function Contact() {
   const { t } = useTranslation(); 
   const { availabilityAndProfileLinks } = AvailabilityAndProfileLinks();
 
+  const toasterProps = {
+    position: 'top-right',
+    className: 'toast-message',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  } 
+  
   // HANDLERS
   // send toast when contact item is copied to clipboard
   const copyClipboardToastHandler = ( copiedItem ) => {
-    toast(`${ copiedItem } is copied to cliplboard`, toasterProps);
+    toast(`${ copiedItem } ${ t( 'toaster-copy-to-clipboard' ) }`, toasterProps);
   }
 
   // ELEMENTS

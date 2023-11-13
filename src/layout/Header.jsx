@@ -102,16 +102,16 @@ export default function Header() {
           stroke={ iconColorMenuToggler }
         />
       }
-    </div>
+    </div>  
   )
 
   // menu modal (for small screen layout)
   const menuModal = (
     <div className='header-menu-modal'>
-        { isBelow768Px ?
-        <NavigationElements 
-          type='header-small' 
-        /> : null } 
+      { isBelow768Px ?
+      <NavigationElements 
+      type='header-small' 
+      /> : null } 
       { highlightedContacts }
     </div>
   )
