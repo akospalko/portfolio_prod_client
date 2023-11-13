@@ -7,7 +7,7 @@
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 299px) {
+@media screen and (max-width: 249px) {
   .layout-container {
     overflow-x: scroll;
   } 

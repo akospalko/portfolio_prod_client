@@ -27,13 +27,11 @@ export default function PageLayout() {
     <>
       <Header/>
       <ErrorBoundary fallback={ <ErrorPage type='error-no-internet-connection'/> }>
-        <Routes>
-          <Route path={ '/' } element={ <Home/> } />
-        </Routes>
         <Suspense fallback={ <PageLoader/> }>
           <ToasterInitializer/>
           { isModalToggled && <ProjectCardModal/> }
             <Routes>
+              <Route path='/' element={ <Home/> } />
               <Route path='/about' element={ <About/> } /> 
               <Route path='/projects' element={ <Projects/> } />  
               <Route path='/contact' element={ <Contact/> } /> 

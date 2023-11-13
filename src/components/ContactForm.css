@@ -150,7 +150,7 @@ color: var(--color_4_transparent_85);
 }
 
 /* MEDIA QUERY */
-@media (max-width: 299px) {
+@media (max-width: 249px) {
   .contact-form-status-message {
     min-height: 75px;
     word-wrap: break-word;
