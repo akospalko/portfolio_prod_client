@@ -93,5 +93,6 @@
   "tag-drivers-license": "Driver's license - B cat.",
   "tag-point-cloud-analysis": "Point cloud analysis",
   "tag-authentication": "Authentication",
-  "tag-rbac": "RBAC"
+  "tag-rbac": "RBAC",
+  "toaster-copy-to-clipboard": "is copied to clipboard."
 }

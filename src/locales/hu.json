@@ -93,5 +93,6 @@
   "tag-drivers-license": "Jogosítvány - B kat.",
   "tag-point-cloud-analysis": "Pontfelhő elemzés",
   "tag-authentication": "Hitelesítés",
-  "tag-rbac": "RBAC"
+  "tag-rbac": "RBAC",
+  "toaster-copy-to-clipboard": "vágólapra másolva."
 }

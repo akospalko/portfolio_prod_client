@@ -82,18 +82,22 @@
   font-size: var(--font-size--M);
 }
 
+.toast-message {
+  background: var(--color_2) !important;
+  color: var(--color_4) !important;
+  font-size: 1.2rem;
+  padding: 1rem;
+  font-family: 'Inconsolata', monospace;
+} 
+
+.Toastify__progress-bar-theme--dark {
+  background-color: var(--color_3)  !important;
+}
+
 /* MEDIA */
-@media screen and (max-width: 300px) {
-  /* TAGS */
-  .shared-tag-item {
-    height: auto;
-    width: 100%;
-  }
-  .shared-tag-item span {
-    font-size: 0.70rem;
-  }
-  .shared-tag-item--skill {
-    min-height: 25px;
+@media screen and (max-width: 299px) {
+  .shared-page-container {
+    width: 350px;
   }
 }
 
