@@ -8,19 +8,22 @@
   min-height: calc(100vh - var(--header_height));
   overflow: hidden; 
 }
+
 .error-message {
   display: grid; 
   grid-area: 1 / 1 / 2 / 2;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 350px;
+  min-height: 300px;
   background-color: var(--color_3_light);
+  border: 2px solid var(--color_1);
   z-index: var(--z_2);
   border-radius: 10px;
   word-wrap:break-word;
   padding: 1rem;
 }
+
 .error-message h1 {
   text-align: center;
   width: 100%;
@@ -28,6 +31,7 @@
   font-size: var(--header-1--S);
   line-height: calc(var(--header-1--S) * 1.1);
 }
+
 .error-bottom-toolbar {
   display: grid; 
   grid-area: 2 / 1 / 3 / 2;
@@ -39,10 +43,11 @@
   z-index: var(--z_2);
   padding: 0.5rem;
 }
+
 .error-pause-background-animation {
   display: grid;
   grid-area: 1 / 3 / 2 / 4;
-  width: 100%;
+  width: 35px;
   justify-content: center;
   align-items: center;
   height: 35px;
@@ -63,15 +68,7 @@
 }
 
 /* MEDIA QUERY */
-@media screen and (max-width: 249px) {
-  .error-message {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem;
-    margin: 0;
-  }
+@media screen and (max-width: 299px) {
   .error-introduction-text {
     display: flex;
     justify-content: center;
@@ -80,49 +77,21 @@
     padding: 0.5rem;
     margin: 0;
   }
-  .error-bottom-toolbar {
-    display: flex;
-    width: 100%;
-    height: 100px;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-  }
 }
-@media screen and (max-width: 350px) {
-  .error-pause-background-animation {
-    display: flex;
-    width: 30px;
-  }
-  .error-bottom-toolbar {
-    width: 100%;
-    height: 100%;
-    flex: 1 1 auto;
-    align-items: flex-end;
-  }
-}
+
 @media screen and (min-width: 500px) {
   .error-message {
     width: 400px;
   }
-  .error-bottom-toolbar {
-    padding: 1rem 2rem;
-  }
+
   .error-message h1 {
     font-size: var(--header-1--M);
     line-height: calc(var(--header-1--M) * 1.1);
   }
 }
+
 @media screen and (min-width: 768px) {
   .error-message {
     width: 700px;
   }
-  .error-message h1 {
-    font-size: var(--header-1--L);
-    line-height: calc(var(--header-1--L) * 1.1);
-  }
 }
-
-
-
-

@@ -80,8 +80,6 @@
   "status-button-submit-form": "Küldés",
   "status-img-unavailable": "nincs kép",
   "status-img-loading": "kép töltése...",
-  "status-page-not-found": "Upszi, a keresett oldal nem található.",
-  "status-page-error": "Error",
   "tag-basic": "(alap)",
   "tag-responsive-design": "Reszponzív design",
   "tag-raster-analysis": "Raszter elemzés",
@@ -94,5 +92,8 @@
   "tag-point-cloud-analysis": "Pontfelhő elemzés",
   "tag-authentication": "Hitelesítés",
   "tag-rbac": "RBAC",
-  "toaster-copy-to-clipboard": "vágólapra másolva."
+  "toaster-copy-to-clipboard": "vágólapra másolva.",
+  "error-page-does-not-exist": "Hiba, Az oldal nem létezik!",
+  "error-no-internet-connection": "Hiba, Nincs internetkapcsolat!",
+  "error-something-went-wrong": "Upsz, Valami hiba történt!"
 }
