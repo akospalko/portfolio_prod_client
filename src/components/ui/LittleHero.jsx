@@ -1,14 +1,14 @@
 // Animated hero that can track the mouse movement with its eyes all day long
 import React, { useEffect, useState, useRef } from 'react';
 import { throttle } from 'lodash';
-import littleHeroURL from '../data/littleHeroURL.json'
-import LittleHeroImg from '../assets/little_hero.png';
-import LittleHeroEyeImg from '../assets/little_hero_eye.png';
+import littleHeroURL from '../../data/littleHeroURL.json';
+import LittleHeroImg from '../../assets/little_hero.png';
+import LittleHeroEyeImg from '../../assets/little_hero_eye.png';
 import './LittleHero.css';
 
 export default function LittleHero() {
   // STATE
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [ mousePosition, setMousePosition ] = useState({ x: 0, y: 0 });
   
   // REFS
   const anchorRef = useRef(null);

@@ -1,6 +1,6 @@
 // Pause / play background animation on button click
 import { useState } from 'react';
-import { PauseIcon, PlayIcon } from '../components/SVGComponents';
+import { PauseIcon, PlayIcon } from '../data/SVGComponents';
 import './useAnimationPause.css';
 
 export const useAnimationPause = (pageName, iconColor) => {
@@ -8,7 +8,7 @@ export const useAnimationPause = (pageName, iconColor) => {
   // pageName - string, pause button related page (decide style)
   // iconColor - custom icon color
   // STATE
-  const [isAnimationPaused, setIsAnimationPaused] = useState(false);
+  const [ isAnimationPaused, setIsAnimationPaused ] = useState(false);
 
   // HANDLER
   const toggleAnimation = () => {

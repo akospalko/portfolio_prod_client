@@ -2,19 +2,19 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-import { useModalContext } from './context/ModalContext';
-import PageLoader from './components/PageLoader';
-import Header from './layout/Header';
-import Home from './components/Home';
-import ErrorPage from './components/ErrorPage';
+import { useModalContext } from '../context/ModalContext';
+import PageLoader from '../pages/PageLoader';
+import Header from './Header';
+import Home from '../pages/Home';
+import ErrorPage from '../pages/ErrorPage';
 
 // Lazy-loaded components
-const About = lazy( () => import('./components/About') );
-const Projects = lazy( () => import('./components/Projects') );
-const Contact = lazy( () => import('./components/Contact') );
-const ProjectCardModal = lazy( () => import('./components/ProjectCardModal') );
-const Footer = lazy( () => import('./layout/Footer') );
-const ToasterInitializer = lazy( () => import('./components/ToasterInitializer') );
+const About = lazy( () => import('../pages/About') );
+const Projects = lazy( () => import('../pages/Projects') );
+const Contact = lazy( () => import('../pages/Contact') );
+const ProjectCardModal = lazy( () => import('../components/projects/ProjectCardModal') );
+const Footer = lazy( () => import('./Footer') );
+const ToasterInitializer = lazy( () => import('../helper/ToasterInitializer') );
 
 export default function PageLayout() {
   // HOOK
@@ -22,7 +22,6 @@ export default function PageLayout() {
   
   // CONTEXT
   const { isModalToggled } = useModalContext();
-
   return (
     <>
       <Header/>

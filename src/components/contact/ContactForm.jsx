@@ -1,15 +1,15 @@
 // Content send message form 
 import React, { useState, useEffect, useCallback } from 'react'
-import { buildForm, getFormValues, toasterProps } from '../helper/utility';
-import useValidateReCaptcha from '../hooks/useValidateReCaptcha';
-import { LoaderIcon } from './SVGComponents';
+import { buildForm, getFormValues, toasterProps } from '../../helper/utility';
+import useValidateReCaptcha from '../../hooks/useValidateReCaptcha';
+import { LoaderIcon } from '../../data/SVGComponents';
 import axios from 'axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { validateForm } from '../helper/validateForm';
+import { validateForm } from '../../helper/utility';
 import { toast } from 'react-toastify';
-import ContactFormData from '../data/ContactFormData';
+import ContactFormData from '../../data/ContactFormData';
 import { useTranslation } from 'react-i18next';
-import useCalculateRemainingCharacters from '../hooks/useCalculateRemainingCharacters';
+import useCalculateRemainingCharacters from '../../hooks/useCalculateRemainingCharacters';
 import './ContactForm.css';
 
 export default function ContactForm() {

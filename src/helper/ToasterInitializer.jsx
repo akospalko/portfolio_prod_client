@@ -18,7 +18,7 @@ const ToasterInitializer = () => {
     theme: 'dark',
   };
 
-  return <ToastContainer { ...toastProps} />;
+  return <ToastContainer { ...toastProps } />;
 };
 
 export default ToasterInitializer;

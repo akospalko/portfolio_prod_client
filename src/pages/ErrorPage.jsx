@@ -1,9 +1,11 @@
 // Error page to handle unknown routes, status messages
 import React from 'react';
 import { useAnimationPause } from '../hooks/useAnimationPause';
-import { OceanAnimation } from './SVGComponents';
+import { OceanAnimation } from '../data/SVGComponents';
 import { useTranslation } from 'react-i18next'
 import './ErrorPage.css';
+import './Page.css';
+
 
 export default function ErrorPage({ type }) {
   // HOOK
@@ -42,7 +44,7 @@ export default function ErrorPage({ type }) {
     )
 
     return (
-      <article className={ 'shared-page-container' }>
+      <article className='page-container'>
         <div className='error-content'>
           { errorMessageContainer }
           { bottomToolbar }

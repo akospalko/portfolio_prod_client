@@ -1,9 +1,10 @@
 // Project card
 import React from 'react';
-import { Tags } from './Tags';
-import ImageWithPlaceholder from './ImageWithPlaceholder';
+import { Tags } from '../ui/Tags';
+import ImageWithPlaceholder from '../ui/ImageWithPlaceholder';
 import './ProjectCard.css';
-import './Shared.css';
+import '../../pages/Projects.css';
+import '../ui/Tags';
 
 export default function ProjectCard(props) {
   // PROPS
@@ -17,7 +18,7 @@ export default function ProjectCard(props) {
       <div className={ `project-card-header ` } > 
         {/* title */}
         <h2> { title } </h2>
-        <div className='shared-tags'>
+        <div className='tags'>
           <Tags tags={ tags.slice( 0, 3 ) } />
         </div>
       </div>

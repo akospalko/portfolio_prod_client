@@ -1,9 +1,9 @@
 // Header for all layouts
 import React, { useEffect } from 'react';
-import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../components/SVGComponents';
+import { MenuOpenIcon, MenuCloseIcon, LogoIcon } from '../data/SVGComponents';
 import useMediaQuery from '../hooks/useMediaQuery';
 import { useModalContext } from '../context/ModalContext';
-import LanguageToggler from '../components/LanguageToggler';
+import LanguageToggler from '../components/ui/LanguageToggler';
 import AvailabilityAndProfileLinks from '../data/AvailabilityAndProfileLinks';
 import NavigationElements from './NavigationElements';
 import { CustomNavLink } from './CustomNavLink';

@@ -1,11 +1,11 @@
 // Home: starting / landing pg with basic intro
 import React from 'react';
-import { ArrowIcon, OceanAnimation } from './SVGComponents';
+import { ArrowIcon, OceanAnimation } from '../data/SVGComponents';
 import { useAnimationPause } from '../hooks/useAnimationPause';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
-import './Shared.css';
+import './Page.css';
 
 export default function Home() {
   // HOOK
@@ -75,7 +75,7 @@ export default function Home() {
   )
 
   return (
-    <article className='shared-page-container' >
+    <article className='page-container'>
       <div className='home-content'> 
         { homeTitle }
         { homeSubitle }
