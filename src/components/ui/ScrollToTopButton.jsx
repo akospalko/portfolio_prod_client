@@ -1,9 +1,9 @@
 // Scroll page to top functionality implemented as a button 
 import React from 'react';
 import './ScrollToTopButton.css';
-import { ArrowIcon } from './SVGComponents';
-import useMediaQuery from '../hooks/useMediaQuery';
-import { scrollToTop } from '../helper/utility';
+import { ArrowIcon } from '../../data/SVGComponents';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { scrollToTop } from '../../helper/utility';
 
 const ScrollToTopButton = () => {
   // HOOK

@@ -8,7 +8,7 @@ import {
   GlobeIcon,
   LanguageIcon,
   OthersIcon,
-} from '../components/SVGComponents';
+} from '../data/SVGComponents';
 
 const AboutData = () => {
   // HOOK

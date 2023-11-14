@@ -1,0 +1,45 @@
+.tags {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 30px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.tags--skill {
+  margin-bottom: 1rem;
+}
+
+.tag-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+  height: 35px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  transition: transform 0.3s ease;
+}
+
+.tag-item:hover {
+  transform: scale(1.1);
+}
+
+.tag-item span { 
+  width: 100%;
+  font-size: var(--font-size--S);
+  line-height: var(--font-size--S);
+}
+
+.tag-item--skill {
+  height: 40px;
+}
+
+.tag-item--skill span { 
+  width: 100%;
+  font-size: var(--font-size--M);
+}

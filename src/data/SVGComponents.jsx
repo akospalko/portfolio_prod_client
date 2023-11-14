@@ -4,8 +4,7 @@ https://icon-sets.iconify.design/ - icons
 https://www.svgrepo.com/ - icons
 https://loading.io/ - animated background 
 */
-import React from 'react'
-import './Shared.css'
+import React from 'react';
 
 // Link icon
 export function LinkIcon({ width, height, fill }) {

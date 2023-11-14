@@ -1,7 +1,8 @@
 // Full page loader 
 import React from 'react';
-import './Shared.css';
-import { BubbleLoader } from './SVGComponents';
+import { BubbleLoader } from '../data/SVGComponents';
+import './Page.css';
+
 
 const PageLoader = ({ style }) => {
   // STYLE
@@ -10,7 +11,7 @@ const PageLoader = ({ style }) => {
   const iconColor2 = 'var(--color_1)';
 
   return (
-    <article className={ `shared-page-container ${ style }` } >
+    <article className={ `page-container ${ style }` } >
       <BubbleLoader width={ iconSize } height={ iconSize } color1={ iconColor1 } color2={ iconColor2 } />
     </article>
   )

@@ -1,4 +1,4 @@
-.layout-container {
+.page {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -8,7 +8,7 @@
 
 /* MEDIA QUERY */
 @media screen and (max-width: 249px) {
-  .layout-container {
+  .page {
     overflow-x: scroll;
   } 
 }

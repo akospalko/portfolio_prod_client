@@ -1,12 +1,13 @@
 // About page
 import React from 'react';
-import { Tags } from './Tags';
+import { Tags } from '../components/ui/Tags';
 import useMediaQuery from '../hooks/useMediaQuery';
-import ImageWithPlaceholder from './ImageWithPlaceholder';
+import ImageWithPlaceholder from '../components/ui/ImageWithPlaceholder';
 import { useTranslation } from 'react-i18next';
 import AboutData from '../data/AboutData';
 import './About.css';
-import './Shared.css';
+import '../components/ui/Tags.css';
+import './Page.css';
 
 export default function About() {
   // HOOK
@@ -59,10 +60,10 @@ export default function About() {
         <div className='about-skill-card-content-group-title'>
           <h3> { item.title } </h3> 
         </div>
-        <div className='shared-tags shared-tags--skill'>
+        <div className='tags tags--skill'>
           <Tags 
             tags={ item.tags } 
-            tagStyle='shared-tag-item--skill'
+            tagStyle='tag-item--skill'
             allowDisplayInfo 
           />
         </div>
@@ -92,11 +93,11 @@ export default function About() {
   )
       
   return (
-    <article className='shared-page-container'>
+    <article className='page-container'>
       {/* anchor tag for full content page */}
       <div className='about-content'>
         {/* Page title */}
-        <div className='shared-title'>
+        <div className='page-title'>
           <h1> { t( 'about' ) } </h1>
         </div>
         <div className='about-introduction-wrapper'>

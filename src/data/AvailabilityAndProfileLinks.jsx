@@ -10,7 +10,7 @@ import {
   LinkedInIcon,
   CodeWarsIcon,
   LeetCodeIcon
-} from '../components/SVGComponents'
+} from '../data/SVGComponents'
 
 const AvailabilityAndProfileLinks = () => {
   // HOOK

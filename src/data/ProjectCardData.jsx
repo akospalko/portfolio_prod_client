@@ -1,7 +1,7 @@
 // Component to return an array project card data
 import React from 'react';
 import projectURL from './projectURL.json';
-import { GithubIcon, HomePageIcon } from '../components/SVGComponents';
+import { GithubIcon, HomePageIcon } from '../data/SVGComponents';
 import { useTranslation } from 'react-i18next';
 import TagsData from './TagsData';
 
