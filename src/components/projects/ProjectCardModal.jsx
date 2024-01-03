@@ -1,12 +1,12 @@
 // Project card modal with backdrop
 import React, { useEffect } from 'react';
-import { useModalContext } from '../context/ModalContext';
-import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from './SVGComponents';
-import { Tags } from './Tags';
-import ImageWithPlaceholder from './ImageWithPlaceholder';
+import { useModalContext } from '../../context/ModalContext';
+import { MenuCloseIcon, LinkIcon, LearnedIcon, InformationIcon } from '../../data/SVGComponents';
+import { Tags } from '../ui/Tags';
+import ImageWithPlaceholder from '../ui/ImageWithPlaceholder';
 import { useTranslation } from 'react-i18next';
 import './ProjectCardModal.css';
-import './Shared.css';
+import '../ui/Tags.css';
 
 export default function ProjectCardModal() {
   // CONTEXT
@@ -101,12 +101,8 @@ export default function ProjectCardModal() {
               />
             </div>
           </div>
-          <div className='shared-tags'> 
-            <Tags 
-              tags={ tags } 
-              tagStyle='shared-tag-item--modal'
-              allowDisplayInfo 
-            />
+          <div className='tags'> 
+            <Tags tags={ tags } allowDisplayInfo />
           </div>
         </div>
         {/* preview img */}
@@ -148,8 +144,6 @@ export default function ProjectCardModal() {
           </div>
           { linkItems }
         </div> 
-
-
         </div>
       </div>
     </div>

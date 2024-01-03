@@ -1,12 +1,11 @@
 // Responsive footer
 import React from 'react';
-import { LogoIcon } from '../components/SVGComponents';
-import ScrollToTopButton from '../components/ScrollToTopButton';
+import { LogoIcon } from '../data/SVGComponents';
+import ScrollToTopButton from '../components/ui/ScrollToTopButton';
 import useMediaQuery from '../hooks/useMediaQuery';
 import { useTranslation } from 'react-i18next';
 import useCurrentYear from '../hooks/useCurrentYear';
 import './Footer.css';
-import '../components/Shared.css';
 import NavigationElements from './NavigationElements';
 
 export default function Footer() {

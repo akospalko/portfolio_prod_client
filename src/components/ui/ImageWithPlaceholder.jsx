@@ -1,6 +1,6 @@
 // Return image / placeholder based on its loading state
 import React, { useState } from 'react';
-import { ImagePlaceholderIcon } from './SVGComponents';
+import { ImagePlaceholderIcon } from '../../data/SVGComponents';
 import { useTranslation } from 'react-i18next'
 import './ImageWithPlaceholder.css';
 
