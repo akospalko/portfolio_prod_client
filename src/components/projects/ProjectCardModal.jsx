@@ -66,17 +66,18 @@ export default function ProjectCardModal() {
 
   // mapped content links
   const linkItems = (
-    links.map( link => 
-      <a 
-        className='project-card-modal-content-link-item'
-        key={ link.id } 
-        href={ link.link }
-        target='_blank' 
-        rel='noopener noreferrer'
-      >
-        <div className='project-card-modal-content-link-item-icon'> { link.icon } </div>
-        <span> { link.title } </span>
-      </a>
+    links?.map( link => (
+        <a 
+          className={ link.link ? 'project-card-modal-content-link-item' : 'project-card-modal-content-text-item' }
+          key={ link.id } 
+          href={ link.link }
+          target='_blank' 
+          rel='noopener noreferrer'
+        >
+          <div className={ link.link ? 'project-card-modal-content-link-item-icon' : 'project-card-modal-content-text-item-icon' }> { link.icon } </div>
+          <span> { link.title } </span>
+        </a>
+      )
     )
   )
 

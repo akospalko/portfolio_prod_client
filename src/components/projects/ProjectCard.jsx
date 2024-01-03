@@ -28,8 +28,7 @@ export default function ProjectCard(props) {
           src={ imageURL } 
           alt={ title }
           width='100%' 
-          height='100%' 
-          // objectFit={ isBetween768PxAnd1023Px ? 'contain' : 'cover' } 
+          height='100%'
         /> 
       </div>
     </div>

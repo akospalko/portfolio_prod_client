@@ -310,6 +310,11 @@ const TagsData = () => {
       backgroundColor: 'var(--color_3_light2)',
       color: 'var(--color_1)',
       borderColor: 'var(--color_3_light2)',
+    },
+    csstransition: {
+      name: 'CSSTransition',
+      color: 'var(--color_3_light2)',
+      borderColor: 'var(--color_3_light2)',
     }
   }
   return tags;

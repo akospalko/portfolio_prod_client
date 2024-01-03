@@ -20,6 +20,35 @@ const ProjectCardsData = () => {
   const projectCards = [
     {
       id: 1,
+      title: t( 'project-cards-webshop' ),
+      tags: [ tags.typescript, tags.react, tags.css, tags.responsive, tags.csstransition ],
+      description: t( 'project-cards-webshop-description' ),
+      learnedAbout: [
+        { id: 1, text: t( 'project-cards-webshop-learned-1' ) },
+        { id: 2, text: t( 'project-cards-webshop-learned-2' ) },
+        { id: 3, text: t( 'project-cards-webshop-learned-3' ) },
+        { id: 4, text: t( 'project-cards-webshop-learned-4' ) },
+        { id: 5, text: t( 'project-cards-webshop-learned-5' ) },
+        { id: 6, text: t( 'project-cards-webshop-learned-6' ) },
+        { id: 7, text: t( 'project-cards-webshop-learned-7' ) },
+        { id: 8, text: t( 'project-cards-webshop-learned-8' ) },
+      ],
+      links: [ 
+        { 
+          id: 1, 
+          icon: <HomePageIcon width={ iconSize } height={ iconSize } fill={ iconColor } />,
+          title: `${ t( 'project-cards-website' ) } - ${ t( 'project-cards-coming-soon' ) }`, 
+        },
+        { 
+          id: 2, 
+          icon: <GithubIcon width={ iconSize } height={ iconSize } strokeWidth={ strokeWidth } stroke={ iconColor } />,  
+          title: t( 'project-cards-frontend' ), 
+          link: projectURL[ 'project-cards-webshop' ].links.frontend
+        }
+      ],
+    }, 
+    {
+      id: 2,
       title: t( 'project-cards-password-strength-meter' ),
       tags: [ tags.react, tags.css, tags.responsive ],
       imageURL: projectURL[ 'project-cards-password-strength-meter' ].imageURL,
@@ -45,7 +74,7 @@ const ProjectCardsData = () => {
       ],
     }, 
     {
-      id: 2,
+      id: 3,
       title: t( 'project-cards-geolens-gallery' ),
       tags: [ tags.react, tags.css, tags.node, tags.express, tags.leaflet, tags.aws3, tags.mongo, tags.mongoose, tags.responsive, tags.postman, tags.restapi, tags.authentication, tags.rbac, tags.bcrypt, tags.jwt ],
       imageURL: projectURL[ 'project-cards-geolens-gallery' ].imageURL,
@@ -80,7 +109,7 @@ const ProjectCardsData = () => {
       ],
     },
     {
-      id: 3,
+      id: 4,
       title: t( 'project-portfolio-website' ),
       tags: [ tags.react, tags.css, tags.node, tags.express, tags.nodemailer, tags.inkscape ],
       imageURL: projectURL[ 'project-portfolio-website' ].imageURL,
@@ -110,7 +139,7 @@ const ProjectCardsData = () => {
         },
       ],
     }, 
-    { id: 4,
+    { id: 5,
       title: t( 'project-task-manager' ),
       tags: [ tags.react, tags.node, tags.express, tags.mongo, tags.mongoose, tags.postman, tags.css ],
       imageURL: projectURL[ 'project-task-manager' ].imageURL,
