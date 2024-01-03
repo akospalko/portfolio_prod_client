@@ -8,7 +8,6 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
   // STATE
   const [ isImageLoaded, setIsImageLoaded ] = useState(false); // store img loaded state
   const [ isImageError, setIsImageError ] = useState(false); // store img error status
-
   // HOOK
   const { t } = useTranslation();
 
@@ -38,35 +37,54 @@ const ImageWithPlaceholder = ({ src, alt, width, height, objectFit }) => {
     objectFit: objectFit || 'contain'
   };
 
-  return (
+  // JSX
+  const imageWithPlaceholder = src ? (
     <>
       <img
-        className='image'
-        srcSet={ `${ src.small } 500w, ${ src.medium } 1200w, ${ src.large } 1500w` } 
-        sizes='(max-width: 499px) 100vw, (max-width: 768px) 600px, 1000px'
-        src={ src.medium }
-        alt={ alt }
-        style={ imageStyle }
-        onLoad={ imageLoadedHandler }
-        onError={ imageErrorHandler }
-      /> 
-        <div 
-          className={ `image-placeholder ${ isImageError ? 'image-placeholder--hidden' : ''}` }
-          style={ placeholderStyle }
-          title={ t( 'status-img-unavailable' ) } 
-        > 
-          <ImagePlaceholderIcon 
-            fill='var(--color_3_light)' 
-            fill2='var(--color_1)' 
-            height='100%'
-            width='100%'
-          />
-          <span> 
-            { isImageError ? t( 'status-img-unavailable') : t( 'status-img-loading' ) }
-          </span>
-        </div>
+        className="image"
+        srcSet={`${src.small} 500w, ${src.medium} 1200w, ${src.large} 1500w`}
+        sizes="(max-width: 499px) 100vw, (max-width: 768px) 600px, 1000px"
+        src={src.medium}
+        alt={alt}
+        style={imageStyle}
+        onLoad={imageLoadedHandler}
+        onError={imageErrorHandler}
+      />
+      <div
+        className={`image-placeholder image-placeholder--fade-out ${
+          isImageError ? 'image-placeholder--hidden' : ''
+        }`}
+        style={placeholderStyle}
+        title={t('status-img-unavailable')}
+      >
+        <ImagePlaceholderIcon
+          fill="var(--color_3_light)"
+          fill2="var(--color_1)"
+          height="100%"
+          width="100%"
+        />
+        <span>
+          {isImageError
+            ? t('status-img-unavailable')
+            : t('status-img-loading')}
+        </span>
+      </div>
     </>
+  ) : (
+    <div className='image-placeholder image-placeholder--fade-in'>
+      <ImagePlaceholderIcon 
+        fill='var(--color_3_light)' 
+        fill2='var(--color_1)' 
+        height='100%'
+        width='100%'
+      />
+      <span>
+        { t('project-cards-coming-soon') }
+      </span>
+    </div>
   );
+  
+  return imageWithPlaceholder;
 };
 
 export default ImageWithPlaceholder;
