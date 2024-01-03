@@ -1,4 +1,9 @@
 {
+  "project-cards-webshop": {
+    "links": {
+      "frontend": "https://github.com/akospalko/shopping-cart"
+    }
+  },
   "project-cards-password-strength-meter": {
     "imageURL": {
       "small": "https://palkoakos-portfolio.s3.eu-central-1.amazonaws.com/images_500w/password_security_checker_500w.png",

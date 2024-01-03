@@ -29,7 +29,7 @@ export default function Projects() {
         </div>
         <div className='projects-display'>
           { projectCards.map( ( card, i ) => {
-            let columnCount = isBelow1024Px ? isBelow768Px ? 1 : 2 : 3; // number of displaye columns: 1-3
+            let columnCount = isBelow1024Px ? isBelow768Px ? 1 : 2 : 3; // number of displayed columns: 1-3
             let borderRadiusStyle = addConditionalBorderStyle(projectCards, i, columnCount);
             return (
               <div 
